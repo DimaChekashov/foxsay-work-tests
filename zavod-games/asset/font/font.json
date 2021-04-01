@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Tavolga bold 40",
+		"path": "font/Tavolga-Bold_40.fnt"
+	},
+	{
+		"name": "Tavolga bold 48",
+		"path": "font/Tavolga-Bold_48.fnt"
+	},
+	{
+		"name": "Arial bold 12",
+		"path": "font/fontDebug.fnt"
+	}
+]

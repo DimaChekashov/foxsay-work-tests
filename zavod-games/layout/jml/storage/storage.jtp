@@ -1,0 +1,7 @@
+<type>
+    <prop name="storageTabList" type="[]jtp:./storageTab"/> <!-- список табов и текущий выбранный таб -->
+    <prop name="storageFill" type="Int"/> <!-- Текущее заполнение хранилища-->
+    <prop name="storageLimit" type="Int"/> <!-- Максимальное заполнение хранилища-->
+    <prop name="storageRowList" type="[][]jtp:./storageItem"/> <!-- колонки для сетки предметов-->
+    <prop name="isFullUpgrade" type="Bool"/> <!-- достигнут ли максимум улучшений -->
+</type>

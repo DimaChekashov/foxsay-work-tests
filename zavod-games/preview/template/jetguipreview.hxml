@@ -1,0 +1,16 @@
+-cp ../hx-src
+-cp ../../$LAYOUT_PATH$/output/src
+-cp ../../src
+-cp ../../taonga-data-haxe/src
+-cp ../../banan/src
+-cp ../../banan/jetgui/src
+-cp ../../banan/Libraries/promhx/src/main
+-D jetguiPreview
+-D js-source-map
+-D analyzer-optimize
+-dce full
+--macro keep('jetgui')
+--macro include('jetgui.generated.jml')
+-main JetguiPreview
+-js ../../build/html5/components.js
+

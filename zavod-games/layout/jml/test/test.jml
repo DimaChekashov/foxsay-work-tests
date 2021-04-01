@@ -1,0 +1,15 @@
+<!DOCTYPE JETXML 0.1>
+<head>
+	<style path="jss/fonts.jss"/>
+</head>
+<body> 
+	<box size=400 align=0.5 fill-image=asset("jetgui/card/body_light.png")>
+		<text class="text-large"
+		 text-color="01bc2f" 
+		 offset=0 
+		 text-align=center 
+		 text-v-align=center 
+		 wrap
+		 value="jetGui запущен успешно" />
+	</box>
+</body>

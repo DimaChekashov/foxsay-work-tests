@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>jetgui mobile</title>
+	<style>
+	
+    html, body {
+		width: 100%; 
+		height: 100%; 
+		margin: 0; 
+		padding: 0; 
+		overflow-y: hidden;
+		overflow-x: hidden;
+    }
+    
+    #khanvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%; 
+		height: 100%; 
+	}
+	
+	#reloadBtn {
+		position: absolute;
+		top: 0;
+		left: 50%;
+	}
+	</style>
+</head>
+<body>
+	<canvas id="khanvas" tabIndex=1 ></canvas>
+	<input id="reloadBtn" type="button" onClick="reloadComponents()" value="Reload"/>
+	<script>
+		
+		function reloadScript(id, src, onload) {
+			
+			let e = document.getElementById(id);
+			e && e.parentNode.removeChild(e);
+			
+			e = document.createElement("script");
+			e.id = id;
+			e.src = src;
+			e.onload = onload;
+			document.body.appendChild(e);
+		}
+		
+		var onComponentsReloadCb = function() {
+			// load kha.js after first components load
+			// then it will set onComponentsReloadCb to something
+			onComponentsReloadCb = null;
+			reloadScript('khaScript', 'kha.js', undefined);
+		};
+		
+		function reloadComponents() {
+			reloadScript('componentsScript', 'components.js?t=' + Date.now(), function() {
+				onComponentsReloadCb && onComponentsReloadCb();
+			});
+		}
+		
+		reloadComponents();
+		
+		let lastUpdateString = '';
+		function checkForChanges() {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.onreadystatechange = function() { 
+				
+				if (xmlHttp.readyState == 4) {
+					
+					let updateString = xmlHttp.responseText;
+					
+					if (updateString != lastUpdateString) {
+						lastUpdateString = updateString;
+						reloadComponents();
+					}
+					
+					setTimeout(checkForChanges, 1000);
+				}
+			}
+			xmlHttp.open("GET", "/update.txt", true); 
+			xmlHttp.send(null);			
+		}
+		
+		checkForChanges();
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<type>
+    <prop name="image" type="JetAssetPath"/> 
+    <prop name="title" type="String"/> 
+    <prop name="count" type="Int"/> 
+	<!-- Свойства для режима продажи -->
+	<prop name="modeSale" type="Bool" /> <!-- Режим продажи активен? -->
+	<prop name="saleCount" type="Int"/> <!-- Набранный счётчик продажи -->
+	<prop name="salePrice" type="Int" /> <!-- Суммарная стоимость продажи (умножать на количество не надо) -->
+	<!-- - - - - -->
+</type>

@@ -1,0 +1,6 @@
+{
+  "port": 3005, 
+  "assetPath": "asset",
+  "layoutPath": "layout",
+  "jet2hxPath": "jet2hx"
+}

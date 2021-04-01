@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "watch": "^1.0.2"
+  },
+  "scripts": {
+    "start": "haxe -cp hx-src --run ApplyConfig && bash ./generated/do-watch.sh"
+  }
+}

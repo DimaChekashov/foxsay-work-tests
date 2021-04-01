@@ -1,0 +1,5 @@
+<type>
+    <prop name="title" type="String"/> 
+    <prop name="isSelected" type="Bool"/> <!-- является ли таб текущим -->
+    <prop name="isLast" type="Bool"/> <!-- Последний таб? -->
+</type>

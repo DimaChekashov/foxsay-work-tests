@@ -1,0 +1,30 @@
+<!DOCTYPE JETXML 0.1>
+<head>
+	<style path="jss/fonts.jss"/>
+	<style path="jss/main.jss"/>
+
+	<prop name="storageItem" type="jtp:./storageItem" mock='{	
+		"image" : "game/itemPineapple.png",
+   		"title" : "Pineapple",
+    	"count" : 10,
+		"modeSale" : true,
+		"saleCount" : 8,
+		"salePrice": 400
+	}'/>
+</head>
+<body>
+	<vbox class="granary-item">
+		<img src={storageItem.image} class="granary-item__img"/>
+			<if {!storageItem.modeSale}>
+				<text value={storageItem.title} class="granary-item__title" wrap/>
+				<text value={storageItem.count} class="granary-item__count" />
+			</if>
+			<if {storageItem.modeSale}>
+				<text value={storageItem.count} class="granary-item__count" />
+				<vbox class="granary-item__sale">
+					<text value={storageItem.saleCount} class="text-base"/>
+					<text value={storageItem.salePrice} class="text-base" />
+				</vbox>
+			</if>
+	</vbox>
+</body>

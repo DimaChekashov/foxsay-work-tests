@@ -1,0 +1,1 @@
+watch generated\update . ../$LAYOUT_PATH$ --ignoreDirectoryPattern /output/

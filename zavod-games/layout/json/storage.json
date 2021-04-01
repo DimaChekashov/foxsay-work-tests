@@ -1,0 +1,133 @@
+{
+   "storageFill" : 300,
+   "storageLimit" : 899,
+   "isFullUpgrade" : false,
+   "storageTabList": [
+        { "title": "All", "isSelected" :true},
+        { "title": "Food"},
+        { "title": "Resources"},
+        { "title": "Festival", "isLast": true}
+    ],
+   "storageRowList" : [
+        [
+            {   
+                "image" : "game/itemBatat.png",
+                "title" : "Sweet Potato",
+                "count" : 65,
+                "modeSale" : false,
+                "saleCount" : 32,
+                "salePrice": 64
+            },
+            {   
+                "image" : "game/itemBottle.png",
+                "title" : "Glass Bottle",
+                "count" : 26,
+                "modeSale" : true,
+                "saleCount" : 2,
+                "salePrice": 36
+            },
+            {   
+                "image" : "game/itemBucket.png",
+                "title" : "Bucket",
+                "count" : 18,
+                "modeSale" : false,
+                "saleCount" : 9,
+                "salePrice": 90
+            },
+            {   
+                "image" : "game/itemButter.png",
+                "title" : "Butter",
+                "count" : 33,
+                "modeSale" : false,
+                "saleCount" : 21,
+                "salePrice": 210
+            }
+        ],
+        [
+            {   
+                "image" : "game/itemCeramicPlate.png",
+                "title" : "Plate",
+                "count" : 80,
+                "modeSale" : true,
+                "saleCount" : 8,
+                "salePrice": 48
+            },
+            {   
+                "image" : "game/itemCeramicPot.png",
+                "title" : "Clay Jug",
+                "count" : 3,
+                "modeSale" : false,
+                "saleCount" : 1,
+                "salePrice": 50
+            },
+            {   
+                "image" : "game/itemCeramicVaseColor.png",
+                "title" : "Brighly Painted Vase",
+                "count" : 15,
+                "modeSale" : false,
+                "saleCount" : 6,
+                "salePrice": 600
+            },
+            {   
+                "image" : "game/itemCheese.png",
+                "title" : "Cheese",
+                "count" : 21,
+                "modeSale" : false,
+                "saleCount" : 3,
+                "salePrice": 21
+            }
+        ],
+        [
+            {   
+                "image" : "game/itemCream.png",
+                "title" : "Fresh Cream",
+                "count" : 11,
+                "modeSale" : false,
+                "saleCount" : 8,
+                "salePrice": 80
+            },
+            {   
+                "image" : "game/itemGazpacho.png",
+                "title" : "Tomato Soup",
+                "count" : 6,
+                "modeSale" : false,
+                "saleCount" : 6,
+                "salePrice": 84
+            },
+            {   
+                "image" : "game/itemPineapple.png",
+                "title" : "Pineapple",
+                "count" : 244,
+                "modeSale" : false,
+                "saleCount" : 120,
+                "salePrice": 120
+            },
+            {   
+                "image" : "game/itemPlank.png",
+                "title" : "Wood Planks",
+                "count" : 89,
+                "modeSale" : false,
+                "saleCount" : 8,
+                "salePrice": 200
+            }
+        ],
+        [
+            {   
+                "image" : "game/itemRope.png",
+                "title" : "Rope",
+                "count" : 9,
+                "modeSale" : false,
+                "saleCount" : 1,
+                "salePrice": 50
+            },
+            {   
+                "image" : "game/itemStrawberry.png",
+                "title" : "Strawberry",
+                "count" : 630,
+                "modeSale" : false,
+                "saleCount" : 140,
+                "salePrice": 400
+            }
+        ]
+    ]
+}

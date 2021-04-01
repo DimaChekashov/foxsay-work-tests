@@ -1,0 +1,43 @@
+<!DOCTYPE JETXML 0.1>
+<head>
+    <style path="jss/main.jss"/>
+    <prop name="jtp" type="jtp:./storage" mock='fs:storage.json'/>
+
+    <var name="storageFill" type="Int" value={jtp.storageFill} /> 
+    <var name="storageLimit" type="Int" value={jtp.storageLimit} /> 
+    <var name="isFullUpgrade" type="Bool" value={jtp.isFullUpgrade} /> 
+</head>
+<body>
+   <!--  Бокс для отображени всех основных блоков вёрстки -->
+    <hbox>
+        <!-- Параметры склада -->
+        <vbox class="sidebar">
+            <!-- Разделы склада -->
+            <vbox class="navigation">
+                <img src=asset("jetgui/header/headerGoods.png")/>
+                <for {tab in jtp.storageTabList}>
+                    <if {!tab.isSelected}>
+                        <img src=asset("jetgui/tabList/divider.png") class="navigation__divider"/>
+                    </if>
+                    <text value={tab.title} class={ tab.isSelected ? "navigation__link active" : "navigation__link"} />
+                </for>
+            </vbox>
+           <!--  Прогресс-бар заполненности склада -->
+            <box height=64 width=320 fill-color="333333">
+                <box offset-y=0 fill-color=green width=percent(storageFill/storageLimit*100) />
+                <text value={ storageFill + "/" + storageLimit} class="text-base" />
+            </box>
+        </vbox>
+       <!--  Предметы на складе -->
+        <vbox>
+          <for {row in jtp.storageRowList}>
+            <hbox spacing=40>
+                <for {storageItem in row}>
+                    <prefab rel-path="prefabStorageItem"
+                        storageItem={storageItem} />
+                </for>
+            </hbox>
+          </for>
+      </vbox>
+  </hbox>
+</body>
