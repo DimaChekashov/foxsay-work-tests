@@ -1433,6 +1433,15 @@ jetgui_style_StyleRule.prototype = {
 };
 var jetgui_generated_jss_JssJssFonts = function() { };
 jetgui_generated_jss_JssJssFonts.__name__ = "jetgui.generated.jss.JssJssFonts";
+var jetgui_style_ESizeImpl = $hxEnums["jetgui.style.ESizeImpl"] = { __ename__:true,__constructs__:null
+	,px: ($_=function(value) { return {_hx_index:0,value:value,__enum__:"jetgui.style.ESizeImpl",toString:$estr}; },$_._hx_name="px",$_.__params__ = ["value"],$_)
+	,percent: ($_=function(value) { return {_hx_index:1,value:value,__enum__:"jetgui.style.ESizeImpl",toString:$estr}; },$_._hx_name="percent",$_.__params__ = ["value"],$_)
+	,content: {_hx_name:"content",_hx_index:2,__enum__:"jetgui.style.ESizeImpl",toString:$estr}
+	,contentScaled: ($_=function(scale) { return {_hx_index:3,scale:scale,__enum__:"jetgui.style.ESizeImpl",toString:$estr}; },$_._hx_name="contentScaled",$_.__params__ = ["scale"],$_)
+	,auto: {_hx_name:"auto",_hx_index:4,__enum__:"jetgui.style.ESizeImpl",toString:$estr}
+};
+jetgui_style_ESizeImpl.__constructs__ = [jetgui_style_ESizeImpl.px,jetgui_style_ESizeImpl.percent,jetgui_style_ESizeImpl.content,jetgui_style_ESizeImpl.contentScaled,jetgui_style_ESizeImpl.auto];
+jetgui_style_ESizeImpl.__empty_constructs__ = [jetgui_style_ESizeImpl.content,jetgui_style_ESizeImpl.auto];
 var jetgui_style_ESize = {};
 jetgui_style_ESize.fromPx = function(value) {
 	return jetgui_style_ESizeImpl.px(value);
@@ -1453,15 +1462,6 @@ jetgui_style_ESize.isNotEqual = function(this1,rhs) {
 	var rhsImpl = rhs;
 	return !(this1 != null && rhsImpl != null && Type.enumEq(this1,rhsImpl) || this1 == null && rhsImpl == null);
 };
-var jetgui_style_ESizeImpl = $hxEnums["jetgui.style.ESizeImpl"] = { __ename__:true,__constructs__:null
-	,px: ($_=function(value) { return {_hx_index:0,value:value,__enum__:"jetgui.style.ESizeImpl",toString:$estr}; },$_._hx_name="px",$_.__params__ = ["value"],$_)
-	,percent: ($_=function(value) { return {_hx_index:1,value:value,__enum__:"jetgui.style.ESizeImpl",toString:$estr}; },$_._hx_name="percent",$_.__params__ = ["value"],$_)
-	,content: {_hx_name:"content",_hx_index:2,__enum__:"jetgui.style.ESizeImpl",toString:$estr}
-	,contentScaled: ($_=function(scale) { return {_hx_index:3,scale:scale,__enum__:"jetgui.style.ESizeImpl",toString:$estr}; },$_._hx_name="contentScaled",$_.__params__ = ["scale"],$_)
-	,auto: {_hx_name:"auto",_hx_index:4,__enum__:"jetgui.style.ESizeImpl",toString:$estr}
-};
-jetgui_style_ESizeImpl.__constructs__ = [jetgui_style_ESizeImpl.px,jetgui_style_ESizeImpl.percent,jetgui_style_ESizeImpl.content,jetgui_style_ESizeImpl.contentScaled,jetgui_style_ESizeImpl.auto];
-jetgui_style_ESizeImpl.__empty_constructs__ = [jetgui_style_ESizeImpl.content,jetgui_style_ESizeImpl.auto];
 var jetgui_style_EColor = {};
 jetgui_style_EColor.fromInt = function(i) {
 	return jetgui_style_EColorImpl.hex(i);
@@ -1504,13 +1504,6 @@ jetgui_style_EColor.rgba = function(r,g,b,a) {
 jetgui_style_EColor.rgb = function(r,g,b) {
 	return jetgui_style_EColorImpl.rgb(r,g,b);
 };
-var jetgui_style_ETextAlign = $hxEnums["jetgui.style.ETextAlign"] = { __ename__:true,__constructs__:null
-	,left: {_hx_name:"left",_hx_index:0,__enum__:"jetgui.style.ETextAlign",toString:$estr}
-	,center: {_hx_name:"center",_hx_index:1,__enum__:"jetgui.style.ETextAlign",toString:$estr}
-	,right: {_hx_name:"right",_hx_index:2,__enum__:"jetgui.style.ETextAlign",toString:$estr}
-};
-jetgui_style_ETextAlign.__constructs__ = [jetgui_style_ETextAlign.left,jetgui_style_ETextAlign.center,jetgui_style_ETextAlign.right];
-jetgui_style_ETextAlign.__empty_constructs__ = [jetgui_style_ETextAlign.left,jetgui_style_ETextAlign.center,jetgui_style_ETextAlign.right];
 var jetgui_style_ETextVAlign = $hxEnums["jetgui.style.ETextVAlign"] = { __ename__:true,__constructs__:null
 	,top: {_hx_name:"top",_hx_index:0,__enum__:"jetgui.style.ETextVAlign",toString:$estr}
 	,center: {_hx_name:"center",_hx_index:1,__enum__:"jetgui.style.ETextVAlign",toString:$estr}
@@ -1518,6 +1511,13 @@ var jetgui_style_ETextVAlign = $hxEnums["jetgui.style.ETextVAlign"] = { __ename_
 };
 jetgui_style_ETextVAlign.__constructs__ = [jetgui_style_ETextVAlign.top,jetgui_style_ETextVAlign.center,jetgui_style_ETextVAlign.bottom];
 jetgui_style_ETextVAlign.__empty_constructs__ = [jetgui_style_ETextVAlign.top,jetgui_style_ETextVAlign.center,jetgui_style_ETextVAlign.bottom];
+var jetgui_style_ETextAlign = $hxEnums["jetgui.style.ETextAlign"] = { __ename__:true,__constructs__:null
+	,left: {_hx_name:"left",_hx_index:0,__enum__:"jetgui.style.ETextAlign",toString:$estr}
+	,center: {_hx_name:"center",_hx_index:1,__enum__:"jetgui.style.ETextAlign",toString:$estr}
+	,right: {_hx_name:"right",_hx_index:2,__enum__:"jetgui.style.ETextAlign",toString:$estr}
+};
+jetgui_style_ETextAlign.__constructs__ = [jetgui_style_ETextAlign.left,jetgui_style_ETextAlign.center,jetgui_style_ETextAlign.right];
+jetgui_style_ETextAlign.__empty_constructs__ = [jetgui_style_ETextAlign.left,jetgui_style_ETextAlign.center,jetgui_style_ETextAlign.right];
 var jetgui_generated_jss_JssJssMain = function() { };
 jetgui_generated_jss_JssJssMain.__name__ = "jetgui.generated.jss.JssJssMain";
 var jetgui_style_StyleSorter = function() { };
@@ -1564,7 +1564,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 	}
 	,render: function(vDom) {
 		var result = [];
-		var e = new jetgui_vdom_VDomElement("4dd7bc06");
+		var e = new jetgui_vdom_VDomElement("15282878");
 		e.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 		var tmp;
 		try {
@@ -1588,8 +1588,57 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		e.classList = tmp;
-		var e1 = new jetgui_vdom_VDomElement("35513f0e");
+		var e1 = new jetgui_vdom_VDomElement("149604ed");
 		e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e1.tag = tmp;
+		var tmp;
+		try {
+			tmp = "granary-item__header";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e1.classList = tmp;
+		var e2 = new jetgui_vdom_VDomElement("4e95aca7");
+		e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.tag = tmp;
+		var tmp;
+		try {
+			tmp = "granary-item__zoom-btn";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.classList = tmp;
+		e1.addChild(e2);
+		var e2 = new jetgui_vdom_VDomElement("a2f9cafe");
+		e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 		var tmp;
 		try {
 			tmp = "img";
@@ -1600,7 +1649,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 				throw _g;
 			}
 		}
-		e1.tag = tmp;
+		e2.tag = tmp;
 		var v;
 		try {
 			var obj = this.storageItem_value.get();
@@ -1615,7 +1664,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 				throw _g;
 			}
 		}
-		e1.style.src = v;
+		e2.style.src = v;
 		var tmp;
 		try {
 			tmp = "granary-item__img";
@@ -1626,7 +1675,8 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 				throw _g;
 			}
 		}
-		e1.classList = tmp;
+		e2.classList = tmp;
+		e1.addChild(e2);
 		e.addChild(e1);
 		var condition;
 		try {
@@ -1643,7 +1693,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		if(condition) {
-			var e1 = new jetgui_vdom_VDomElement("8b7c3af1");
+			var e1 = new jetgui_vdom_VDomElement("8e1bd819");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1694,7 +1744,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 			e1.style.wrap = tmp;
 			e.addChild(e1);
-			var e1 = new jetgui_vdom_VDomElement("9376304b");
+			var e1 = new jetgui_vdom_VDomElement("a4f9a4ee");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1750,7 +1800,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		if(condition) {
-			var e1 = new jetgui_vdom_VDomElement("d96df882");
+			var e1 = new jetgui_vdom_VDomElement("7afdaa5e");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1790,7 +1840,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 			e1.classList = tmp;
 			e.addChild(e1);
-			var e1 = new jetgui_vdom_VDomElement("d9ae32f1");
+			var e1 = new jetgui_vdom_VDomElement("6a51ce0f");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1814,7 +1864,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 				}
 			}
 			e1.classList = tmp;
-			var e2 = new jetgui_vdom_VDomElement("63ad2930");
+			var e2 = new jetgui_vdom_VDomElement("d97c8d5e");
 			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1854,7 +1904,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 			e2.classList = tmp;
 			e1.addChild(e2);
-			var e2 = new jetgui_vdom_VDomElement("a9203546");
+			var e2 = new jetgui_vdom_VDomElement("c24ca3cc");
 			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1996,21 +2046,8 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 	}
 	,render: function(vDom) {
 		var result = [];
-		var e = new jetgui_vdom_VDomElement("7899f317");
+		var e = new jetgui_vdom_VDomElement("579fa377");
 		e.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "hbox";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e.tag = tmp;
-		var e1 = new jetgui_vdom_VDomElement("51c123ee");
-		e1.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
 			tmp = "vbox";
@@ -2021,10 +2058,34 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
+		e.tag = tmp;
+		var tmp;
+		try {
+			tmp = "granary-menu";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e.classList = tmp;
+		var e1 = new jetgui_vdom_VDomElement("08d0133a");
+		e1.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
 		e1.tag = tmp;
 		var tmp;
 		try {
-			tmp = "sidebar";
+			tmp = "header";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2033,7 +2094,107 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			}
 		}
 		e1.classList = tmp;
-		var e2 = new jetgui_vdom_VDomElement("6c7d094e");
+		var e2 = new jetgui_vdom_VDomElement("2497fdff");
+		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.tag = tmp;
+		var tmp;
+		try {
+			tmp = "Granary";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.style.value = tmp;
+		var tmp;
+		try {
+			tmp = "title";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.classList = tmp;
+		e1.addChild(e2);
+		var e2 = new jetgui_vdom_VDomElement("b0ab131e");
+		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.tag = tmp;
+		var tmp;
+		try {
+			tmp = "close-btn";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.classList = tmp;
+		e1.addChild(e2);
+		e.addChild(e1);
+		var e1 = new jetgui_vdom_VDomElement("d72f623f");
+		e1.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "hbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e1.tag = tmp;
+		var e2 = new jetgui_vdom_VDomElement("24230ce5");
+		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.tag = tmp;
+		var tmp;
+		try {
+			tmp = "back-btn";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.classList = tmp;
+		e1.addChild(e2);
+		var e2 = new jetgui_vdom_VDomElement("72785aba");
 		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
@@ -2048,7 +2209,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		e2.tag = tmp;
 		var tmp;
 		try {
-			tmp = "navigation";
+			tmp = "sidebar";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2057,8 +2218,32 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			}
 		}
 		e2.classList = tmp;
-		var e3 = new jetgui_vdom_VDomElement("e979c907");
+		var e3 = new jetgui_vdom_VDomElement("65b563cc");
 		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "vbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.tag = tmp;
+		var tmp;
+		try {
+			tmp = "navigation";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.classList = tmp;
+		var e4 = new jetgui_vdom_VDomElement("a7c7139a");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
 			tmp = "img";
@@ -2069,7 +2254,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.tag = tmp;
+		e4.tag = tmp;
 		var v;
 		try {
 			v = "jetgui/header/headerGoods.png";
@@ -2080,8 +2265,8 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.style.src = v;
-		e2.addChild(e3);
+		e4.style.src = v;
+		e3.addChild(e4);
 		var iterable;
 		try {
 			var obj = this.jtp_value.get();
@@ -2102,11 +2287,10 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				var tab1 = tab.next();
 				var condition;
 				try {
-					var obj = tab1;
-					if(obj == null) {
+					if(tab1 == null) {
 						throw haxe_Exception.thrown(new jetgui_NullAccessError());
 					}
-					condition = !obj.isSelected_value.get();
+					condition = !tab1.isSelected_value.get();
 				} catch( _g ) {
 					if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 						condition = null;
@@ -2115,8 +2299,8 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 					}
 				}
 				if(condition) {
-					var e3 = new jetgui_vdom_VDomElement("e6f842d5");
-					e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+					var e4 = new jetgui_vdom_VDomElement("32272e0e");
+					e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 					var tmp;
 					try {
 						tmp = "img";
@@ -2127,7 +2311,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 							throw _g1;
 						}
 					}
-					e3.tag = tmp;
+					e4.tag = tmp;
 					var v;
 					try {
 						v = "jetgui/tabList/divider.png";
@@ -2138,7 +2322,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 							throw _g2;
 						}
 					}
-					e3.style.src = v;
+					e4.style.src = v;
 					var tmp1;
 					try {
 						tmp1 = "navigation__divider";
@@ -2149,11 +2333,11 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 							throw _g3;
 						}
 					}
-					e3.classList = tmp1;
-					e2.addChild(e3);
+					e4.classList = tmp1;
+					e3.addChild(e4);
 				}
-				var e4 = new jetgui_vdom_VDomElement("6bc7cff1");
-				e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+				var e5 = new jetgui_vdom_VDomElement("40db314c");
+				e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 				var tmp2;
 				try {
 					tmp2 = "text";
@@ -2164,14 +2348,13 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g4;
 					}
 				}
-				e4.tag = tmp2;
+				e5.tag = tmp2;
 				var v1;
 				try {
-					var obj1 = tab1;
-					if(obj1 == null) {
+					if(tab1 == null) {
 						throw haxe_Exception.thrown(new jetgui_NullAccessError());
 					}
-					v1 = obj1.title_value.get();
+					v1 = tab1.title_value.get();
 				} catch( _g5 ) {
 					if(((haxe_Exception.caught(_g5).unwrap()) instanceof jetgui_NullAccessError)) {
 						v1 = null;
@@ -2179,14 +2362,13 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g5;
 					}
 				}
-				e4.style.value = v1;
+				e5.style.value = v1;
 				var tmp3;
 				try {
-					var obj2 = tab1;
-					if(obj2 == null) {
+					if(tab1 == null) {
 						throw haxe_Exception.thrown(new jetgui_NullAccessError());
 					}
-					tmp3 = obj2.isSelected_value.get() ? "navigation__link active" : "navigation__link";
+					tmp3 = tab1.isSelected_value.get() ? "navigation__link active" : "navigation__link";
 				} catch( _g6 ) {
 					if(((haxe_Exception.caught(_g6).unwrap()) instanceof jetgui_NullAccessError)) {
 						tmp3 = null;
@@ -2194,80 +2376,16 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g6;
 					}
 				}
-				e4.classList = tmp3;
-				e2.addChild(e4);
+				e5.classList = tmp3;
+				e3.addChild(e5);
 			}
 		}
-		e1.addChild(e2);
-		var e2 = new jetgui_vdom_VDomElement("8345030d");
-		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "box";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e2.tag = tmp;
-		var v;
-		try {
-			v = jetgui_style_ESize.fromPx(64);
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				v = null;
-			} else {
-				throw _g;
-			}
-		}
-		e2.style.height = v;
-		var v;
-		try {
-			v = jetgui_style_ESize.fromPx(320);
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				v = null;
-			} else {
-				throw _g;
-			}
-		}
-		e2.style.width = v;
-		var v;
-		try {
-			var result1 = null;
-			var _g = 0;
-			var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
-			while(_g < _g1.length) {
-				var color = _g1[_g];
-				++_g;
-				if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "333333") {
-					result1 = color;
-					break;
-				}
-			}
-			if(result1 == null && jetgui_style_EColor.hexColorEReg.match("333333")) {
-				result1 = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
-			}
-			if(result1 == null) {
-				console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "333333");
-				result1 = jetgui_style_EColorImpl.red;
-			}
-			v = result1;
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				v = null;
-			} else {
-				throw _g;
-			}
-		}
-		e2.style.fillColor = v;
-		var e3 = new jetgui_vdom_VDomElement("0f82ba73");
+		e2.addChild(e3);
+		var e3 = new jetgui_vdom_VDomElement("df3cfcd6");
 		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
-			tmp = "box";
+			tmp = "vbox";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2278,7 +2396,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		e3.tag = tmp;
 		var tmp;
 		try {
-			tmp = 0;
+			tmp = "progress";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2286,10 +2404,12 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.style.offsetY = tmp;
+		e3.classList = tmp;
+		var e4 = new jetgui_vdom_VDomElement("e8fda4e6");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
-			tmp = jetgui_style_EColorImpl.green;
+			tmp = "text";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2297,7 +2417,78 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.style.fillColor = tmp;
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "Capacity";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.value = tmp;
+		var tmp;
+		try {
+			tmp = "progress__title";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		e3.addChild(e4);
+		var e4 = new jetgui_vdom_VDomElement("28792f73");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress__wrapper";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var e5 = new jetgui_vdom_VDomElement("299b8f1b");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress__bar";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.classList = tmp;
 		var v;
 		try {
 			var fn = jetgui_style_ESizeImpl.percent;
@@ -2309,10 +2500,10 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.style.width = v;
-		e2.addChild(e3);
-		var e3 = new jetgui_vdom_VDomElement("83753edd");
-		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		e5.style.width = v;
+		e4.addChild(e5);
+		var e5 = new jetgui_vdom_VDomElement("8f9e02aa");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
 			tmp = "text";
@@ -2323,7 +2514,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.tag = tmp;
+		e5.tag = tmp;
 		var v;
 		try {
 			v = this.storageFill_value.get() + "/" + this.storageLimit_value.get();
@@ -2334,10 +2525,10 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.style.value = v;
+		e5.style.value = v;
 		var tmp;
 		try {
-			tmp = "text-base";
+			tmp = "progress__text";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2345,12 +2536,74 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e3.classList = tmp;
+		e5.classList = tmp;
+		e4.addChild(e5);
+		e3.addChild(e4);
+		var e4 = new jetgui_vdom_VDomElement("2a872b62");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress__bottom";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var e5 = new jetgui_vdom_VDomElement("aa960cc8");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.tag = tmp;
+		var tmp;
+		try {
+			tmp = "Upgrade";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.style.value = tmp;
+		var tmp;
+		try {
+			tmp = "progress__btn";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.classList = tmp;
+		e4.addChild(e5);
+		e3.addChild(e4);
 		e2.addChild(e3);
 		e1.addChild(e2);
-		e.addChild(e1);
-		var e1 = new jetgui_vdom_VDomElement("e7f514a5");
-		e1.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var e2 = new jetgui_vdom_VDomElement("169e1917");
+		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
 			tmp = "vbox";
@@ -2361,7 +2614,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e1.tag = tmp;
+		e2.tag = tmp;
 		var iterable;
 		try {
 			var obj = this.jtp_value.get();
@@ -2380,8 +2633,8 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			var row = iterable.iterator();
 			while(row.hasNext()) {
 				var row1 = row.next();
-				var e2 = new jetgui_vdom_VDomElement("03313333");
-				e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+				var e3 = new jetgui_vdom_VDomElement("7cf684c0");
+				e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 				var tmp;
 				try {
 					tmp = "hbox";
@@ -2392,10 +2645,10 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g;
 					}
 				}
-				e2.tag = tmp;
+				e3.tag = tmp;
 				var tmp1;
 				try {
-					tmp1 = 40;
+					tmp1 = 21;
 				} catch( _g1 ) {
 					if(((haxe_Exception.caught(_g1).unwrap()) instanceof jetgui_NullAccessError)) {
 						tmp1 = null;
@@ -2403,7 +2656,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g1;
 					}
 				}
-				e2.style.spacing = tmp1;
+				e3.style.spacing = tmp1;
 				var iterable;
 				try {
 					iterable = row1;
@@ -2418,9 +2671,9 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 					var storageItem = iterable.iterator();
 					while(storageItem.hasNext()) {
 						var storageItem1 = storageItem.next();
-						var e3 = new jetgui_generated_jml_StoragePrefabstorageitem("af268649");
-						e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-						e3.ctx = this.ctx;
+						var e4 = new jetgui_generated_jml_StoragePrefabstorageitem("ce256061");
+						e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+						e4.ctx = this.ctx;
 						var tmp2;
 						try {
 							tmp2 = storageItem1;
@@ -2431,13 +2684,14 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 								throw _g3;
 							}
 						}
-						e3.storageItem = tmp2;
-						e2.addChild(e3);
+						e4.storageItem = tmp2;
+						e3.addChild(e4);
 					}
 				}
-				e1.addChild(e2);
+				e2.addChild(e3);
 			}
 		}
+		e1.addChild(e2);
 		e.addChild(e1);
 		result.push(e);
 		return result;
@@ -2471,7 +2725,7 @@ jetgui_generated_jml_TestTestComponent.prototype = $extend(jetgui_Component.prot
 	}
 	,render: function(vDom) {
 		var result = [];
-		var e = new jetgui_vdom_VDomElement("8b59ce6c");
+		var e = new jetgui_vdom_VDomElement("a1148f10");
 		e.styleRules = jetgui_generated_jml_TestTestComponent.styleRules;
 		var tmp;
 		try {
@@ -2517,7 +2771,7 @@ jetgui_generated_jml_TestTestComponent.prototype = $extend(jetgui_Component.prot
 			}
 		}
 		e.style.fillImage = v;
-		var e1 = new jetgui_vdom_VDomElement("eef2c2ae");
+		var e1 = new jetgui_vdom_VDomElement("d62e8747");
 		e1.styleRules = jetgui_generated_jml_TestTestComponent.styleRules;
 		var tmp;
 		try {
@@ -3100,78 +3354,11 @@ jetgui_generated_jss_JssJssFonts.rules = [new jetgui_style_StyleRule(jetgui_styl
 jetgui_style_EColor.hexColorEReg = new EReg("^(?:0x|#)?([0-9a-fA-F]{6,8})$","");
 jetgui_generated_jss_JssJssMain.rules = (function($this) {
 	var $r;
-	var tmp = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sidebar"),{ paddingRight : 40});
-	var tmp1 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation"),{ width : jetgui_style_ESize.fromPx(328), fillImage : "jetgui/card/body_light.png"});
-	var tmp2 = jetgui_style_StyleSelector.EClass("navigation__link");
-	var result = null;
-	{
-		var _g = 0;
-		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
-		while(_g < _g1.length) {
-			var color = _g1[_g];
-			++_g;
-			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
-				result = color;
-				break;
-			}
-		}
-		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
-			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
-		}
-		if(result == null) {
-			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
-			result = jetgui_style_EColorImpl.red;
-		}
-	}
-	var tmp3 = new jetgui_style_StyleRule(tmp2,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 15, paddingBottom : 15});
-	var tmp2 = jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link"),jetgui_style_StyleSelector.EClass("active")]);
-	var result = null;
-	{
-		var _g = 0;
-		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
-		while(_g < _g1.length) {
-			var color = _g1[_g];
-			++_g;
-			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "ffffff") {
-				result = color;
-				break;
-			}
-		}
-		if(result == null && jetgui_style_EColor.hexColorEReg.match("ffffff")) {
-			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
-		}
-		if(result == null) {
-			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "ffffff");
-			result = jetgui_style_EColorImpl.red;
-		}
-	}
-	var tmp4 = new jetgui_style_StyleRule(tmp2,{ textColor : result, fillImage : "jetgui/tabList/select_middle.png"});
-	var tmp2 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation__divider"),{ opacity : 0.5, align : 0.5, width : jetgui_style_ESize.fromPx(222)});
-	var tmp5 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item"),{ width : jetgui_style_ESize.fromPx(250), height : jetgui_style_ESize.fromPx(340), offsetTop : 22, fillImage : "jetgui/card/body.png", paddingTop : 25});
-	var tmp6 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__img"),{ align : 0.5});
-	var tmp7 = jetgui_style_StyleSelector.EClass("granary-item__title");
-	var result = null;
-	{
-		var _g = 0;
-		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
-		while(_g < _g1.length) {
-			var color = _g1[_g];
-			++_g;
-			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
-				result = color;
-				break;
-			}
-		}
-		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
-			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
-		}
-		if(result == null) {
-			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
-			result = jetgui_style_EColorImpl.red;
-		}
-	}
-	var tmp8 = new jetgui_style_StyleRule(tmp7,{ font : "Tavolga bold 40", textColor : result, align : 0.5, width : jetgui_style_ESize.fromPx(230), height : jetgui_style_ESize.fromPx(80), textAlign : jetgui_style_ETextAlign.center, textVAlign : jetgui_style_ETextVAlign.center});
-	var tmp7 = jetgui_style_StyleSelector.EClass("granary-item__count");
+	var tmp = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-menu"),{ width : jetgui_style_ESizeImpl.percent(100)});
+	var tmp1 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("back-btn"),{ fillImage : "jetgui/button/backCyan.png", size : jetgui_style_ESize.fromPx(130), vAlign : 0});
+	var tmp2 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("header"),{ width : jetgui_style_ESizeImpl.percent(100), paddingTop : 20, paddingBottom : 30, paddingRight : 74, paddingLeft : 74});
+	var tmp3 = jetgui_style_StyleSelector.EClass("title");
+	var tmp4 = "jetgui/header/title.png";
 	var result = null;
 	{
 		var _g = 0;
@@ -3192,7 +3379,152 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	$r = [tmp,tmp1,tmp3,tmp4,tmp2,tmp5,tmp6,tmp8,new jetgui_style_StyleRule(tmp7,{ font : "Tavolga bold 48", textColor : result, align : 0.5}),new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__sale"),{ fillImage : "jetgui/card/bottomSlice.png", width : jetgui_style_ESize.fromPx(250), height : jetgui_style_ESize.fromPx(106)})];
+	var tmp5 = new jetgui_style_StyleRule(tmp3,{ fillImage : tmp4, font : "Tavolga bold 48", textColor : result, width : jetgui_style_ESize.fromPx(416), height : jetgui_style_ESize.fromPx(80), textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, align : 0.5});
+	var tmp3 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("close-btn"),{ fillImage : "jetgui/button/close.png", size : jetgui_style_ESize.fromPx(90), align : 1});
+	var tmp4 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sidebar"),{ paddingRight : 20});
+	var tmp6 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation"),{ width : jetgui_style_ESize.fromPx(328), fillImage : "jetgui/card/body_light.png"});
+	var tmp7 = jetgui_style_StyleSelector.EClass("navigation__link");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp8 = new jetgui_style_StyleRule(tmp7,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 29, paddingBottom : 27});
+	var tmp7 = jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link"),jetgui_style_StyleSelector.EClass("active")]);
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "ffffff") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("ffffff")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "ffffff");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp9 = new jetgui_style_StyleRule(tmp7,{ textColor : result, fillImage : "jetgui/tabList/select_middle.png"});
+	var tmp7 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation__divider"),{ opacity : 0.5, align : 0.5, width : jetgui_style_ESize.fromPx(222)});
+	var tmp10 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress"),{ fillImage : "jetgui/card/body_light.png", width : jetgui_style_ESize.fromPx(328), height : jetgui_style_ESize.fromPx(214), paddingBottom : 20});
+	var tmp11 = jetgui_style_StyleSelector.EClass("progress__title");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp12 = new jetgui_style_StyleRule(tmp11,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 25, paddingBottom : 15});
+	var tmp11 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__wrapper"),{ align : 0.5, width : jetgui_style_ESize.fromPx(274), height : jetgui_style_ESize.fromPx(50), fillImage : "jetgui/progressBar/back.png"});
+	var tmp13 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__bar"),{ height : jetgui_style_ESize.fromPx(50), fillImage : "jetgui/progressBar/fillJade.png"});
+	var tmp14 = jetgui_style_StyleSelector.EClass("progress__text");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "ffffff") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("ffffff")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "ffffff");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp15 = new jetgui_style_StyleRule(tmp14,{ align : 0.5, font : "Tavolga bold 40", textColor : result});
+	var tmp14 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__bottom"),{ paddingTop : 16, width : jetgui_style_ESize.fromPx(328)});
+	var tmp16 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__btn"),{ align : 0.5, height : jetgui_style_ESize.fromPx(81), width : jetgui_style_ESize.fromPx(274), font : "Tavolga bold 48", textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, fillImage : "jetgui/button/green.png"});
+	var tmp17 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item"),{ width : jetgui_style_ESize.fromPx(315), height : jetgui_style_ESize.fromPx(414), fillImage : "jetgui/card/body.png", paddingTop : 0});
+	var tmp18 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__header"),{ width : jetgui_style_ESize.fromPx(310)});
+	var tmp19 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__zoom-btn"),{ fillImage : "jetgui/button/btnSmh.png", size : jetgui_style_ESize.fromPx(94), offsetTop : -4, offsetRight : -23, hAlign : 1, vAlign : 0});
+	var tmp20 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__img"),{ align : 0.5, offsetTop : 30, size : jetgui_style_ESize.fromPx(210)});
+	var tmp21 = jetgui_style_StyleSelector.EClass("granary-item__title");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp22 = new jetgui_style_StyleRule(tmp21,{ font : "Tavolga bold 40", textColor : result, align : 0.5, width : jetgui_style_ESize.fromPx(230), height : jetgui_style_ESize.fromPx(80), textAlign : jetgui_style_ETextAlign.center, textVAlign : jetgui_style_ETextVAlign.center});
+	var tmp21 = jetgui_style_StyleSelector.EClass("granary-item__count");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "7a4f2c") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("7a4f2c")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "7a4f2c");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	$r = [tmp,tmp1,tmp2,tmp5,tmp3,tmp4,tmp6,tmp8,tmp9,tmp7,tmp10,tmp12,tmp11,tmp13,tmp15,tmp14,tmp16,tmp17,tmp18,tmp19,tmp20,tmp22,new jetgui_style_StyleRule(tmp21,{ font : "Tavolga bold 48", textColor : result, align : 0.5}),new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__sale"),{ fillImage : "jetgui/card/bottomSlice.png", width : jetgui_style_ESize.fromPx(310), height : jetgui_style_ESize.fromPx(186)})];
 	return $r;
 }(this));
 jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules = jetgui_style_StyleSorter.sortStyles([jetgui_generated_jss_JssJssFonts.rules,jetgui_generated_jss_JssJssMain.rules]);

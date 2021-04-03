@@ -9,35 +9,47 @@
 </head>
 <body>
    <!--  Бокс для отображени всех основных блоков вёрстки -->
-    <hbox>
-        <!-- Параметры склада -->
-        <vbox class="sidebar">
-            <!-- Разделы склада -->
-            <vbox class="navigation">
-                <img src=asset("jetgui/header/headerGoods.png")/>
-                <for {tab in jtp.storageTabList}>
-                    <if {!tab.isSelected}>
-                        <img src=asset("jetgui/tabList/divider.png") class="navigation__divider"/>
-                    </if>
-                    <text value={tab.title} class={ tab.isSelected ? "navigation__link active" : "navigation__link"} />
+    <vbox class="granary-menu">
+        <box class="header">
+            <text value="Granary" class="title" />
+            <box class="close-btn"></box>
+        </box>
+        <hbox>
+            <box class="back-btn"></box>
+            <!-- Параметры склада -->
+            <vbox class="sidebar">
+                <!-- Разделы склада -->
+                <vbox class="navigation">
+                    <img src=asset("jetgui/header/headerGoods.png") />
+                    <for {tab in jtp.storageTabList}>
+                        <if {!tab.isSelected}>
+                            <img src=asset("jetgui/tabList/divider.png") class="navigation__divider"/>
+                        </if>
+                        <text value={tab.title} class={ tab.isSelected ? "navigation__link active" : "navigation__link"} />
+                    </for>
+                </vbox>
+            <!--  Прогресс-бар заполненности склада -->
+                <vbox class="progress">
+                    <text value="Capacity" class="progress__title" />
+                    <box class="progress__wrapper">
+                        <box class="progress__bar" width=percent(storageFill/storageLimit*100) />
+                        <text value={ storageFill + "/" + storageLimit} class="progress__text" />
+                    </box>
+                    <box class="progress__bottom">
+                        <text value="Upgrade" class="progress__btn" />
+                    </box>
+                </vbox>
+            </vbox>
+            <!--  Предметы на складе -->
+            <vbox>
+                <for {row in jtp.storageRowList}>
+                    <hbox spacing=21>
+                        <for {storageItem in row}>
+                            <prefab rel-path="prefabStorageItem" storageItem={storageItem} />
+                        </for>
+                    </hbox>
                 </for>
             </vbox>
-           <!--  Прогресс-бар заполненности склада -->
-            <box height=64 width=320 fill-color="333333">
-                <box offset-y=0 fill-color=green width=percent(storageFill/storageLimit*100) />
-                <text value={ storageFill + "/" + storageLimit} class="text-base" />
-            </box>
-        </vbox>
-       <!--  Предметы на складе -->
-        <vbox>
-          <for {row in jtp.storageRowList}>
-            <hbox spacing=40>
-                <for {storageItem in row}>
-                    <prefab rel-path="prefabStorageItem"
-                        storageItem={storageItem} />
-                </for>
-            </hbox>
-          </for>
-      </vbox>
-  </hbox>
+        </hbox>
+    </vbox>
 </body>

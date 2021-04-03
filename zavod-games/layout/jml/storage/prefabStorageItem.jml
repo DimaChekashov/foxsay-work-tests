@@ -14,17 +14,20 @@
 </head>
 <body>
 	<vbox class="granary-item">
-		<img src={storageItem.image} class="granary-item__img"/>
-			<if {!storageItem.modeSale}>
-				<text value={storageItem.title} class="granary-item__title" wrap/>
-				<text value={storageItem.count} class="granary-item__count" />
-			</if>
-			<if {storageItem.modeSale}>
-				<text value={storageItem.count} class="granary-item__count" />
-				<vbox class="granary-item__sale">
-					<text value={storageItem.saleCount} class="text-base"/>
-					<text value={storageItem.salePrice} class="text-base" />
-				</vbox>
-			</if>
+		<box class="granary-item__header">
+			<box class="granary-item__zoom-btn"></box>
+			<img src={storageItem.image} class="granary-item__img"/>
+		</box>
+		<if {!storageItem.modeSale}>
+			<text value={storageItem.title} class="granary-item__title" wrap/>
+			<text value={storageItem.count} class="granary-item__count" />
+		</if>
+		<if {storageItem.modeSale}>
+			<text value={storageItem.count} class="granary-item__count" />
+			<vbox class="granary-item__sale">
+				<text value={storageItem.saleCount} class="text-base"/>
+				<text value={storageItem.salePrice} class="text-base" />
+			</vbox>
+		</if>
 	</vbox>
 </body>
