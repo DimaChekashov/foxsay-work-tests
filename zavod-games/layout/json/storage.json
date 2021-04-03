@@ -3,7 +3,7 @@
    "storageLimit" : 899,
    "isFullUpgrade" : false,
    "storageTabList": [
-        { "title": "All", "isSelected" :true},
+        { "title": "All", "isSelected": true},
         { "title": "Food"},
         { "title": "Resources"},
         { "title": "Festival", "isLast": true}
@@ -22,7 +22,7 @@
                 "image" : "game/itemBottle.png",
                 "title" : "Glass Bottle",
                 "count" : 26,
-                "modeSale" : true,
+                "modeSale" : false,
                 "saleCount" : 2,
                 "salePrice": 36
             },
@@ -48,7 +48,7 @@
                 "image" : "game/itemCeramicPlate.png",
                 "title" : "Plate",
                 "count" : 80,
-                "modeSale" : true,
+                "modeSale" : false,
                 "saleCount" : 8,
                 "salePrice": 48
             },
@@ -64,7 +64,7 @@
                 "image" : "game/itemCeramicVaseColor.png",
                 "title" : "Brighly Painted Vase",
                 "count" : 15,
-                "modeSale" : false,
+                "modeSale" : true,
                 "saleCount" : 6,
                 "salePrice": 600
             },

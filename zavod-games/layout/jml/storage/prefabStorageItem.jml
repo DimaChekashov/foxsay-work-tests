@@ -13,20 +13,30 @@
 	}'/>
 </head>
 <body>
-	<vbox class="granary-item">
+	<vbox class={ storageItem.modeSale ? "granary-item sale-mode" : "granary-item"}>
 		<box class="granary-item__header">
-			<box class="granary-item__zoom-btn"></box>
-			<img src={storageItem.image} class="granary-item__img"/>
+			<if {!storageItem.modeSale}>
+				<box class="granary-item__zoom-btn"></box>
+			</if>
+			<img src={storageItem.image} class={ storageItem.modeSale ? "granary-item__img sale-mode" : "granary-item__img"}/>
 		</box>
 		<if {!storageItem.modeSale}>
 			<text value={storageItem.title} class="granary-item__title" wrap/>
 			<text value={storageItem.count} class="granary-item__count" />
 		</if>
 		<if {storageItem.modeSale}>
-			<text value={storageItem.count} class="granary-item__count" />
-			<vbox class="granary-item__sale">
-				<text value={storageItem.saleCount} class="text-base"/>
-				<text value={storageItem.salePrice} class="text-base" />
+			<text value={storageItem.count} class="granary-item__count sale-mode" />
+			<vbox class="sale-mode__block">
+				<box  class="sale-mode__counter">
+					<box class="sale-mode__minus"></box>
+					<text value={storageItem.saleCount} class="sale-mode__count"/>
+					<box class="sale-mode__plus"></box>
+				</box>
+				<hbox class="sale-mode__price">
+					<img src=asset("jetgui/icon/softS.png")/>
+					<text value={storageItem.salePrice} class="sale-mode__price__text" />
+				</hbox>
+				<text value="Sell" class="sale-mode__btn" />
 			</vbox>
 		</if>
 	</vbox>

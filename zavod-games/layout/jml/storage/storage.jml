@@ -11,45 +11,75 @@
    <!--  Бокс для отображени всех основных блоков вёрстки -->
     <vbox class="granary-menu">
         <box class="header">
+            <hbox class="resources">
+                <hbox class="resources__item stars">
+                    <img src=asset("jetgui/icon/expS.png") />
+                    <text class="resources__text" value="21"/>       
+                </hbox>  
+                <hbox class="resources__item diamonds">
+                    <img src=asset("jetgui/icon/hardS.png") />
+                    <text class="resources__text" value="240"/>       
+                </hbox> 
+                <hbox class="resources__item coins">
+                    <img src=asset("jetgui/icon/softS.png") />
+                    <text class="resources__text" value="74395"/>       
+                </hbox> 
+            </hbox>
             <text value="Granary" class="title" />
             <box class="close-btn"></box>
         </box>
-        <hbox>
+        <box class="body">
             <box class="back-btn"></box>
+            <hbox class="body__block">
             <!-- Параметры склада -->
-            <vbox class="sidebar">
-                <!-- Разделы склада -->
-                <vbox class="navigation">
-                    <img src=asset("jetgui/header/headerGoods.png") />
-                    <for {tab in jtp.storageTabList}>
-                        <if {!tab.isSelected}>
-                            <img src=asset("jetgui/tabList/divider.png") class="navigation__divider"/>
-                        </if>
-                        <text value={tab.title} class={ tab.isSelected ? "navigation__link active" : "navigation__link"} />
+                <vbox class="sidebar">
+                    <!-- Разделы склада -->
+                    <vbox class="navigation">
+                        <vbox class="navigation__wrapper">
+                            <img src=asset("jetgui/header/headerGoods.png") />
+                            <for {tab in jtp.storageTabList}>
+                                <if { tab.isSelected } >
+                                    <box class={"navigation__link active" + (tab.isLast ? " last-link" : "")}>
+                                        <text value={tab.title} class={"navigation__link__text active" + (tab.isLast ? " last-link" : "")}/>
+                                        <if {!tab.isLast}>
+                                            <img src=asset("jetgui/tabList/divider.png") class="navigation__link__divider active"/>
+                                        </if>
+                                    </box>
+                                </if>
+                                <if { !tab.isSelected } >
+                                    <box class={"navigation__link" + (tab.isLast ? " last-link" : "")}>
+                                        <text value={tab.title} class={"navigation__link__text" + (tab.isLast ? " last-link" : "")} />
+                                        <if {!tab.isLast}>
+                                            <img src=asset("jetgui/tabList/divider.png") class="navigation__link__divider"/>
+                                        </if>
+                                    </box>
+                                </if>
+                            </for>
+                        </vbox>
+                    </vbox>
+                <!--  Прогресс-бар заполненности склада -->
+                    <vbox class="progress">
+                        <text value="Capacity" class="progress__title" />
+                        <box class="progress__wrapper">
+                            <box class={"progress__bar" + ((storageFill >= storageLimit) ? " full" : "")} width=percent(storageFill/storageLimit*100) />
+                            <text value={ storageFill + "/" + storageLimit} class="progress__text" />
+                        </box>
+                        <box class="progress__bottom">
+                            <text value="Upgrade" class="progress__btn" />
+                        </box>
+                    </vbox>
+                </vbox>
+                <!--  Предметы на складе -->
+                <vbox>
+                    <for {row in jtp.storageRowList}>
+                        <hbox spacing=21>
+                            <for {storageItem in row}>
+                                <prefab rel-path="prefabStorageItem" storageItem={storageItem} />
+                            </for>
+                        </hbox>
                     </for>
                 </vbox>
-            <!--  Прогресс-бар заполненности склада -->
-                <vbox class="progress">
-                    <text value="Capacity" class="progress__title" />
-                    <box class="progress__wrapper">
-                        <box class="progress__bar" width=percent(storageFill/storageLimit*100) />
-                        <text value={ storageFill + "/" + storageLimit} class="progress__text" />
-                    </box>
-                    <box class="progress__bottom">
-                        <text value="Upgrade" class="progress__btn" />
-                    </box>
-                </vbox>
-            </vbox>
-            <!--  Предметы на складе -->
-            <vbox>
-                <for {row in jtp.storageRowList}>
-                    <hbox spacing=21>
-                        <for {storageItem in row}>
-                            <prefab rel-path="prefabStorageItem" storageItem={storageItem} />
-                        </for>
-                    </hbox>
-                </for>
-            </vbox>
-        </hbox>
+            </hbox>
+        </box>
     </vbox>
 </body>

@@ -1357,6 +1357,30 @@ jetgui_generated_jml_StoragePrefabstorageitem.prototype = $extend(jetgui_vdom_VD
 	}
 	,__class__: jetgui_generated_jml_StoragePrefabstorageitem
 });
+var jetgui_style_StyleSorter = function() { };
+jetgui_style_StyleSorter.__name__ = "jetgui.style.StyleSorter";
+jetgui_style_StyleSorter.sortStyles = function(rules) {
+	var i = 0;
+	var _g = [];
+	var _g1 = 0;
+	while(_g1 < rules.length) {
+		var list = rules[_g1];
+		++_g1;
+		var _g2 = 0;
+		while(_g2 < list.length) _g.push({ order : i++, rule : list[_g2++]});
+	}
+	_g.sort(function(a,b) {
+		return (a.rule.specificity - b.rule.specificity) * 10000 + a.order - b.order;
+	});
+	var result = new Array(_g.length);
+	var _g1 = 0;
+	var _g2 = _g.length;
+	while(_g1 < _g2) {
+		var i = _g1++;
+		result[i] = _g[i].rule;
+	}
+	return result;
+};
 var jetgui_style_StyleSelector = $hxEnums["jetgui.style.StyleSelector"] = { __ename__:true,__constructs__:null
 	,EAll: {_hx_name:"EAll",_hx_index:0,__enum__:"jetgui.style.StyleSelector",toString:$estr}
 	,EClass: ($_=function(className) { return {_hx_index:1,className:className,__enum__:"jetgui.style.StyleSelector",toString:$estr}; },$_._hx_name="EClass",$_.__params__ = ["className"],$_)
@@ -1520,30 +1544,6 @@ jetgui_style_ETextAlign.__constructs__ = [jetgui_style_ETextAlign.left,jetgui_st
 jetgui_style_ETextAlign.__empty_constructs__ = [jetgui_style_ETextAlign.left,jetgui_style_ETextAlign.center,jetgui_style_ETextAlign.right];
 var jetgui_generated_jss_JssJssMain = function() { };
 jetgui_generated_jss_JssJssMain.__name__ = "jetgui.generated.jss.JssJssMain";
-var jetgui_style_StyleSorter = function() { };
-jetgui_style_StyleSorter.__name__ = "jetgui.style.StyleSorter";
-jetgui_style_StyleSorter.sortStyles = function(rules) {
-	var i = 0;
-	var _g = [];
-	var _g1 = 0;
-	while(_g1 < rules.length) {
-		var list = rules[_g1];
-		++_g1;
-		var _g2 = 0;
-		while(_g2 < list.length) _g.push({ order : i++, rule : list[_g2++]});
-	}
-	_g.sort(function(a,b) {
-		return (a.rule.specificity - b.rule.specificity) * 10000 + a.order - b.order;
-	});
-	var result = new Array(_g.length);
-	var _g1 = 0;
-	var _g2 = _g.length;
-	while(_g1 < _g2) {
-		var i = _g1++;
-		result[i] = _g[i].rule;
-	}
-	return result;
-};
 var jetgui_generated_jml_StoragePrefabstorageitemComponent = function() {
 	this.storageItem_value = new jetgui_data_Value();
 };
@@ -1579,7 +1579,11 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 		e.tag = tmp;
 		var tmp;
 		try {
-			tmp = "granary-item";
+			var obj = this.storageItem_value.get();
+			if(obj == null) {
+				throw haxe_Exception.thrown(new jetgui_NullAccessError());
+			}
+			tmp = obj.modeSale_value.get() ? "granary-item sale-mode" : "granary-item";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -1588,7 +1592,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		e.classList = tmp;
-		var e1 = new jetgui_vdom_VDomElement("149604ed");
+		var e1 = new jetgui_vdom_VDomElement("6fb105ce");
 		e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 		var tmp;
 		try {
@@ -1612,32 +1616,48 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		e1.classList = tmp;
-		var e2 = new jetgui_vdom_VDomElement("4e95aca7");
-		e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
-		var tmp;
+		var condition;
 		try {
-			tmp = "box";
+			var obj = this.storageItem_value.get();
+			if(obj == null) {
+				throw haxe_Exception.thrown(new jetgui_NullAccessError());
+			}
+			condition = !obj.modeSale_value.get();
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
+				condition = null;
 			} else {
 				throw _g;
 			}
 		}
-		e2.tag = tmp;
-		var tmp;
-		try {
-			tmp = "granary-item__zoom-btn";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
+		if(condition) {
+			var e2 = new jetgui_vdom_VDomElement("e41fc162");
+			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "box";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
 			}
+			e2.tag = tmp;
+			var tmp;
+			try {
+				tmp = "granary-item__zoom-btn";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e2.classList = tmp;
+			e1.addChild(e2);
 		}
-		e2.classList = tmp;
-		e1.addChild(e2);
-		var e2 = new jetgui_vdom_VDomElement("a2f9cafe");
+		var e2 = new jetgui_vdom_VDomElement("5ebbd126");
 		e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 		var tmp;
 		try {
@@ -1667,7 +1687,11 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 		e2.style.src = v;
 		var tmp;
 		try {
-			tmp = "granary-item__img";
+			var obj = this.storageItem_value.get();
+			if(obj == null) {
+				throw haxe_Exception.thrown(new jetgui_NullAccessError());
+			}
+			tmp = obj.modeSale_value.get() ? "granary-item__img sale-mode" : "granary-item__img";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -1693,7 +1717,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		if(condition) {
-			var e1 = new jetgui_vdom_VDomElement("8e1bd819");
+			var e1 = new jetgui_vdom_VDomElement("dbb4cb35");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1744,7 +1768,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 			e1.style.wrap = tmp;
 			e.addChild(e1);
-			var e1 = new jetgui_vdom_VDomElement("a4f9a4ee");
+			var e1 = new jetgui_vdom_VDomElement("eee3cd40");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1800,7 +1824,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 		}
 		if(condition) {
-			var e1 = new jetgui_vdom_VDomElement("7afdaa5e");
+			var e1 = new jetgui_vdom_VDomElement("6d19efb2");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1830,7 +1854,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			e1.style.value = v;
 			var tmp;
 			try {
-				tmp = "granary-item__count";
+				tmp = "granary-item__count sale-mode";
 			} catch( _g ) {
 				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 					tmp = null;
@@ -1840,7 +1864,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			}
 			e1.classList = tmp;
 			e.addChild(e1);
-			var e1 = new jetgui_vdom_VDomElement("6a51ce0f");
+			var e1 = new jetgui_vdom_VDomElement("132388ed");
 			e1.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
@@ -1855,7 +1879,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 			e1.tag = tmp;
 			var tmp;
 			try {
-				tmp = "granary-item__sale";
+				tmp = "sale-mode__block";
 			} catch( _g ) {
 				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 					tmp = null;
@@ -1864,8 +1888,57 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 				}
 			}
 			e1.classList = tmp;
-			var e2 = new jetgui_vdom_VDomElement("d97c8d5e");
+			var e2 = new jetgui_vdom_VDomElement("7123b8ac");
 			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "box";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e2.tag = tmp;
+			var tmp;
+			try {
+				tmp = "sale-mode__counter";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e2.classList = tmp;
+			var e3 = new jetgui_vdom_VDomElement("2d3d11da");
+			e3.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "box";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.tag = tmp;
+			var tmp;
+			try {
+				tmp = "sale-mode__minus";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.classList = tmp;
+			e2.addChild(e3);
+			var e3 = new jetgui_vdom_VDomElement("7cc8fe9d");
+			e3.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
 				tmp = "text";
@@ -1876,7 +1949,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 					throw _g;
 				}
 			}
-			e2.tag = tmp;
+			e3.tag = tmp;
 			var v;
 			try {
 				var obj = this.storageItem_value.get();
@@ -1891,10 +1964,61 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 					throw _g;
 				}
 			}
-			e2.style.value = v;
+			e3.style.value = v;
 			var tmp;
 			try {
-				tmp = "text-base";
+				tmp = "sale-mode__count";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.classList = tmp;
+			e2.addChild(e3);
+			var e3 = new jetgui_vdom_VDomElement("0d18b5a0");
+			e3.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "box";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.tag = tmp;
+			var tmp;
+			try {
+				tmp = "sale-mode__plus";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.classList = tmp;
+			e2.addChild(e3);
+			e1.addChild(e2);
+			var e2 = new jetgui_vdom_VDomElement("57b6ef7b");
+			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "hbox";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e2.tag = tmp;
+			var tmp;
+			try {
+				tmp = "sale-mode__price";
 			} catch( _g ) {
 				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 					tmp = null;
@@ -1903,9 +2027,33 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 				}
 			}
 			e2.classList = tmp;
-			e1.addChild(e2);
-			var e2 = new jetgui_vdom_VDomElement("c24ca3cc");
-			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var e3 = new jetgui_vdom_VDomElement("d51232c6");
+			e3.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "img";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.tag = tmp;
+			var v;
+			try {
+				v = "jetgui/icon/softS.png";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					v = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.style.src = v;
+			e2.addChild(e3);
+			var e3 = new jetgui_vdom_VDomElement("59e16bd4");
+			e3.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
 			var tmp;
 			try {
 				tmp = "text";
@@ -1916,7 +2064,7 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 					throw _g;
 				}
 			}
-			e2.tag = tmp;
+			e3.tag = tmp;
 			var v;
 			try {
 				var obj = this.storageItem_value.get();
@@ -1931,10 +2079,47 @@ jetgui_generated_jml_StoragePrefabstorageitemComponent.prototype = $extend(jetgu
 					throw _g;
 				}
 			}
-			e2.style.value = v;
+			e3.style.value = v;
 			var tmp;
 			try {
-				tmp = "text-base";
+				tmp = "sale-mode__price__text";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e3.classList = tmp;
+			e2.addChild(e3);
+			e1.addChild(e2);
+			var e2 = new jetgui_vdom_VDomElement("bafbf334");
+			e2.styleRules = jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules;
+			var tmp;
+			try {
+				tmp = "text";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e2.tag = tmp;
+			var tmp;
+			try {
+				tmp = "Sell";
+			} catch( _g ) {
+				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+					tmp = null;
+				} else {
+					throw _g;
+				}
+			}
+			e2.style.value = tmp;
+			var tmp;
+			try {
+				tmp = "sale-mode__btn";
 			} catch( _g ) {
 				if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 					tmp = null;
@@ -2098,6 +2283,289 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
+			tmp = "hbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e2.classList = tmp;
+		var e3 = new jetgui_vdom_VDomElement("e3ba2b9d");
+		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "hbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources__item stars";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.classList = tmp;
+		var e4 = new jetgui_vdom_VDomElement("fcdeb620");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "img";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var v;
+		try {
+			v = "jetgui/icon/expS.png";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				v = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.src = v;
+		e3.addChild(e4);
+		var e4 = new jetgui_vdom_VDomElement("973fe161");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources__text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var tmp;
+		try {
+			tmp = "21";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.value = tmp;
+		e3.addChild(e4);
+		e2.addChild(e3);
+		var e3 = new jetgui_vdom_VDomElement("8bc26fe9");
+		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "hbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources__item diamonds";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.classList = tmp;
+		var e4 = new jetgui_vdom_VDomElement("d15ae68e");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "img";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var v;
+		try {
+			v = "jetgui/icon/hardS.png";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				v = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.src = v;
+		e3.addChild(e4);
+		var e4 = new jetgui_vdom_VDomElement("57af8799");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources__text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var tmp;
+		try {
+			tmp = "240";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.value = tmp;
+		e3.addChild(e4);
+		e2.addChild(e3);
+		var e3 = new jetgui_vdom_VDomElement("d68386f6");
+		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "hbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources__item coins";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e3.classList = tmp;
+		var e4 = new jetgui_vdom_VDomElement("b4d34882");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "img";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var v;
+		try {
+			v = "jetgui/icon/softS.png";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				v = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.src = v;
+		e3.addChild(e4);
+		var e4 = new jetgui_vdom_VDomElement("46500048");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "resources__text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var tmp;
+		try {
+			tmp = "74395";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.style.value = tmp;
+		e3.addChild(e4);
+		e2.addChild(e3);
+		e1.addChild(e2);
+		var e2 = new jetgui_vdom_VDomElement("76fa6582");
+		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
 			tmp = "text";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
@@ -2130,7 +2598,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		}
 		e2.classList = tmp;
 		e1.addChild(e2);
-		var e2 = new jetgui_vdom_VDomElement("b0ab131e");
+		var e2 = new jetgui_vdom_VDomElement("b839c8df");
 		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
@@ -2156,11 +2624,11 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		e2.classList = tmp;
 		e1.addChild(e2);
 		e.addChild(e1);
-		var e1 = new jetgui_vdom_VDomElement("d72f623f");
+		var e1 = new jetgui_vdom_VDomElement("ef84ef0b");
 		e1.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
-			tmp = "hbox";
+			tmp = "box";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2169,7 +2637,18 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			}
 		}
 		e1.tag = tmp;
-		var e2 = new jetgui_vdom_VDomElement("24230ce5");
+		var tmp;
+		try {
+			tmp = "body";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e1.classList = tmp;
+		var e2 = new jetgui_vdom_VDomElement("3a33f455");
 		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
@@ -2194,11 +2673,11 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		}
 		e2.classList = tmp;
 		e1.addChild(e2);
-		var e2 = new jetgui_vdom_VDomElement("72785aba");
+		var e2 = new jetgui_vdom_VDomElement("01de66ed");
 		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
-			tmp = "vbox";
+			tmp = "hbox";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2209,7 +2688,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		e2.tag = tmp;
 		var tmp;
 		try {
-			tmp = "sidebar";
+			tmp = "body__block";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2218,7 +2697,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			}
 		}
 		e2.classList = tmp;
-		var e3 = new jetgui_vdom_VDomElement("65b563cc");
+		var e3 = new jetgui_vdom_VDomElement("7a715136");
 		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
@@ -2233,7 +2712,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 		e3.tag = tmp;
 		var tmp;
 		try {
-			tmp = "navigation";
+			tmp = "sidebar";
 		} catch( _g ) {
 			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 				tmp = null;
@@ -2242,8 +2721,56 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			}
 		}
 		e3.classList = tmp;
-		var e4 = new jetgui_vdom_VDomElement("a7c7139a");
+		var e4 = new jetgui_vdom_VDomElement("7b06da64");
 		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "vbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "navigation";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var e5 = new jetgui_vdom_VDomElement("40ce9752");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "vbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.tag = tmp;
+		var tmp;
+		try {
+			tmp = "navigation__wrapper";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.classList = tmp;
+		var e6 = new jetgui_vdom_VDomElement("7e05a04b");
+		e6.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
 			tmp = "img";
@@ -2254,7 +2781,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e4.tag = tmp;
+		e6.tag = tmp;
 		var v;
 		try {
 			v = "jetgui/header/headerGoods.png";
@@ -2265,8 +2792,8 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 				throw _g;
 			}
 		}
-		e4.style.src = v;
-		e3.addChild(e4);
+		e6.style.src = v;
+		e5.addChild(e6);
 		var iterable;
 		try {
 			var obj = this.jtp_value.get();
@@ -2290,7 +2817,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 					if(tab1 == null) {
 						throw haxe_Exception.thrown(new jetgui_NullAccessError());
 					}
-					condition = !tab1.isSelected_value.get();
+					condition = tab1.isSelected_value.get();
 				} catch( _g ) {
 					if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
 						condition = null;
@@ -2299,11 +2826,11 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 					}
 				}
 				if(condition) {
-					var e4 = new jetgui_vdom_VDomElement("32272e0e");
-					e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+					var e6 = new jetgui_vdom_VDomElement("e9c05942");
+					e6.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 					var tmp;
 					try {
-						tmp = "img";
+						tmp = "box";
 					} catch( _g1 ) {
 						if(((haxe_Exception.caught(_g1).unwrap()) instanceof jetgui_NullAccessError)) {
 							tmp = null;
@@ -2311,77 +2838,478 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 							throw _g1;
 						}
 					}
-					e4.tag = tmp;
-					var v;
+					e6.tag = tmp;
+					var tmp1;
 					try {
-						v = "jetgui/tabList/divider.png";
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						tmp1 = "navigation__link active" + (tab1.isLast_value.get() ? " last-link" : "");
 					} catch( _g2 ) {
 						if(((haxe_Exception.caught(_g2).unwrap()) instanceof jetgui_NullAccessError)) {
-							v = null;
+							tmp1 = null;
 						} else {
 							throw _g2;
 						}
 					}
-					e4.style.src = v;
-					var tmp1;
+					e6.classList = tmp1;
+					var e7 = new jetgui_vdom_VDomElement("c3284b82");
+					e7.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+					var tmp2;
 					try {
-						tmp1 = "navigation__divider";
+						tmp2 = "text";
 					} catch( _g3 ) {
 						if(((haxe_Exception.caught(_g3).unwrap()) instanceof jetgui_NullAccessError)) {
-							tmp1 = null;
+							tmp2 = null;
 						} else {
 							throw _g3;
 						}
 					}
-					e4.classList = tmp1;
-					e3.addChild(e4);
-				}
-				var e5 = new jetgui_vdom_VDomElement("40db314c");
-				e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-				var tmp2;
-				try {
-					tmp2 = "text";
-				} catch( _g4 ) {
-					if(((haxe_Exception.caught(_g4).unwrap()) instanceof jetgui_NullAccessError)) {
-						tmp2 = null;
-					} else {
-						throw _g4;
+					e7.tag = tmp2;
+					var v;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						v = tab1.title_value.get();
+					} catch( _g4 ) {
+						if(((haxe_Exception.caught(_g4).unwrap()) instanceof jetgui_NullAccessError)) {
+							v = null;
+						} else {
+							throw _g4;
+						}
 					}
+					e7.style.value = v;
+					var tmp3;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						tmp3 = "navigation__link__text active" + (tab1.isLast_value.get() ? " last-link" : "");
+					} catch( _g5 ) {
+						if(((haxe_Exception.caught(_g5).unwrap()) instanceof jetgui_NullAccessError)) {
+							tmp3 = null;
+						} else {
+							throw _g5;
+						}
+					}
+					e7.classList = tmp3;
+					e6.addChild(e7);
+					var condition1;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						condition1 = !tab1.isLast_value.get();
+					} catch( _g6 ) {
+						if(((haxe_Exception.caught(_g6).unwrap()) instanceof jetgui_NullAccessError)) {
+							condition1 = null;
+						} else {
+							throw _g6;
+						}
+					}
+					if(condition1) {
+						var e8 = new jetgui_vdom_VDomElement("291f2aa1");
+						e8.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+						var tmp4;
+						try {
+							tmp4 = "img";
+						} catch( _g7 ) {
+							if(((haxe_Exception.caught(_g7).unwrap()) instanceof jetgui_NullAccessError)) {
+								tmp4 = null;
+							} else {
+								throw _g7;
+							}
+						}
+						e8.tag = tmp4;
+						var v1;
+						try {
+							v1 = "jetgui/tabList/divider.png";
+						} catch( _g8 ) {
+							if(((haxe_Exception.caught(_g8).unwrap()) instanceof jetgui_NullAccessError)) {
+								v1 = null;
+							} else {
+								throw _g8;
+							}
+						}
+						e8.style.src = v1;
+						var tmp5;
+						try {
+							tmp5 = "navigation__link__divider active";
+						} catch( _g9 ) {
+							if(((haxe_Exception.caught(_g9).unwrap()) instanceof jetgui_NullAccessError)) {
+								tmp5 = null;
+							} else {
+								throw _g9;
+							}
+						}
+						e8.classList = tmp5;
+						e6.addChild(e8);
+					}
+					e5.addChild(e6);
 				}
-				e5.tag = tmp2;
-				var v1;
+				var condition2;
 				try {
 					if(tab1 == null) {
 						throw haxe_Exception.thrown(new jetgui_NullAccessError());
 					}
-					v1 = tab1.title_value.get();
-				} catch( _g5 ) {
-					if(((haxe_Exception.caught(_g5).unwrap()) instanceof jetgui_NullAccessError)) {
-						v1 = null;
+					condition2 = !tab1.isSelected_value.get();
+				} catch( _g10 ) {
+					if(((haxe_Exception.caught(_g10).unwrap()) instanceof jetgui_NullAccessError)) {
+						condition2 = null;
 					} else {
-						throw _g5;
+						throw _g10;
 					}
 				}
-				e5.style.value = v1;
-				var tmp3;
-				try {
-					if(tab1 == null) {
-						throw haxe_Exception.thrown(new jetgui_NullAccessError());
+				if(condition2) {
+					var e9 = new jetgui_vdom_VDomElement("e361639a");
+					e9.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+					var tmp6;
+					try {
+						tmp6 = "box";
+					} catch( _g11 ) {
+						if(((haxe_Exception.caught(_g11).unwrap()) instanceof jetgui_NullAccessError)) {
+							tmp6 = null;
+						} else {
+							throw _g11;
+						}
 					}
-					tmp3 = tab1.isSelected_value.get() ? "navigation__link active" : "navigation__link";
-				} catch( _g6 ) {
-					if(((haxe_Exception.caught(_g6).unwrap()) instanceof jetgui_NullAccessError)) {
-						tmp3 = null;
-					} else {
-						throw _g6;
+					e9.tag = tmp6;
+					var tmp7;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						tmp7 = "navigation__link" + (tab1.isLast_value.get() ? " last-link" : "");
+					} catch( _g12 ) {
+						if(((haxe_Exception.caught(_g12).unwrap()) instanceof jetgui_NullAccessError)) {
+							tmp7 = null;
+						} else {
+							throw _g12;
+						}
 					}
+					e9.classList = tmp7;
+					var e10 = new jetgui_vdom_VDomElement("121ec067");
+					e10.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+					var tmp8;
+					try {
+						tmp8 = "text";
+					} catch( _g13 ) {
+						if(((haxe_Exception.caught(_g13).unwrap()) instanceof jetgui_NullAccessError)) {
+							tmp8 = null;
+						} else {
+							throw _g13;
+						}
+					}
+					e10.tag = tmp8;
+					var v2;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						v2 = tab1.title_value.get();
+					} catch( _g14 ) {
+						if(((haxe_Exception.caught(_g14).unwrap()) instanceof jetgui_NullAccessError)) {
+							v2 = null;
+						} else {
+							throw _g14;
+						}
+					}
+					e10.style.value = v2;
+					var tmp9;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						tmp9 = "navigation__link__text" + (tab1.isLast_value.get() ? " last-link" : "");
+					} catch( _g15 ) {
+						if(((haxe_Exception.caught(_g15).unwrap()) instanceof jetgui_NullAccessError)) {
+							tmp9 = null;
+						} else {
+							throw _g15;
+						}
+					}
+					e10.classList = tmp9;
+					e9.addChild(e10);
+					var condition3;
+					try {
+						if(tab1 == null) {
+							throw haxe_Exception.thrown(new jetgui_NullAccessError());
+						}
+						condition3 = !tab1.isLast_value.get();
+					} catch( _g16 ) {
+						if(((haxe_Exception.caught(_g16).unwrap()) instanceof jetgui_NullAccessError)) {
+							condition3 = null;
+						} else {
+							throw _g16;
+						}
+					}
+					if(condition3) {
+						var e11 = new jetgui_vdom_VDomElement("d666e212");
+						e11.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+						var tmp10;
+						try {
+							tmp10 = "img";
+						} catch( _g17 ) {
+							if(((haxe_Exception.caught(_g17).unwrap()) instanceof jetgui_NullAccessError)) {
+								tmp10 = null;
+							} else {
+								throw _g17;
+							}
+						}
+						e11.tag = tmp10;
+						var v3;
+						try {
+							v3 = "jetgui/tabList/divider.png";
+						} catch( _g18 ) {
+							if(((haxe_Exception.caught(_g18).unwrap()) instanceof jetgui_NullAccessError)) {
+								v3 = null;
+							} else {
+								throw _g18;
+							}
+						}
+						e11.style.src = v3;
+						var tmp11;
+						try {
+							tmp11 = "navigation__link__divider";
+						} catch( _g19 ) {
+							if(((haxe_Exception.caught(_g19).unwrap()) instanceof jetgui_NullAccessError)) {
+								tmp11 = null;
+							} else {
+								throw _g19;
+							}
+						}
+						e11.classList = tmp11;
+						e9.addChild(e11);
+					}
+					e5.addChild(e9);
 				}
-				e5.classList = tmp3;
-				e3.addChild(e5);
 			}
 		}
+		e4.addChild(e5);
+		e3.addChild(e4);
+		var e4 = new jetgui_vdom_VDomElement("da6b50aa");
+		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "vbox";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e4.classList = tmp;
+		var e5 = new jetgui_vdom_VDomElement("8a2a93d7");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.tag = tmp;
+		var tmp;
+		try {
+			tmp = "Capacity";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.style.value = tmp;
+		var tmp;
+		try {
+			tmp = "progress__title";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.classList = tmp;
+		e4.addChild(e5);
+		var e5 = new jetgui_vdom_VDomElement("3c46ea5c");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress__wrapper";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.classList = tmp;
+		var e6 = new jetgui_vdom_VDomElement("880cabdb");
+		e6.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress__bar" + (this.storageFill_value.get() >= this.storageLimit_value.get() ? " full" : "");
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.classList = tmp;
+		var v;
+		try {
+			var fn = jetgui_style_ESizeImpl.percent;
+			v = fn != null ? fn(this.storageFill_value.get() / this.storageLimit_value.get() * 100) : null;
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				v = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.style.width = v;
+		e5.addChild(e6);
+		var e6 = new jetgui_vdom_VDomElement("1f44aa9d");
+		e6.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.tag = tmp;
+		var v;
+		try {
+			v = this.storageFill_value.get() + "/" + this.storageLimit_value.get();
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				v = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.style.value = v;
+		var tmp;
+		try {
+			tmp = "progress__text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.classList = tmp;
+		e5.addChild(e6);
+		e4.addChild(e5);
+		var e5 = new jetgui_vdom_VDomElement("add91e12");
+		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "box";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.tag = tmp;
+		var tmp;
+		try {
+			tmp = "progress__bottom";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e5.classList = tmp;
+		var e6 = new jetgui_vdom_VDomElement("58bd8c62");
+		e6.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+		var tmp;
+		try {
+			tmp = "text";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.tag = tmp;
+		var tmp;
+		try {
+			tmp = "Upgrade";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.style.value = tmp;
+		var tmp;
+		try {
+			tmp = "progress__btn";
+		} catch( _g ) {
+			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
+				tmp = null;
+			} else {
+				throw _g;
+			}
+		}
+		e6.classList = tmp;
+		e5.addChild(e6);
+		e4.addChild(e5);
+		e3.addChild(e4);
 		e2.addChild(e3);
-		var e3 = new jetgui_vdom_VDomElement("df3cfcd6");
+		var e3 = new jetgui_vdom_VDomElement("a54cc7a2");
 		e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 		var tmp;
 		try {
@@ -2394,227 +3322,6 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			}
 		}
 		e3.tag = tmp;
-		var tmp;
-		try {
-			tmp = "progress";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e3.classList = tmp;
-		var e4 = new jetgui_vdom_VDomElement("e8fda4e6");
-		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "text";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.tag = tmp;
-		var tmp;
-		try {
-			tmp = "Capacity";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.style.value = tmp;
-		var tmp;
-		try {
-			tmp = "progress__title";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.classList = tmp;
-		e3.addChild(e4);
-		var e4 = new jetgui_vdom_VDomElement("28792f73");
-		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "box";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.tag = tmp;
-		var tmp;
-		try {
-			tmp = "progress__wrapper";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.classList = tmp;
-		var e5 = new jetgui_vdom_VDomElement("299b8f1b");
-		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "box";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.tag = tmp;
-		var tmp;
-		try {
-			tmp = "progress__bar";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.classList = tmp;
-		var v;
-		try {
-			var fn = jetgui_style_ESizeImpl.percent;
-			v = fn != null ? fn(this.storageFill_value.get() / this.storageLimit_value.get() * 100) : null;
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				v = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.style.width = v;
-		e4.addChild(e5);
-		var e5 = new jetgui_vdom_VDomElement("8f9e02aa");
-		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "text";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.tag = tmp;
-		var v;
-		try {
-			v = this.storageFill_value.get() + "/" + this.storageLimit_value.get();
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				v = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.style.value = v;
-		var tmp;
-		try {
-			tmp = "progress__text";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.classList = tmp;
-		e4.addChild(e5);
-		e3.addChild(e4);
-		var e4 = new jetgui_vdom_VDomElement("2a872b62");
-		e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "box";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.tag = tmp;
-		var tmp;
-		try {
-			tmp = "progress__bottom";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e4.classList = tmp;
-		var e5 = new jetgui_vdom_VDomElement("aa960cc8");
-		e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "text";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.tag = tmp;
-		var tmp;
-		try {
-			tmp = "Upgrade";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.style.value = tmp;
-		var tmp;
-		try {
-			tmp = "progress__btn";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e5.classList = tmp;
-		e4.addChild(e5);
-		e3.addChild(e4);
-		e2.addChild(e3);
-		e1.addChild(e2);
-		var e2 = new jetgui_vdom_VDomElement("169e1917");
-		e2.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-		var tmp;
-		try {
-			tmp = "vbox";
-		} catch( _g ) {
-			if(((haxe_Exception.caught(_g).unwrap()) instanceof jetgui_NullAccessError)) {
-				tmp = null;
-			} else {
-				throw _g;
-			}
-		}
-		e2.tag = tmp;
 		var iterable;
 		try {
 			var obj = this.jtp_value.get();
@@ -2633,8 +3340,8 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 			var row = iterable.iterator();
 			while(row.hasNext()) {
 				var row1 = row.next();
-				var e3 = new jetgui_vdom_VDomElement("7cf684c0");
-				e3.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+				var e4 = new jetgui_vdom_VDomElement("6500e9e6");
+				e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
 				var tmp;
 				try {
 					tmp = "hbox";
@@ -2645,7 +3352,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g;
 					}
 				}
-				e3.tag = tmp;
+				e4.tag = tmp;
 				var tmp1;
 				try {
 					tmp1 = 21;
@@ -2656,7 +3363,7 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 						throw _g1;
 					}
 				}
-				e3.style.spacing = tmp1;
+				e4.style.spacing = tmp1;
 				var iterable;
 				try {
 					iterable = row1;
@@ -2671,9 +3378,9 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 					var storageItem = iterable.iterator();
 					while(storageItem.hasNext()) {
 						var storageItem1 = storageItem.next();
-						var e4 = new jetgui_generated_jml_StoragePrefabstorageitem("ce256061");
-						e4.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
-						e4.ctx = this.ctx;
+						var e5 = new jetgui_generated_jml_StoragePrefabstorageitem("76ae5c42");
+						e5.styleRules = jetgui_generated_jml_StorageStorageComponent.styleRules;
+						e5.ctx = this.ctx;
 						var tmp2;
 						try {
 							tmp2 = storageItem1;
@@ -2684,13 +3391,14 @@ jetgui_generated_jml_StorageStorageComponent.prototype = $extend(jetgui_Componen
 								throw _g3;
 							}
 						}
-						e4.storageItem = tmp2;
-						e3.addChild(e4);
+						e5.storageItem = tmp2;
+						e4.addChild(e5);
 					}
 				}
-				e2.addChild(e3);
+				e3.addChild(e4);
 			}
 		}
+		e2.addChild(e3);
 		e1.addChild(e2);
 		e.addChild(e1);
 		result.push(e);
@@ -3355,10 +4063,12 @@ jetgui_style_EColor.hexColorEReg = new EReg("^(?:0x|#)?([0-9a-fA-F]{6,8})$","");
 jetgui_generated_jss_JssJssMain.rules = (function($this) {
 	var $r;
 	var tmp = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-menu"),{ width : jetgui_style_ESizeImpl.percent(100)});
-	var tmp1 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("back-btn"),{ fillImage : "jetgui/button/backCyan.png", size : jetgui_style_ESize.fromPx(130), vAlign : 0});
-	var tmp2 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("header"),{ width : jetgui_style_ESizeImpl.percent(100), paddingTop : 20, paddingBottom : 30, paddingRight : 74, paddingLeft : 74});
-	var tmp3 = jetgui_style_StyleSelector.EClass("title");
-	var tmp4 = "jetgui/header/title.png";
+	var tmp1 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("body"),{ width : jetgui_style_ESizeImpl.percent(100), height : jetgui_style_ESize.fromPx(935)});
+	var tmp2 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("back-btn"),{ fillImage : "jetgui/button/backCyan.png", size : jetgui_style_ESize.fromPx(145), vAlign : 1, offsetBottom : 25, offsetLeft : 112});
+	var tmp3 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("body__block"),{ hAlign : 0.5});
+	var tmp4 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("header"),{ width : jetgui_style_ESizeImpl.percent(100), paddingTop : 20, paddingBottom : 26, paddingRight : 70, paddingLeft : 70});
+	var tmp5 = jetgui_style_StyleSelector.EClass("title");
+	var tmp6 = "jetgui/header/title.png";
 	var result = null;
 	{
 		var _g = 0;
@@ -3379,33 +4089,11 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	var tmp5 = new jetgui_style_StyleRule(tmp3,{ fillImage : tmp4, font : "Tavolga bold 48", textColor : result, width : jetgui_style_ESize.fromPx(416), height : jetgui_style_ESize.fromPx(80), textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, align : 0.5});
-	var tmp3 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("close-btn"),{ fillImage : "jetgui/button/close.png", size : jetgui_style_ESize.fromPx(90), align : 1});
-	var tmp4 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sidebar"),{ paddingRight : 20});
-	var tmp6 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation"),{ width : jetgui_style_ESize.fromPx(328), fillImage : "jetgui/card/body_light.png"});
-	var tmp7 = jetgui_style_StyleSelector.EClass("navigation__link");
-	var result = null;
-	{
-		var _g = 0;
-		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
-		while(_g < _g1.length) {
-			var color = _g1[_g];
-			++_g;
-			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
-				result = color;
-				break;
-			}
-		}
-		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
-			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
-		}
-		if(result == null) {
-			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
-			result = jetgui_style_EColorImpl.red;
-		}
-	}
-	var tmp8 = new jetgui_style_StyleRule(tmp7,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 29, paddingBottom : 27});
-	var tmp7 = jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link"),jetgui_style_StyleSelector.EClass("active")]);
+	var tmp7 = new jetgui_style_StyleRule(tmp5,{ fillImage : tmp6, font : "Tavolga bold 48", textColor : result, width : jetgui_style_ESize.fromPx(416), height : jetgui_style_ESize.fromPx(80), textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, hAlign : 0.5, offsetTop : 3});
+	var tmp5 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("close-btn"),{ fillImage : "jetgui/button/close.png", size : jetgui_style_ESize.fromPx(98), align : 1});
+	var tmp6 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("resources"),{ paddingTop : 15});
+	var tmp8 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("resources__item"),{ paddingRight : 20});
+	var tmp9 = jetgui_style_StyleSelector.EClass("resources__text");
 	var result = null;
 	{
 		var _g = 0;
@@ -3426,10 +4114,15 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	var tmp9 = new jetgui_style_StyleRule(tmp7,{ textColor : result, fillImage : "jetgui/tabList/select_middle.png"});
-	var tmp7 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation__divider"),{ opacity : 0.5, align : 0.5, width : jetgui_style_ESize.fromPx(222)});
-	var tmp10 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress"),{ fillImage : "jetgui/card/body_light.png", width : jetgui_style_ESize.fromPx(328), height : jetgui_style_ESize.fromPx(214), paddingBottom : 20});
-	var tmp11 = jetgui_style_StyleSelector.EClass("progress__title");
+	var tmp10 = new jetgui_style_StyleRule(tmp9,{ font : "Tavolga bold 40", textColor : result, paddingLeft : 8, align : 0.5});
+	var tmp9 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("resources__item"),jetgui_style_StyleSelector.EClass("diamonds")]),{ paddingRight : 10});
+	var tmp11 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sidebar"),{ paddingRight : 20});
+	var tmp12 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation"),{ paddingBottom : 5});
+	var tmp13 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation__wrapper"),{ width : jetgui_style_ESize.fromPx(328), fillImage : "jetgui/card/body_light.png"});
+	var tmp14 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation__link"),{ paddingBottom : -5});
+	var tmp15 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link"),jetgui_style_StyleSelector.EClass("active")]),{ fillImage : "jetgui/tabList/select_middle.png"});
+	var tmp16 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link"),jetgui_style_StyleSelector.EClass("active"),jetgui_style_StyleSelector.EClass("last-link")]),{ fillImage : "jetgui/tabList/select_end-reverse.png"});
+	var tmp17 = jetgui_style_StyleSelector.EClass("navigation__link__text");
 	var result = null;
 	{
 		var _g = 0;
@@ -3450,10 +4143,8 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	var tmp12 = new jetgui_style_StyleRule(tmp11,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 25, paddingBottom : 15});
-	var tmp11 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__wrapper"),{ align : 0.5, width : jetgui_style_ESize.fromPx(274), height : jetgui_style_ESize.fromPx(50), fillImage : "jetgui/progressBar/back.png"});
-	var tmp13 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__bar"),{ height : jetgui_style_ESize.fromPx(50), fillImage : "jetgui/progressBar/fillJade.png"});
-	var tmp14 = jetgui_style_StyleSelector.EClass("progress__text");
+	var tmp18 = new jetgui_style_StyleRule(tmp17,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 27, paddingBottom : 32});
+	var tmp17 = jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link__text"),jetgui_style_StyleSelector.EClass("active")]);
 	var result = null;
 	{
 		var _g = 0;
@@ -3474,14 +4165,12 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	var tmp15 = new jetgui_style_StyleRule(tmp14,{ align : 0.5, font : "Tavolga bold 40", textColor : result});
-	var tmp14 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__bottom"),{ paddingTop : 16, width : jetgui_style_ESize.fromPx(328)});
-	var tmp16 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__btn"),{ align : 0.5, height : jetgui_style_ESize.fromPx(81), width : jetgui_style_ESize.fromPx(274), font : "Tavolga bold 48", textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, fillImage : "jetgui/button/green.png"});
-	var tmp17 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item"),{ width : jetgui_style_ESize.fromPx(315), height : jetgui_style_ESize.fromPx(414), fillImage : "jetgui/card/body.png", paddingTop : 0});
-	var tmp18 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__header"),{ width : jetgui_style_ESize.fromPx(310)});
-	var tmp19 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__zoom-btn"),{ fillImage : "jetgui/button/btnSmh.png", size : jetgui_style_ESize.fromPx(94), offsetTop : -4, offsetRight : -23, hAlign : 1, vAlign : 0});
-	var tmp20 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__img"),{ align : 0.5, offsetTop : 30, size : jetgui_style_ESize.fromPx(210)});
-	var tmp21 = jetgui_style_StyleSelector.EClass("granary-item__title");
+	var tmp19 = new jetgui_style_StyleRule(tmp17,{ textColor : result});
+	var tmp17 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link__text"),jetgui_style_StyleSelector.EClass("last-link")]),{ paddingTop : 30, paddingBottom : 47});
+	var tmp20 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("navigation__link__divider"),{ opacity : 0.5, hAlign : 0.5, vAlign : 1, width : jetgui_style_ESize.fromPx(222)});
+	var tmp21 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("navigation__link__divider"),jetgui_style_StyleSelector.EClass("active")]),{ opacity : 0});
+	var tmp22 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress"),{ fillImage : "jetgui/card/body_light.png", width : jetgui_style_ESize.fromPx(328), height : jetgui_style_ESize.fromPx(238), paddingBottom : 20, paddingTop : 15});
+	var tmp23 = jetgui_style_StyleSelector.EClass("progress__title");
 	var result = null;
 	{
 		var _g = 0;
@@ -3502,8 +4191,63 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	var tmp22 = new jetgui_style_StyleRule(tmp21,{ font : "Tavolga bold 40", textColor : result, align : 0.5, width : jetgui_style_ESize.fromPx(230), height : jetgui_style_ESize.fromPx(80), textAlign : jetgui_style_ETextAlign.center, textVAlign : jetgui_style_ETextVAlign.center});
-	var tmp21 = jetgui_style_StyleSelector.EClass("granary-item__count");
+	var tmp24 = new jetgui_style_StyleRule(tmp23,{ font : "Tavolga bold 40", textColor : result, width : jetgui_style_ESize.fromPx(328), textAlign : jetgui_style_ETextAlign.center, paddingTop : 25, paddingBottom : 15});
+	var tmp23 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__wrapper"),{ align : 0.5, width : jetgui_style_ESize.fromPx(278), height : jetgui_style_ESize.fromPx(47), fillImage : "jetgui/progressBar/back.png"});
+	var tmp25 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__bar"),{ height : jetgui_style_ESizeImpl.percent(100), fillImage : "jetgui/progressBar/fillJade.png"});
+	var tmp26 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("progress__bar"),jetgui_style_StyleSelector.EClass("full")]),{ fillImage : "jetgui/progressBar/fillRed_full.png"});
+	var tmp27 = jetgui_style_StyleSelector.EClass("progress__text");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "ffffff") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("ffffff")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "ffffff");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp28 = new jetgui_style_StyleRule(tmp27,{ align : 0.5, font : "Tavolga bold 40", textColor : result});
+	var tmp27 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__bottom"),{ paddingTop : 13, width : jetgui_style_ESize.fromPx(328)});
+	var tmp29 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("progress__btn"),{ align : 0.5, height : jetgui_style_ESize.fromPx(95), width : jetgui_style_ESize.fromPx(286), font : "Tavolga bold 48", textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, fillImage : "jetgui/button/green.png"});
+	var tmp30 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item"),{ width : jetgui_style_ESize.fromPx(315), height : jetgui_style_ESize.fromPx(434), fillImage : "jetgui/card/body.png", paddingTop : 0, offsetBottom : 11});
+	var tmp31 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("granary-item"),jetgui_style_StyleSelector.EClass("sale-mode")]),{ paddingTop : -45});
+	var tmp32 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__header"),{ width : jetgui_style_ESize.fromPx(310)});
+	var tmp33 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__zoom-btn"),{ fillImage : "jetgui/button/btnSmh.png", size : jetgui_style_ESize.fromPx(94), offsetTop : -8, offsetRight : -23, hAlign : 1, vAlign : 0});
+	var tmp34 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__img"),{ align : 0.5, offsetTop : 40, offsetBottom : 5, size : jetgui_style_ESize.fromPx(210)});
+	var tmp35 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("granary-item__img"),jetgui_style_StyleSelector.EClass("sale-mode")]),{ offsetTop : 0});
+	var tmp36 = jetgui_style_StyleSelector.EClass("granary-item__title");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp37 = new jetgui_style_StyleRule(tmp36,{ font : "Tavolga bold 40", textColor : result, hAlign : 0.5, width : jetgui_style_ESizeImpl.percent(100), paddingLeft : 10, paddingRight : 10, height : jetgui_style_ESize.fromPx(80), textAlign : jetgui_style_ETextAlign.center, textVAlign : jetgui_style_ETextVAlign.center});
+	var tmp36 = jetgui_style_StyleSelector.EClass("granary-item__count");
 	var result = null;
 	{
 		var _g = 0;
@@ -3524,7 +4268,58 @@ jetgui_generated_jss_JssJssMain.rules = (function($this) {
 			result = jetgui_style_EColorImpl.red;
 		}
 	}
-	$r = [tmp,tmp1,tmp2,tmp5,tmp3,tmp4,tmp6,tmp8,tmp9,tmp7,tmp10,tmp12,tmp11,tmp13,tmp15,tmp14,tmp16,tmp17,tmp18,tmp19,tmp20,tmp22,new jetgui_style_StyleRule(tmp21,{ font : "Tavolga bold 48", textColor : result, align : 0.5}),new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("granary-item__sale"),{ fillImage : "jetgui/card/bottomSlice.png", width : jetgui_style_ESize.fromPx(310), height : jetgui_style_ESize.fromPx(186)})];
+	var tmp38 = new jetgui_style_StyleRule(tmp36,{ font : "Tavolga bold 48", textColor : result, align : 0.5, paddingTop : 10});
+	var tmp36 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EAnd([jetgui_style_StyleSelector.EClass("granary-item__count"),jetgui_style_StyleSelector.EClass("sale-mode")]),{ paddingTop : 4, paddingBottom : 6});
+	var tmp39 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sale-mode__block"),{ fillImage : "jetgui/card/bottomSlice.png", width : jetgui_style_ESizeImpl.percent(100), height : jetgui_style_ESize.fromPx(205)});
+	var tmp40 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sale-mode__counter"),{ width : jetgui_style_ESizeImpl.percent(100), paddingTop : 5, paddingLeft : 5, paddingRight : 5});
+	var tmp41 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sale-mode__btn"),{ align : 0.5, height : jetgui_style_ESize.fromPx(80), width : jetgui_style_ESize.fromPx(263), font : "Tavolga bold 48", textVAlign : jetgui_style_ETextVAlign.center, textAlign : jetgui_style_ETextAlign.center, fillImage : "jetgui/button/green.png"});
+	var tmp42 = jetgui_style_StyleSelector.EClass("sale-mode__count");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "7a4f2c") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("7a4f2c")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "7a4f2c");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	var tmp43 = new jetgui_style_StyleRule(tmp42,{ font : "Tavolga bold 48", textColor : result, align : 0.5, paddingTop : 10});
+	var tmp42 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sale-mode__minus"),{ size : jetgui_style_ESize.fromPx(78), fillImage : "jetgui/button/minusCyan.png", hAlign : 0});
+	var tmp44 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sale-mode__plus"),{ size : jetgui_style_ESize.fromPx(78), fillImage : "jetgui/button/plusCyan.png", hAlign : 1});
+	var tmp45 = new jetgui_style_StyleRule(jetgui_style_StyleSelector.EClass("sale-mode__price"),{ width : jetgui_style_ESizeImpl.percent(100), childrenAlign : 0.5, paddingTop : -10, paddingBottom : -5});
+	var tmp46 = jetgui_style_StyleSelector.EClass("sale-mode__price__text");
+	var result = null;
+	{
+		var _g = 0;
+		var _g1 = jetgui_style_EColorImpl.__empty_constructs__.slice();
+		while(_g < _g1.length) {
+			var color = _g1[_g];
+			++_g;
+			if($hxEnums[color.__enum__].__constructs__[color._hx_index]._hx_name == "aa7957") {
+				result = color;
+				break;
+			}
+		}
+		if(result == null && jetgui_style_EColor.hexColorEReg.match("aa7957")) {
+			result = jetgui_style_EColorImpl.hex(Std.parseInt("0x" + jetgui_style_EColor.hexColorEReg.matched(1)));
+		}
+		if(result == null) {
+			console.log("../../banan/jetgui/src/jetgui/style/EColor.hx:47:","invalid color value: " + "aa7957");
+			result = jetgui_style_EColorImpl.red;
+		}
+	}
+	$r = [tmp,tmp1,tmp2,tmp3,tmp4,tmp7,tmp5,tmp6,tmp8,tmp10,tmp9,tmp11,tmp12,tmp13,tmp14,tmp15,tmp16,tmp18,tmp19,tmp17,tmp20,tmp21,tmp22,tmp24,tmp23,tmp25,tmp26,tmp28,tmp27,tmp29,tmp30,tmp31,tmp32,tmp33,tmp34,tmp35,tmp37,tmp38,tmp36,tmp39,tmp40,tmp41,tmp43,tmp42,tmp44,tmp45,new jetgui_style_StyleRule(tmp46,{ font : "Tavolga bold 40", textColor : result, align : 0.5, paddingRight : 15})];
 	return $r;
 }(this));
 jetgui_generated_jml_StoragePrefabstorageitemComponent.styleRules = jetgui_style_StyleSorter.sortStyles([jetgui_generated_jss_JssJssFonts.rules,jetgui_generated_jss_JssJssMain.rules]);
