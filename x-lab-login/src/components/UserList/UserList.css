@@ -1,0 +1,27 @@
+.list-block {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+}
+
+.list {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.list-item {
+    border-bottom: 1px solid #000;
+    padding-bottom: 10px;
+}
+
+.list-item:last-child {
+    border-bottom: 0;
+}
+
+h3 {
+    margin-top: 0;
+}

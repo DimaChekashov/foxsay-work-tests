@@ -1,0 +1,27 @@
+.header {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-btn {
+    width: 200px;
+    font-weight: 400;
+    border-radius: 4px;
+    background-color: #5290f9;
+    padding: 10px;
+    font-size: 1rem;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header-username {
+    font-weight: 400;
+    margin: 0;
+}
