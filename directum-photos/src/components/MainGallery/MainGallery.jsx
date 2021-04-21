@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { chunks } from '../../utils/utils';
 
+import Loader from '../Loaders/Loader/Loader';
+
+import { chunks } from '../../utils/utils';
 import { getAllPhotos } from '../../api/openApi';
 
 import './MainGallery.css';
 
-function MainGallery() {
+function MainGallery({isOpenedProfile, setIsOpenedProfile, setCurrentUserId}) {
     const [photosInChunks, setPhotosInChunks] = useState([]);
     
     useEffect(() => {
@@ -15,23 +17,33 @@ function MainGallery() {
             .catch(console.error);
     }, []);
 
-    const row = (photos) => {
+    const row = (photos, i) => {
         return (
-            <div className="photo-row">
+            <div className="photo-row" key={`row-` + i} >
                 {
-                photos.map(({id, thumbnailUrl, title}) => {
-                    return <img key={id} src={thumbnailUrl} alt={title} />;
+                photos.map(({id, albumId, thumbnailUrl, title}) => {
+                    return <img 
+                        key={`photo-` + id} 
+                        src={thumbnailUrl} 
+                        alt={title} 
+                        onClick={() => {
+                            setIsOpenedProfile(!isOpenedProfile)
+                            setCurrentUserId(albumId);
+                        }}
+                    />;
                 })
                 }
             </div>
         );
     }
 
-    if (photosInChunks.length === 0) return (<div className="gallery">Loading</div>);
+    if (photosInChunks.length === 0) return (<div className="gallery"><Loader/></div>);
 
     return (
         <div className="gallery">
-            {photosInChunks.map(row)}
+            {photosInChunks.map((photos, i) => {
+                return row(photos, i);
+            })}
         </div>
     )
 }

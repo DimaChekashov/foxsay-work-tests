@@ -21,3 +21,13 @@ export function getCurrentUser(userId) {
         .then((response) => handleResponse(response))
         .catch(handleError);
 }
+
+export function getAlbum() {
+    return fetch(baseUrl + "albums/", {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+    })
+        .then((response) => handleResponse(response))
+        .catch(handleError);
+}
