@@ -10,7 +10,6 @@ import Slide from '@material-ui/core/Slide';
 
 import './Album.css';
 
-import { chunks } from '../../utils/utils';
 import { getAllPhotos } from '../../api/openApi';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -18,32 +17,15 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 function Album({open, handleClose, album}) {
-    const [photosInChunks, setPhotosInChunks] = useState([]);
+    const [photos, setPhotos] = useState([]);
     const {id, title} = album;
 
     useEffect(() => {
-        const chuksSize = Math.floor(window.innerWidth / 150);
         getAllPhotos()
             .then((photos) => photos.filter(({albumId}) => albumId === id))
-            .then((photos) => setPhotosInChunks(chunks(photos, chuksSize)))
+            .then(setPhotos)
             .catch(console.error);
     }, [id]);
-
-    const row = (photos, i) => {
-        return (
-            <div className="photo-row" key={`row-` + i} >
-                {
-                photos.map(({id, thumbnailUrl, title}) => {
-                    return <img 
-                        key={`photo-` + id} 
-                        src={thumbnailUrl} 
-                        alt={title}
-                    />;
-                })
-                }
-            </div>
-        );
-    }
 
     return (
         <div>
@@ -59,8 +41,12 @@ function Album({open, handleClose, album}) {
                     </Toolbar>
                 </AppBar>
                 <div className="album-content">
-                    {photosInChunks.map((photos, i) => {
-                        return row(photos, i);
+                    {photos.map(({id, thumbnailUrl, title}) => {
+                        return <img 
+                            key={`photo-` + id} 
+                            src={thumbnailUrl} 
+                            alt={title}
+                        />;
                     })}
                 </div>
             </Dialog>

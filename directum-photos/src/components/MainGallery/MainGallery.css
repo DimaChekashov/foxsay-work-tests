@@ -1,10 +1,11 @@
-.photo-row {
+.gallery {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin: -1px 0 0 -1px;
+    padding: 0 20px;
 }
 
-.photo-row img {
+.gallery img {
     background-color: #eee;
     width: 150px;
     height: 150px;
@@ -12,8 +13,4 @@
     max-height: 100%;
     margin: 1px;
     cursor: pointer;
-}
-
-.gallery {
-    min-height: 100vh;
 }
