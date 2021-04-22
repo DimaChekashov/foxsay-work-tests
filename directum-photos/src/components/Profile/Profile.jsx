@@ -20,40 +20,36 @@ import { getCurrentUser, getAlbum } from '../../api/openApi';
 import './Profile.css';
 
 function Profile({userId}) {
-    const [profile, setProfile] = useState({});
+    const [user, setUser] = useState({});
     const [albums, setAlbums] = useState([]);
     const [openAlbum, setOpenAlbum] = React.useState(false);
+    const [selectedAlbum, setSelectedAlbum] = React.useState();
 
     useEffect(() => {
         getCurrentUser(userId)
-            .then((profile) => setProfile(profile))
+            .then(setUser)
+            .catch(console.error);
+
+        getAlbum()
+            .then((allAlbums) => {
+                setAlbums(allAlbums.filter(album => album.userId === userId))
+            })
             .catch(console.error);
     }, [userId])
 
 
-    const { id, name, username, email, phone, website, address = {}, company = {} } = profile;
+    const { name, username, email, phone, website, address = {}, company = {} } = user;
 
-    useEffect(() => {
-        getAlbum()
-            .then((allAlbums) => {
-                allAlbums.forEach(album => {
-                    if(album.userId === id) {
-                        setAlbums(oldAlbums => [...oldAlbums, album]);
-                    }
-                })
-            })
-            .catch(console.error);
-    }, [id])
-
-    const handleAlbumClickOpen = () => {
+    const handleAlbumClickOpen = (album) => {
+        setSelectedAlbum(album);
         setOpenAlbum(true);
-      };
+    };
     
-      const handleAlbumClose = () => {
+    const handleAlbumClose = () => {
         setOpenAlbum(false);
-      };
+    };
 
-    if (Object.keys(profile).length === 0) return (<div className="profile"><Loader/></div>);
+    if (Object.keys(user).length === 0) return (<div className="profile"><Loader/></div>);
 
     return (
         <div className="profile">
@@ -147,17 +143,17 @@ function Profile({userId}) {
                         <SmallLoader/>
                     :
                         <Grid container spacing={2}>
-                            {albums.map(({id, title}) => {
+                            {albums.map((album) => {
                                 return (
-                                    <Grid item xs={12} lg={4} key={`album-` + id}>
+                                    <Grid item xs={12} lg={4} key={`album-` + album.id}>
                                         <Button
-                                            onClick={handleAlbumClickOpen}
+                                            onClick={() => handleAlbumClickOpen(album)}
                                             className="album-btn"
                                             variant="contained"
                                             color="primary"
                                             startIcon={<FolderIcon />}
                                         >
-                                            {title}
+                                            {album.title}
                                         </Button>
                                     </Grid>
                                 );
@@ -165,8 +161,8 @@ function Profile({userId}) {
                         </Grid>
                     }
                 </div>
+                {selectedAlbum ? <Album album={selectedAlbum} open={openAlbum} handleClose={handleAlbumClose}/> : null}
             </Container>
-            <Album open={openAlbum} handleClose={handleAlbumClose}/>
         </div>
     )
 }
