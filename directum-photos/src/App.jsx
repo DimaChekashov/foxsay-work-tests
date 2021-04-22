@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-        <Header/>
+        <Header isOpenedProfile={isOpenedProfile} setIsOpenedProfile={setIsOpenedProfile} />
         {
           !isOpenedProfile ? 
             <MainGallery setCurrentUserId={setCurrentUserId} isOpenedProfile={isOpenedProfile} setIsOpenedProfile={setIsOpenedProfile} />
