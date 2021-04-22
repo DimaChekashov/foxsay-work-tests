@@ -15,3 +15,5 @@
 - эстетика и удобство использования;
 - адаптивная верстка;
 - использование системы контроля версий.
+
+Ссылка на GitHubPages - https://dimachekashov.github.io/foxsay-work-tests/directum-photos/pages/
