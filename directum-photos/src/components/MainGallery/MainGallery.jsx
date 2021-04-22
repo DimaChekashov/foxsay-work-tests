@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
-
-import Loader from '../Loaders/Loader/Loader';
-
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllPhotos } from '../../api/openApi';
-
+import { fetchPhotos, LoadingState, selectPhotos } from '../../redux/photosSlice';
+import Loader from '../Loaders/Loader/Loader';
 import './MainGallery.css';
 
 function MainGallery({isOpenedProfile, setIsOpenedProfile, setCurrentUserId}) {
-    const [photos, setPhotos] = useState([]);
-    
-    useEffect(() => {
-        getAllPhotos()
-            .then(setPhotos)
-            .catch(console.error);
-    }, []);
+    const { photos, loading, error } = useSelector(selectPhotos);
+    const dispatch = useDispatch();
 
-    if (photos.length === 0) return (<div className="gallery"><Loader/></div>);
+    useEffect(() => {
+        getAllPhotos().then(console.log);
+        dispatch(fetchPhotos());
+    }, [dispatch]);
+
+    if (loading === LoadingState.loading || loading === LoadingState.idle) return (<div className="gallery"><Loader/></div>);
+
+    if (loading === LoadingState.failed) return (<h3>{error}</h3>);
 
     return (
         <div className="gallery">

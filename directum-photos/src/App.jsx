@@ -10,7 +10,6 @@ function App() {
   const [isOpenedProfile, setIsOpenedProfile] = useState(false);
   const [currentUserId, setCurrentUserId] = useState();
 
-
   return (
     <div className="App">
         <Header isOpenedProfile={isOpenedProfile} setIsOpenedProfile={setIsOpenedProfile} />
