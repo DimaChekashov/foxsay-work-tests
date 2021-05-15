@@ -57,6 +57,10 @@ class Calculator {
         this.previousOperand = "";
     }
 
+    getBrackets() {
+
+    }
+
     getDisplayNumber(number) {
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split(".")[0]);
@@ -101,6 +105,8 @@ const previousOperandTextElement = document.querySelector(
 const currentOperandTextElement = document.querySelector(
     "[data-current-operand]"
 );
+const dataLeftBracket = document.querySelector("[data-left-bracket]");
+const dataRightBracket = document.querySelector("[data-right-bracket]");
 
 const calculator = new Calculator(
     previousOperandTextElement,
