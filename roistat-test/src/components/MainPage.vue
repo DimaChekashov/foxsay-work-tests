@@ -157,7 +157,4 @@ export default {
 .user-list-inner .user-list-bar {
   border-left: 1px solid rgba(0, 0, 0, 0.12);
 }
-.user-list-inner li:last-child .user-list-bar {
-  border-bottom: 0;
-}
 </style>
