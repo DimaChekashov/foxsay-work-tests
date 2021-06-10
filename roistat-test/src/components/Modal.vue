@@ -37,7 +37,8 @@ export default {
   name: "Modal",
   props: ["userList", "isVisibleModal", "formData", "onToggleModal"],
   methods: {
-    checkForm () {
+    checkForm (e) {
+      e.preventDefault();
       this.userList.push({name: this.formData.nameValue, phone: this.formData.phoneValue, chief: this.formData.selectedChief});
       this.formData.nameValue = "";
       this.formData.phoneValue = "";
