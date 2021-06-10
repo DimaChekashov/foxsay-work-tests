@@ -2,30 +2,32 @@
   <div class="main-page">
     <h1 class="title">Список пользователей</h1>
     <button class="btn add-btn" v-on:click="onToggleModal">Добавить</button>
-    <div class="user-list-header">
-      <span>Имя</span>
-      <span>Телефон</span>
+    <div class="user-list-wrapper">
+      <div class="user-list-header">
+        <span>Имя</span>
+        <span>Телефон</span>
+      </div>
+      <ul class="user-list">
+        <template v-for="user in userList">
+          <li v-if="user.chief === ''" :key="'user-' + user.name">
+            <div class="user-list-bar">
+              <span>{{user.name}}</span>
+              <span>{{user.phone}}</span>
+            </div>
+            <ul class="user-list-inner">
+              <template v-for="userInner in userList">
+                <li v-if="user.name === userInner.chief" :key="'inner-user-' + userInner.name">
+                  <div class="user-list-bar">
+                    <span>{{userInner.name}}</span>
+                    <span>{{userInner.phone}}</span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </li>
+        </template>
+      </ul>
     </div>
-    <ul class="user-list">
-      <template v-for="user in userList">
-        <li v-if="user.chief === ''" :key="'user-' + user.name">
-          <div class="user-list-bar">
-            <span>{{user.name}}</span>
-            <span>{{user.phone}}</span>
-          </div>
-          <ul class="user-list-inner">
-            <template v-for="userInner in userList">
-              <li v-if="user.name === userInner.chief" :key="'inner-user-' + userInner.name">
-                <div class="user-list-bar">
-                  <span>{{userInner.name}}</span>
-                  <span>{{userInner.phone}}</span>
-                </div>
-              </li>
-            </template>
-          </ul>
-        </li>
-      </template>
-    </ul>
     <modal :userList="userList" :isVisibleModal="isVisibleModal" :formData="formData" :onToggleModal="onToggleModal"></modal>
   </div>
 </template>
@@ -104,53 +106,58 @@ export default {
   box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
   background-color: #d5d5d5;
 }
-.user-list-header {
+.user-list-wrapper {
+  max-width: 600px;
   margin: 0 auto;
-  max-width: 400px;
+  box-shadow: 0px 0px 25px 3px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+}
+.user-list-header {
+  width: 100%;
   display: flex;
-  border: 1px solid #282c34;
-  background-color: #61dafb;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 .user-list-header span {
   display: block;
-  padding: 5px 15px;
-  font-size: 1.25rem;
+  padding: 10px 15px;
+  font-size: 1.625rem;
 }
 .user-list-header span:first-child {
-  width: 150px;
-  border-right: 1px solid #282c34;
+  width: 250px;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 .user-list {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
-  max-width: 400px;
-  background-color: #282c34;
-  color: #fff
+  width: 100%;
+  color: #000
 }
 .user-list-bar {
   display: flex;
   padding: 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 .user-list span {
   display: block;
   padding: 10px 15px;
   overflow: hidden;
+  font-size: 1.5rem;
 }
 .user-list span:first-child {
-  width: 150px;
-  border-right: 1px solid #fff;
+  width: 250px;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 .user-list span:nth-child(2) {
   width: 250px;
-  min-width: 250px;
+  min-width: 350px;
 }
 .user-list-inner {
   list-style: none;
-  background-color: #61dafb;
 }
 .user-list-inner .user-list-bar {
-  background-color: #282c34;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.user-list-inner li:last-child .user-list-bar {
+  border-bottom: 0;
 }
 </style>
