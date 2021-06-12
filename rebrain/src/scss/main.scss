@@ -4,6 +4,87 @@
 @import "vars";
 @import "vendor";
 
-body {
-    background: url("../images/tex.jpeg");
+/* header */
+.header {
+    background-color: #0b3777;
+    .navbar {
+        padding: 13px 70px;
+    }
+    .navbar-nav {
+    }
+    .nav-item {
+        margin-right: 12px;
+    }
+    .nav-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 15px;
+        color: #fff;
+        font-size: 1rem;
+        transition: 0.3s ease;
+        &:hover {
+            background-color: #fff;
+            color: #480a35;
+        }
+    }
+    .nav-link.active {
+        background-color: #fff;
+        color: #480a35;
+    }
+}
+
+.workshop-icon {
+    .nav-link {
+        &:before {
+            content: "";
+            width: 5px;
+            height: 10px;
+            display: inline-block;
+            background: url("../images/icons/arr-icon.svg") no-repeat center
+                center;
+            margin-right: 4px;
+        }
+    }
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.site-lang {
+    color: #fff;
+    font-size: 1rem;
+    line-height: 18px;
+    margin-right: 24px;
+    font-weight: normal;
+}
+
+.account-link {
+    border: 1px solid #ffffff;
+    color: #fff;
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 1rem;
+    padding: 6px 14px 6px 10px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    &:after {
+        content: "";
+        width: 5px;
+        height: 10px;
+        display: inline-block;
+        background: url("../images/icons/arr-icon.svg") no-repeat center center;
+        margin-left: 8px;
+    }
+    &:hover {
+        background-color: #fff;
+        color: #480a35;
+    }
+}
+
+/* greeting */
+.greeting {
 }

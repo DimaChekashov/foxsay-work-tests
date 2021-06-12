@@ -157,12 +157,12 @@ module.exports = {
                 use: ["babel-loader"],
             },
             {
-                test: /\.(gif|png|jpe?g|gif|svg)$/i,
+                test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
                 use: [
                     {
                         loader: "file-loader",
                         options: {
-                            name: `images/${filename("ext")}`,
+                            name: '[path][name].[ext]?[contenthash]',
                         },
                     },
                 ],
