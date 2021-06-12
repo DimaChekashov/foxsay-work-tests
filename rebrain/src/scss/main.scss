@@ -1,9 +1,9 @@
-@import "mixins";
-@import "vendor";
 @import "fonts";
-@import "vars";
+@import "mixins";
 @import "settings";
+@import "vars";
+@import "vendor";
 
 body {
-  background-color: red;
+    background: url("../images/tex.jpeg");
 }

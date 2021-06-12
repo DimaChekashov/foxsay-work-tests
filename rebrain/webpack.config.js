@@ -2,12 +2,89 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack");
+const HtmlWebpackPugPlugin = require("html-webpack-pug-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
 const filename = (ext) =>
     isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
+
+const optimization = () => {
+    const configObj = {
+        splitChunks: {
+            chunks: "all",
+        },
+    };
+
+    if (isProd) {
+        configObj.minimizer = [
+            new OptimizeCssAssetWebpackPlugin(),
+            new TerserWebpackPlugin(),
+        ];
+    }
+
+    return configObj;
+};
+
+const plugins = () => {
+    const basePlugins = [
+        new HTMLWebpackPlugin({
+            template: path.resolve(__dirname, "src/index.pug"),
+            filename: "index.html",
+            minify: {
+                collapseWhitespace: isProd,
+            },
+        }),
+        new HtmlWebpackPugPlugin({
+            adjustIndent: true,
+        }),
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({
+            filename: `css/${filename("css")}`,
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "src/assets"),
+                    to: path.resolve(__dirname, "build"),
+                },
+            ],
+        }),
+    ];
+
+    if (isProd) {
+        basePlugins.push(
+            new ImageminPlugin({
+                bail: false,
+                cache: true,
+                imageminOptions: {
+                    plugins: [
+                        ["gifsicle", { interlaced: true }],
+                        ["jpegtran", { progressive: true }],
+                        ["optipng", { optimizationLevel: 5 }],
+                        [
+                            "svgo",
+                            {
+                                plugins: [
+                                    {
+                                        removeViewBox: false,
+                                    },
+                                ],
+                            },
+                        ],
+                    ],
+                },
+            })
+        );
+    }
+
+    return basePlugins;
+};
 
 module.exports = {
     context: path.resolve(__dirname, "src"),
@@ -16,6 +93,7 @@ module.exports = {
     output: {
         filename: `js/${filename("js")}`,
         path: path.resolve(__dirname, "build"),
+        publicPath: "",
     },
     devServer: {
         historyApiFallback: true,
@@ -25,28 +103,80 @@ module.exports = {
         hot: true,
         port: 3000,
     },
-    plugins: [
-        new HTMLWebpackPlugin({
-            template: path.resolve(__dirname, "src/index.html"),
-            filename: "index.html",
-            minify: {
-                collapseWhitespace: isProd,
-            },
-        }),
-        new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({
-            filename: `css/${filename("css")}`,
-        }),
-    ],
+    optimization: optimization(),
+    plugins: plugins(),
+    devtool: isProd ? false : "source-map",
     module: {
         rules: [
             {
+                test: /\.pug$/,
+                use: [
+                    {
+                        loader: "simple-pug-loader",
+                        options: {
+                            pretty: true,
+                        },
+                    },
+                ],
+            },
+            {
                 test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev,
+                        },
+                    },
+                    "css-loader",
+                ],
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: (resoursePath, context) => {
+                                return (
+                                    path.relative(
+                                        path.dirname(resoursePath),
+                                        context
+                                    ) + "/"
+                                );
+                            },
+                        },
+                    },
+                    "css-loader",
+                    "sass-loader",
+                ],
+            },
+            {
+                test: /\.(js)$/i,
+                exclude: /node_modules/,
+                use: ["babel-loader"],
+            },
+            {
+                test: /\.(gif|png|jpe?g|gif|svg)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: `images/${filename("ext")}`,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot)$/i,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: `fonts/${filename("ext")}`,
+                        },
+                    },
+                ],
             },
         ],
     },
