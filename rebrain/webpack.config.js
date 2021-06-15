@@ -7,6 +7,7 @@ const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugi
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack");
 const HtmlWebpackPugPlugin = require("html-webpack-pug-plugin");
+const webpack = require("webpack");
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
@@ -53,7 +54,16 @@ const plugins = () => {
                     from: path.resolve(__dirname, "src/assets"),
                     to: path.resolve(__dirname, "build"),
                 },
+                {
+                    from: path.resolve(__dirname, "src/images"),
+                    to: path.resolve(__dirname, "build/images"),
+                },
             ],
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
         }),
     ];
 
@@ -162,7 +172,7 @@ module.exports = {
                     {
                         loader: "file-loader",
                         options: {
-                            name: '[path][name].[ext]?[contenthash]',
+                            name: "[path][name].[ext]?[contenthash]",
                         },
                     },
                 ],

@@ -4,8 +4,26 @@ html
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")
+    link(rel="icon" href="favicon.ico" type="image/x-icon")
     title Rebrain
 body
+    div#preloader
+      div.sk-chasing-dots
+        div(class="sk-child sk-dot-1")
+        div(class="sk-child sk-dot-2")
     include components/header.pug
 
     include components/greeting.pug
+    include components/python.pug
+    include components/contest.pug
+    include components/program.pug
+    include components/second-contest.pug
+    include components/workshop.pug
+    include components/course.pug
+    include components/why-workshop.pug
+    include components/author.pug
+    include components/comment.pug
+    include components/coming-soon.pug
+    
+    include components/footer.pug
