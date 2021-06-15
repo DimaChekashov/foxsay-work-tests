@@ -29,7 +29,6 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^9.0.0",
-    "imagemin-webpack": "^5.1.1",
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "^6.0.0",
@@ -51,6 +50,8 @@
     "jquery": "^3.6.0",
     "normalize.css": "^8.0.1",
     "owl.carousel": "^2.3.4",
+    "postcss-loader": "^6.1.0",
+    "postcss-preset-env": "^6.7.0",
     "simple-pug-loader": "^0.1.2"
   }
 }

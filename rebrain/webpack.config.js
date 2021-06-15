@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const OptimizeCssAssetWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const ImageminPlugin = require("imagemin-webpack");
 const HtmlWebpackPugPlugin = require("html-webpack-pug-plugin");
 const webpack = require("webpack");
 
@@ -67,31 +66,6 @@ const plugins = () => {
         }),
     ];
 
-    if (isProd) {
-        basePlugins.push(
-            new ImageminPlugin({
-                bail: false,
-                cache: true,
-                imageminOptions: {
-                    plugins: [
-                        ["gifsicle", { interlaced: true }],
-                        ["jpegtran", { progressive: true }],
-                        ["optipng", { optimizationLevel: 5 }],
-                        [
-                            "svgo",
-                            {
-                                plugins: [
-                                    {
-                                        removeViewBox: false,
-                                    },
-                                ],
-                            },
-                        ],
-                    ],
-                },
-            })
-        );
-    }
 
     return basePlugins;
 };
@@ -158,6 +132,7 @@ module.exports = {
                         },
                     },
                     "css-loader",
+                    "postcss-loader",
                     "sass-loader",
                 ],
             },
