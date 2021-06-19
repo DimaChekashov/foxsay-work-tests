@@ -7,7 +7,6 @@
 node_modules/
 dist/
 bower_components/
-build/
 zip/
 
 # Compiled Java class files

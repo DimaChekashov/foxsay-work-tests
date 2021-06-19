@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="./css/main.css?v=1624114270336">
+	</head>
+	<body>
+		<div class="blank">
+			<div class="blank__header">
+				<div class="blank__avatar"><img src="images/my-avatar.jpg" alt="Avatar"></div>
+				<div class="blank__inputs">
+					<div class="form-control blank__inputs__item">
+						<input class="blank__input" type="text" data-input="Дмитрий" autocomplete="off">
+						<label>Имя</label>
+					</div>
+					<div class="form-control blank__inputs__item">
+						<input class="blank__input" type="text" data-input="07.03.1999" autocomplete="off">
+						<label>Дата рождения</label>
+					</div>
+					<div class="form-control blank__inputs__item">
+						<input class="blank__input" type="text" data-input="Заинск" autocomplete="off">
+						<label>Город</label>
+					</div>
+					<div class="form-control blank__inputs__item">
+						<input class="blank__input" type="text" data-input="+79196340584" autocomplete="off">
+						<label>Контактные данные</label>
+					</div>
+				</div>
+			</div>
+			<div class="blank__body">
+				<h3 class="blank__body__title">Навыки</h3>
+				<div class="blank__skills">
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">Html5</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">SASS</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">vANILLAJS</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">GIT</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">css3</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox">
+							<div class="blank-checkbox__text">LESS</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox">
+							<div class="blank-checkbox__text">aNGULAR</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox">
+							<div class="blank-checkbox__text">fOUNDATION</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">БЭМ</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">gULP</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">JQUERY</div>
+						</label>
+					</div>
+					<div class="blank__skills__item">
+						<label class="blank-checkbox">
+							<input type="checkbox" checked-data="true">
+							<div class="blank-checkbox__text">BOOTSTRAP</div>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="blank__bottom">
+				<div class="blank__graph">
+					<div class="blank__graph__bg"></div>
+					<div class="blank__graph__arrow" id="graph-arr"></div>
+				</div>
+				<div class="blank__level">
+					<h3 class="blank__level__title">Мой уровень владения<br> Java Script</h3>
+					<div class="blank__level__count" data-target="85" id="level-counter">85</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1624114270336"></script>
+		<script src="./js/main.js?v=1624114270336"></script>
+	</body>
+</html>
