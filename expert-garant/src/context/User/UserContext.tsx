@@ -2,14 +2,11 @@ import { createContext } from "react";
 import User from "../../types/User";
 
 interface UserContextType {
+    user: User;
     updateUser: (user: User) => void;
-    getUser: () => User;
 }
 
 export const UserContext = createContext<UserContextType>({
+    user: { username: "", password: "" },
     updateUser: () => {},
-    getUser: () => ({
-        username: "",
-        password: ""
-    }),
 });

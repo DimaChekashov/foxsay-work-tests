@@ -1,13 +1,37 @@
 import { Box, Button, Card, CardContent, Container, TextField, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UserContext } from '../../context/User/UserContext';
+import { AuthContext } from '../../context/Auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [usernameError, setUsernameError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  
+  const { user } = useContext(UserContext);
+  const { login, isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/", { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleLogin = () => {
+    if (user.username !== username) {
+      setUsernameError(true);
+      return;
+    }
 
+    if (user.password !== password) {
+      setPasswordError(true);
+      return;
+    }
+
+    login();
   }
 
   return (
@@ -23,8 +47,25 @@ function Login() {
         <Card variant="outlined">
           <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, padding: 3 }}>
             <Typography variant="h4" gutterBottom>Login</Typography>
-            <TextField label="Username" variant="outlined" />
-            <TextField label="Password" variant="outlined" type="password" />
+            <TextField 
+              error={usernameError} 
+              label="Username" 
+              variant="outlined" 
+              onChange={(e) => {
+                setUsername(e.target.value);
+                setUsernameError(false);
+              }} 
+            />
+            <TextField 
+              error={passwordError} 
+              label="Password" 
+              variant="outlined" 
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setPasswordError(false);
+              }} 
+              type="password" 
+            />
             <Button variant="contained" onClick={handleLogin}>Login</Button>
           </CardContent>
         </Card>

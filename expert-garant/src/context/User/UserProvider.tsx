@@ -4,13 +4,14 @@ import User from "../../types/User";
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User>({username: "", password: ""});
-
     
     useEffect(() => {
         const gigaUser = localStorage.getItem("gigaUser");
 
         if (!gigaUser) {
             updateUser({username: "admin", password: "123456"});
+        } else {
+            setUser(JSON.parse(gigaUser));
         }
     }, []);
 
@@ -19,12 +20,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(user);
     }
 
-    const getUser = (): User => {
-        return user;
-    }
-
     return (
-        <UserContext.Provider value={{ updateUser, getUser }}>
+        <UserContext.Provider value={{ updateUser, user }}>
             {children}
         </UserContext.Provider>
     );
