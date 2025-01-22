@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Header />
-        <Box component="main" sx={{ p: 3 }}>
+        <Box component="main">
           <Toolbar />
           <Routes>
             <Route 

@@ -38,10 +38,7 @@ function ResetPassword() {
   return (
     <Container
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
+        paddingTop: 8,
       }}
     >
       <Box sx={{ maxWidth: 500, width: '100%', margin: '0 auto' }}>
