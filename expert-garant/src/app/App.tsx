@@ -10,7 +10,7 @@ import { Box, Toolbar } from '@mui/material';
 
 function App() {
   return (
-    <HashRouter basename={window.location.pathname + "/#"}>
+    <HashRouter basename={window.location.pathname + "/"}>
       <AuthProvider>
         <Header />
         <Box component="main">
