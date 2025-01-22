@@ -5,29 +5,35 @@ import Home from '../pages/Home/Home';
 import ResetPassword from '../pages/ResetPassword/ResetPassword';
 import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute';
 import { AuthProvider } from '../context/Auth/AuthProvider';
+import Header from '../components/Header/Header';
+import { Box, Toolbar } from '@mui/material';
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route 
-            path="/login" 
-            element={<Login />} 
-          />
-          <Route 
-            path="/reset-password" 
-            element={<ResetPassword />}
-          />
-        </Routes>
+        <Header />
+        <Box component="main" sx={{ p: 3 }}>
+          <Toolbar />
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/login" 
+              element={<Login />} 
+            />
+            <Route 
+              path="/reset-password" 
+              element={<ResetPassword />}
+            />
+          </Routes>
+        </Box>
       </AuthProvider>
     </BrowserRouter>
   );
