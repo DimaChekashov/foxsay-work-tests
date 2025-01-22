@@ -10,7 +10,7 @@ import { Box, Toolbar } from '@mui/material';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={window.location.pathname}>
       <AuthProvider>
         <Header />
         <Box component="main">
