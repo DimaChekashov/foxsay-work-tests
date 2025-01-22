@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
@@ -10,7 +10,7 @@ import { Box, Toolbar } from '@mui/material';
 
 function App() {
   return (
-    <BrowserRouter basename={window.location.pathname}>
+    <HashRouter basename={window.location.pathname}>
       <AuthProvider>
         <Header />
         <Box component="main">
@@ -35,7 +35,7 @@ function App() {
           </Routes>
         </Box>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
