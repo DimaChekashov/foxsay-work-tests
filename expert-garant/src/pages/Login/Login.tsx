@@ -1,8 +1,8 @@
-import { Box, Button, Card, CardContent, Container, TextField, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, Container, Divider, TextField, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/User/UserContext';
 import { AuthContext } from '../../context/Auth/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   const [username, setUsername] = useState<string>("");
@@ -67,6 +67,8 @@ function Login() {
               type="password" 
             />
             <Button variant="contained" onClick={handleLogin}>Login</Button>
+            <Divider />
+            <Link to="/reset-password">Reset Password</Link>
           </CardContent>
         </Card>
       </Box>
