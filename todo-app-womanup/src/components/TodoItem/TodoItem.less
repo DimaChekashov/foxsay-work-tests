@@ -1,0 +1,33 @@
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px;
+    padding: 14px 20px;
+    cursor: pointer;
+    &__name {
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    &__date {
+        font-size: 14px;
+        line-height: 1;
+        white-space: nowrap;
+    }
+    &.failed {
+        background-color: var(--error-color);
+    }
+    &.selected {
+        background-color: #02396f;
+    }
+    &.success {
+        background-color: var(--success-color);
+    }
+}

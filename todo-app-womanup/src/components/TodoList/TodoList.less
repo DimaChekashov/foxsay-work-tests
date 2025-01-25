@@ -1,0 +1,17 @@
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: var(--card-border-radius);
+    overflow: auto;
+    height: 100%;
+}
+
+@media screen and (max-width: 870px) {
+    .todo-list {
+        height: auto;
+        min-height: 150px;
+    }
+}
