@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup 3</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__bar">
+                <h2 class="header__title">Startup 3</h2>
+                <button type="button" class="header__toggle"></button>
+                <nav class="navbar">
+                    <ul class="navigation">
+                        <li>
+                            <a href="#" class="navigation__link">Subscribe</a>
+                        </li>
+                        <li>
+                            <a href="#" class="navigation__link">Features</a>
+                        </li>
+                        <li>
+                            <button type="button" class="signup-btn">Sign Up</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="greeting">
+        <div class="container">
+            <h2 class="greeting__title">Let’s make design<br> fast and easy</h2>
+            <p class="greeting__desc">The most important part of the Startup is the samples. The samples form a set of 25 usable pages you can use as is or you can add new blocks from UI Kit.</p>
+            <form class="signup-form">
+                <input type="email" class="signup-form__input" placeholder="Your email" required>
+                <button type="submit" class="signup-form__submit">Send</button>
+                <p class="signup-form__info">By signing up, you agree to the Terms of Service</p>
+            </form>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container container_projects">
+            <h2 class="projects__title">Trusted by over 500 great businesses</h2>
+            <p class="projects__desc">Startup Framework includes great form options for your startup projects. Each component is coded for web which makes creating a website quick and easy.</p>
+            <div class="projects__items">
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="second-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+                <div class="projects__item" data-popup="first-popup">
+                    <img src="./images/starbucks-logo.png" class="projects__img" alt="Starbucks logo">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer class="footer">
+        <div class="container">
+            <h2 class="footer__title">Bootstrap Based</h2>
+            <p class="footer__desc">Why is this important? Bootstrap is a reliable and proven tool for developers, validated in the field. It reminds us of Superman, a friend you can trust completely with a serious project.</p>
+            <div class="advantages__items">
+                <div class="advantages__item">
+                    <h3 class="advantages__title">OOCSS Approach</h3>
+                    <p class="advantages__desc">Object-based coding method encourages code reuse and creates faster and more efficient style sheets, which are easier to add to and maintain.</p>
+                </div>
+                <div class="advantages__item">
+                    <h3 class="advantages__title">Bootstrap 3 Support</h3>
+                    <p class="advantages__desc">Now Startup Framework is supporting Bootstrap 3. And we planned to support Bootstrap 4.</p>
+                </div>
+                <div class="advantages__item">
+                    <h3 class="advantages__title">Save Time</h3>
+                    <p class="advantages__desc">Generate new ideas; design new projects. Spend your time creating, not building basic parts.</p>
+                </div>
+                <div class="advantages__item" >
+                    <h3 class="advantages__title">Configurable Color Scheme</h3>
+                    <p class="advantages__desc">You can change any or all of the colors if you wish. Flat UI is easy to configure and match to your brand’s color scheme.</p>
+                </div>
+                <div class="advantages__item">
+                    <h3 class="advantages__title">Easy Installation</h3>
+                    <p class="advantages__desc">Upload all Flat UI files and paste one line of code at the bottom of your &lt;head&gt; tag. That’s it!</p>
+                </div>
+                <div class="advantages__item">
+                    <h3 class="advantages__title">Perfect Matching</h3>
+                    <p class="advantages__desc">Components are made using the same styles and match each other wonderfully.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="popup" id="first-popup">
+        <div class="popup__header">
+            <h2 class="popup__title">Starbucks</h2>
+            <button class="popup__close"></button>
+        </div>
+        <p class="popup__text">Starbucks Corporation is an American multinational chain of coffeehouses and roastery reserves headquartered in Seattle, Washington. As the world's largest coffeehouse chain, Starbucks is seen to be the major representation of the United States' second wave of coffee culture.</p>
+    </div>
+    <div class="popup" id="second-popup">
+        <div class="popup__header">
+            <h2 class="popup__title">Starbucks 2</h2>
+            <button class="popup__close"></button>
+        </div>
+        <p class="popup__text">Starbucks Corporation is an American multinational chain of coffeehouses and roastery reserves headquartered in Seattle, Washington. As the world's largest coffeehouse chain, Starbucks is seen to be the major representation of the United States' second wave of coffee culture.</p>
+    </div>
+    <div id="overlay"></div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
