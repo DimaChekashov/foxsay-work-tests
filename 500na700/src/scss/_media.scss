@@ -1,0 +1,215 @@
+@media screen and (max-width: 700px) {
+    .title {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    /* header */
+
+    .header {
+        padding: 35px 0 65px;
+        &__btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 0;
+            background: transparent;
+            position: relative;
+            z-index: 13;
+            &::after {
+                content: "";
+                width: 36px;
+                height: 3px;
+                background-color: #FFFFFF;
+                display: inline-block;
+                position: absolute;
+                top: 5px;
+                transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+                
+            }
+            &::before {
+                content: "";
+                width: 36px;
+                height: 3px;
+                background-color: #FFFFFF;
+                display: inline-block;
+                position: absolute;
+                transition: transform 0.3s ease-in-out;
+            }
+            &-bar {
+                width: 18px;
+                height: 3px;
+                background-color: #FFFFFF;
+                display: inline-block;
+                position: absolute;
+                bottom: 5px;
+                right: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+        }
+        .row {
+            justify-content: space-between;
+        }
+        &.active {
+            .header__btn {
+                &::after {
+                    transform: rotate(45deg);
+                    top: 16.5px;
+                }
+                &::before {
+                    transform: rotate(-45deg);
+                }
+                &-bar {
+                    opacity: 0;
+                }
+            }
+            .nav {
+                transform: translate(0);
+            }
+            .overlay {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    .nav {
+        background-color: var(--background-color);
+        position: fixed;
+        z-index: 12;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 250px;
+        padding: 120px 20px 20px 50px;
+        transform: translate(100%);
+        transition: transform 0.3s ease-in-out;
+        overflow-y: auto;
+        &__list {
+            flex-direction: column;
+            gap: 40px;
+            &-link {
+                border: 0;
+                padding: 0;
+            }
+        }
+        &__inner {
+            // display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            position: static;
+            padding: 30px 0 0 32px;
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .body-padding-top {
+        padding-top: 153.4px;
+    }
+
+    /* / header */
+
+    /* slider */
+
+    .slider {
+        padding: 0 20px;
+        &__title {
+            font-size: 40px;
+            left: 20px;
+            bottom: 159px;
+        }
+        .item {
+            height: 450px;
+        }
+    }
+
+    /* / slider */
+
+    /* faq */
+
+    .faq {
+        .row {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+
+    /* / faq */
+
+
+    /* news */
+
+    .news {
+        overflow: hidden;
+        .owl-carousel {
+            .owl-stage-outer {
+                overflow: visible;
+            }
+        }
+        &__slider {
+            display: block;
+            max-width: 230px;
+        }
+        &__main {
+            display: none;
+        }
+    }
+
+    /* / news */
+
+    /* subscribe */
+
+    .subscribe {
+        padding: 30px 0 50px;
+        &__desc {
+            margin-bottom: 20px;
+        }
+        &__form {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+
+    /* / subscribe */
+
+    /* footer */
+
+    .footer {
+        padding: 80px 0 167px;
+        .row {
+            gap: 41px;
+            flex-direction: column;
+        }
+        &__social {
+            justify-content: center;
+        }
+    }
+
+    /* / footer */
+}
+
+@media screen and (min-width: 700px) and (max-width: 850px) {
+    .header {
+        .row {
+            gap: 80px;
+        }
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1100px) {
+    .container {
+        max-width: 800px;
+    }
+
+    .news__item-img {
+        height: 180px;
+    }
+}
+
+@media screen and (min-width: 700px) {
+
+}
