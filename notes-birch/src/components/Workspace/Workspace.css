@@ -1,0 +1,101 @@
+.workspace {
+    background-color: var(--background-color);
+}
+
+.editor .editor-toolbar {
+    background-color: var(--sidebar-color);
+    color: var(--font-color);
+    border-radius: 0;
+    border: 0;
+}
+
+.editor .editor-toolbar button {
+    font-size: 18px;
+    height: 40px;
+    min-width: 40px;
+}
+
+.editor .editor-toolbar button:hover,
+.editor .editor-toolbar button.active {
+    background: rgba(92, 92, 92, 0.5);
+    border-color: rgba(92, 92, 92, 1);
+}
+
+.editor .editor-toolbar .separator {
+    margin: 0 10px;
+}
+
+.editor .EasyMDEContainer {
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+}
+
+.editor .EasyMDEContainer .CodeMirror {
+    background-color: var(--background-color);
+    color: var(--font-color);
+    border: 0;
+    border-top: 2px solid var(--divider-color);
+    border-bottom: 2px solid var(--divider-color);
+    border-radius: 0;
+    height: 100%;
+}
+
+.editor .CodeMirror-cursors .CodeMirror-cursor {
+    border-left-color: var(--font-color);
+}
+
+.editor .editor-statusbar {
+    background-color: var(--sidebar-color);
+    border-radius: 0;
+}
+
+.markdown {
+    height: calc(100vh - 90px);
+    padding: 40px 30px;
+    overflow: auto;
+}
+
+.markdown,
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+    color: var(--font-color);
+}
+
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+    .editor .editor-toolbar button {
+        font-size: 14px;
+        height: 30px;
+        min-width: 30px;
+    }
+
+    .markdown,
+    .editor .EasyMDEContainer  {
+        height: calc(100vh - 65px);
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .editor .editor-toolbar {
+        padding: 5px;
+    }
+
+    .editor .editor-toolbar button {
+        font-size: 15px;
+        height: 30px;
+        min-width: 35px;
+    }
+
+    .markdown {
+        padding: 20px 15px;
+    }
+
+    .markdown,
+    .editor .EasyMDEContainer  {
+        height: calc(100vh - 60px);
+    }
+}
