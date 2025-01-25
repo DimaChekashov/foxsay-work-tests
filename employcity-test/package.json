@@ -1,0 +1,41 @@
+{
+  "name": "planner5d-test",
+  "version": "1.0.0",
+  "description": "planner5d-test website",
+  "main": "index.js",
+  "homepage": "https://dimachekashov.github.io/employcity-test",
+  "scripts": {
+    "start": "gulp watch",
+    "build": "gulp build",
+    "deploy": "gh-pages -d build",
+    "predeploy": "yarn build"
+  },
+  "author": {
+    "name": "Dmitry Chekashov",
+    "email": "foxdima99@gmail.com",
+    "url": "https://fox-say.ru"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cache": "^1.1.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-html": "^5.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^3.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "sass": "^1.47.0"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0",
+    "normalize.css": "^8.0.1"
+  }
+}
