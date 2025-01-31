@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import './App.css';
 import ChatPage from '../pages/ChatPage';
 import LoginPage from '../pages/LoginPage';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 function App() {
   return (
@@ -11,7 +12,10 @@ function App() {
       <div className="pt-20">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<ChatPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<ChatPage />} />
+            </Route>
+
             <Route path="login" element={<LoginPage />} />
           </Routes>
         </BrowserRouter>
