@@ -4,17 +4,16 @@ interface AuthStore {
     idInstance: string;
     apiTokenInstance: string;
     isLoggedIn: boolean;
-    setIdInstance: (idInstance: string) => void;
-    setApiTokenInstance: (apiTokenInstance: string) => void;
+    login: (idInstance: string, apiTokenInstance: string) => void;
+    logout: () => void;
 }
 
 const useAuthStore = create<AuthStore>((set) => ({
     idInstance: "",
     apiTokenInstance: "",
     isLoggedIn: false,
-    setIdInstance: (idInstance: string) => set({ idInstance }),
-    setApiTokenInstance: (apiTokenInstance: string) => set({ apiTokenInstance }),
-    setIsLoggedIn: (isLoggedIn: boolean) => set({ isLoggedIn }),
+    login: (idInstance: string, apiTokenInstance: string) => set({ idInstance, apiTokenInstance, isLoggedIn: true }),
+    logout: () => set({ idInstance: "", apiTokenInstance: "", isLoggedIn: false }),
 }));
 
 export default useAuthStore;
