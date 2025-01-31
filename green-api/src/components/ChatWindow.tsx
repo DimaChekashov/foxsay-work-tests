@@ -1,8 +1,12 @@
-import React from 'react';
+import ChatPanel from './ChatPanel';
+import Messages from './Messages';
 
 function ChatWindow() {
   return (
-    <div>ChatWindow</div>
+    <div className='grid grid-rows-[1fr_auto]'>
+      <Messages />
+      <ChatPanel />
+    </div>
   );
 }
 

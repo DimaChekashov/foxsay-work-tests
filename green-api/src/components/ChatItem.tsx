@@ -6,7 +6,7 @@ type ChatItemProps = {
 
 function ChatItem({ chat }: ChatItemProps) {
   return (
-    <div>ChatItem {chat}</div>
+    <div className='bg-gray-200 inline-block p-3 py-5 text-black border-b border-gray-300 cursor-pointer hover:bg-gray-300'>ChatItem {chat}</div>
   );
 }
 
