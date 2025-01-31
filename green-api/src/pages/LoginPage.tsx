@@ -30,7 +30,7 @@ function LoginPage() {
         onChange={(e) => setApiTokenInstance(e.target.value)}
         className='flex-1 px-4 py-2 rounded outline-none bg-white w-full'
       />
-      <button onClick={handleLogin} className="bg-lime-600 hover:bg-lime-700 transition text-white px-6 py-2 rounded cursor-pointer min-w-[200px]">Вход</button>
+      <button onClick={handleLogin} className="bg-lime-600 hover:bg-lime-700 transition text-white px-6 py-2 rounded cursor-pointer min-w-[200px]">Войти</button>
     </div>
   );
 }
