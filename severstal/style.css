@@ -16,8 +16,6 @@ body {
 }
 
 .table__block-inner {
-    border-top: 1px solid #494949;
-    padding-left: 30px;
     display: none;
 }
 
@@ -28,15 +26,19 @@ body {
 .table__row {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 3fr;
-    background-color: #e9e9e9;
+    background-color: #c7c7c7;
     color: #000000;
     min-height: 50px;
     align-items: center;
     padding: 0 10px;
 }
 
-.table__row_inner {
-    background-color: #cfcdcd;
+.table__block-inner .table__row {
+    background-color: #e1e1e1;
+}
+
+.table__block-inner .table__block-inner .table__row {
+    background-color: #f2f2f2;
 }
 
 .table__row_header {
@@ -50,6 +52,11 @@ body {
 
 .cursor-pointer {
     cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.cursor-pointer:hover {
+    opacity: 0.8;
 }
 
 .table__header {
