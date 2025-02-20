@@ -51,3 +51,25 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+
+.table__header {
+    margin-bottom: 20px;
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox input {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.checkbox label {
+    cursor: pointer;
+}

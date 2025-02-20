@@ -64,6 +64,7 @@ function createTable(data) {
 
         parentBlock.childrens.set(id, {
             block: block,
+            isActive: isActive,
             childrens: new Map()
         });
 
@@ -74,13 +75,23 @@ function createTable(data) {
             addOnClick(parentBlock.block);
         }
 
-        parentBlock.block.querySelector(".table__block-inner").appendChild(block);
+        // parentBlock.block.querySelector(".table__block-inner").appendChild(block);
+    }
+
+    const appendBlocks = ({block, childrens}) => {
+        if (childrens instanceof Map) {
+            childrens.forEach(item => block.querySelector(".table__block-inner").appendChild(appendBlocks(item)));
+        }
+
+        return block;
     }
 
     const render = (rows) => {
         container.innerHTML = "";
 
-        rows.forEach((item) => container.appendChild(item.block))
+        rows.forEach((item) => {
+            container.appendChild(appendBlocks(item));
+        })
     }
 
     const addOnClick = (block) => {
@@ -93,16 +104,52 @@ function createTable(data) {
         });
     }
 
-    data.forEach((item, i) => {
-        if (item.parentId === 0) {
-            blocks.set(item.id, {
-                block: createBlock(item),
-                childrens: new Map()
-            });
-        } else {
-            createInnerBlock(item);
-        }
-        
-        if ((data.length - 1) === i) render(blocks);
-    });
+    const sortDom = (dom) => {
+        const sortChildren = (item) => {
+            if (item.childrens instanceof Map) {
+                item.childrens = new Map([...item.childrens.entries()].sort((a, b) => b[1].isActive - a[1].isActive));
+                
+                item.childrens.forEach(sortChildren);
+            }
+        };
+
+        dom = new Map([...dom.entries()].sort((a, b) => b[1].isActive - a[1].isActive));
+
+        dom.forEach((item) => {
+            sortChildren(item);
+        })
+
+        return dom;
+    }
+
+    const filter = () => {
+        const activeCheckbox = document.getElementById("active-checkbox");
+
+        activeCheckbox.addEventListener("change", () => {
+            if(activeCheckbox.checked) {
+                render(sortDom(blocks))
+            } else {
+                render(blocks);
+            }
+        })
+    }
+
+    const init = (items) => {
+        items.forEach((item, i) => {
+            if (item.parentId === 0) {
+                blocks.set(item.id, {
+                    block: createBlock(item),
+                    isActive: item.isActive,
+                    childrens: new Map()
+                });
+            } else {
+                createInnerBlock(item);
+            }
+            
+            if ((data.length - 1) === i) render(blocks);
+        });
+    }
+
+    init(data);
+    filter();
 }
