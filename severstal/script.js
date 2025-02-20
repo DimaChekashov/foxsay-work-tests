@@ -7,9 +7,7 @@ function createTable(data) {
     const blocks = new Map();
 
     const findParentMap = (parents, parentId) => {
-        if (parents.has(parentId)) {
-            return parents.get(parentId);
-        }
+        if (parents.has(parentId)) return parents.get(parentId);
         
         for (const value of parents.values()) {
             if (value.childrens instanceof Map) {
@@ -62,6 +60,8 @@ function createTable(data) {
 
         const parentBlock = findParentMap(blocks, parentId);
 
+        if (!parentBlock) return;
+
         parentBlock.childrens.set(id, {
             block: block,
             isActive: isActive,
@@ -74,8 +74,6 @@ function createTable(data) {
             parentBlock.block.appendChild(innerBlock);
             addOnClick(parentBlock.block);
         }
-
-        // parentBlock.block.querySelector(".table__block-inner").appendChild(block);
     }
 
     const appendBlocks = ({block, childrens}) => {
@@ -99,7 +97,8 @@ function createTable(data) {
 
         targetElement.classList.add("cursor-pointer");
 
-        targetElement.addEventListener("click", () => {
+        targetElement.addEventListener("click", (e) => {
+            e.stopPropagation();
             block.classList.toggle("show");
         });
     }
@@ -107,19 +106,19 @@ function createTable(data) {
     const sortDom = (dom) => {
         const sortChildren = (item) => {
             if (item.childrens instanceof Map) {
-                item.childrens = new Map([...item.childrens.entries()].sort((a, b) => b[1].isActive - a[1].isActive));
-                
-                item.childrens.forEach(sortChildren);
+                const sortedChildren = new Map([...item.childrens.entries()].sort((a, b) => b[1].isActive - a[1].isActive));
+                item.childrens.clear();
+
+                sortedChildren.forEach((value, key) => item.childrens.set(key, value));
+                item.childrens.forEach(sortChildren)
             }
         };
 
-        dom = new Map([...dom.entries()].sort((a, b) => b[1].isActive - a[1].isActive));
+        const sortedDom = new Map([...dom.entries()].sort((a, b) => b[1].isActive - a[1].isActive));
 
-        dom.forEach((item) => {
-            sortChildren(item);
-        })
+        sortedDom.forEach(sortChildren);
 
-        return dom;
+        return sortedDom;
     }
 
     const filter = () => {
@@ -127,9 +126,9 @@ function createTable(data) {
 
         activeCheckbox.addEventListener("change", () => {
             if(activeCheckbox.checked) {
-                render(sortDom(blocks))
+                render(sortDom(new Map(blocks)))
             } else {
-                render(blocks);
+                render(new Map(blocks));
             }
         })
     }
