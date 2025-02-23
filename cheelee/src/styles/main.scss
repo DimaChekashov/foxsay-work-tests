@@ -1,1 +1,7 @@
-@use "components/_header.scss";
+@use "reset";
+@use "fonts";
+@use "settings";
+
+// Components
+@use "components/header";
+@use "components/greeting";

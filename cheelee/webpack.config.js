@@ -1,6 +1,4 @@
 const PugPlugin = require('pug-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 module.exports = {
