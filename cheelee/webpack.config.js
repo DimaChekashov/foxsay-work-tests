@@ -1,13 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PugPlugin = require('pug-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-    entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/main.bundle.js',
         clean: true
     },
     devServer: {
@@ -18,9 +16,12 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.pug$/,
+                loader: PugPlugin.loader,
+            },
+            {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     "sass-loader"
                 ]
@@ -28,6 +29,9 @@ module.exports = {
             {
               test: /\.(png|svg|jpg|jpeg|gif)$/i,
               type: 'asset/resource',
+              generator: {
+                filename: 'images/[name][ext]',
+              },
             },
             {
               test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -36,19 +40,18 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            inject: 'body',
-            scriptLoading: 'blocking',
-            minify: false,
-        }),
-        new MiniCssExtractPlugin({
-            filename: './styles/main.css',
-        }),
-        new CopyPlugin({
-            patterns: [
-                { from: "src/images", to: "images" },
-            ],
+        new PugPlugin({
+            entry: {
+                index: 'src/index.pug',
+            },
+            js: {
+                filename: 'js/main.js',
+                inline: false,
+            },
+            css: {
+                filename: 'styles/main.css',
+                inline: false,
+            },
         }),
     ],
 };
