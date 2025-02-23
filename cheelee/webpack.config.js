@@ -9,9 +9,12 @@ module.exports = {
         clean: true
     },
     devServer: {
-        static: './dist',
+        static: path.resolve(__dirname, 'dist'),
         port: 3000,
-        open: true
+        open: true,
+        hot: true,
+        liveReload: true,
+        watchFiles: ['src/**/*', 'index.pug'],
     },
     module: {
         rules: [
