@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 .header {
     background: rgb(20,1,50);
     background: linear-gradient(0deg, rgba(20,1,50,0) 0%, rgba(20,1,50,1) 100%);
@@ -22,19 +24,19 @@
         }
         &-item {
             a {
-                color: #5E636E;
+                color: $text-secondary;
                 font-size: 1rem;
                 line-height: 1.21875;
                 text-decoration: none;
                 transition: color 0.2s ease-in-out;
                 &:hover {
-                    color: #ffffff;
+                    color: $white-color;
                 }
             }
             &_primary {
                 a {
                     font-weight: 700;
-                    color: #01FFC2;
+                    color: $primary-color;
                 }
             }
         }
@@ -60,13 +62,12 @@
             margin-bottom: 1px;
         }
         &-cost {
-            color: #FFFFFF;
+            color: $white-color;
             font-weight: 700;
             font-size: 1rem;
             line-height: 1.21875;
             position: relative;
             padding-right: 9px;
-            position: relative;
             &_up {
                 &::after {
                     content: "";
@@ -92,7 +93,7 @@
         margin-left: 20px;
     }
     &__lang-select {
-        color: #5E636E;
+        color: $text-secondary;
         width: 58px;
         .select-trigger {
             border: none;
@@ -106,7 +107,7 @@
                 display: inline-block;
                 width: 10px;
                 height: 5px;
-                background-color: #5E636E;
+                background-color: $text-secondary;
                 position: absolute;
                 top: calc(50% - 3.5px);
                 right: 0;
@@ -122,7 +123,7 @@
                 padding: 5px 14px 5px 0;
                 transition: color 0.2s ease-in-out;
                 &:hover {
-                    color: #ffffff;
+                    color: $white-color;
                     background-color: transparent;
                 }
             }
