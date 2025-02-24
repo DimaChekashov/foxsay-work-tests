@@ -31,8 +31,8 @@
     &__title {
         color: $text-primary;
         font-weight: 900;
-        font-size: 56px;
-        line-height: 1.21875;
+        font-size: 3.5rem;
+        line-height: $heading-line-height;
         margin: auto 0 5px 0;
         span {
             color: $primary-color;
@@ -41,8 +41,8 @@
     &__subtitle {
         color: $text-primary;
         font-weight: 700;
-        font-size: 26px;
-        line-height: 1.21875;
+        font-size: $text-font-size;
+        line-height: $heading-line-height;
         margin: 0;
     }
     &__play {
@@ -50,8 +50,8 @@
         &-heading {
             color: $white-color;
             font-weight: 700;
-            font-size: 20px;
-            line-height: 1.21875;
+            font-size: 1.25rem;
+            line-height: $heading-line-height;
             margin: 12px 0 0;
         }
         &-icon {

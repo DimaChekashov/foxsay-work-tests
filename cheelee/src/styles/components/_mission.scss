@@ -10,15 +10,15 @@
     }
     &__text {
         color: $text-primary;
-        font-size: 26px;
-        line-height: 1.4615;
+        font-size: $text-font-size;
+        line-height: $text-med-line-height;
         margin-bottom: 26px;
         strong {
             font-weight: 700;
         }
         &_small {
-            font-size: 18px;
-            line-height: 1.833;
+            font-size: $text-small-font-size;
+            line-height: $text-line-height;
         }
     }
     &__actions {
@@ -37,14 +37,14 @@
             color: rgba(113, 86, 253, 0.2);
             font-weight: 900;
             line-height: 1;
-            font-size: 100px;
+            font-size: 6.25rem;
             margin: 0;
         }
         &-heading {
             color: $text-primary;
             font-weight: 700;
-            font-size: 26px;
-            line-height: 1.4615;
+            font-size: $text-font-size;
+            line-height: $text-med-line-height;
             margin: 0;
             span {
                 color: $primary-color;
@@ -53,8 +53,8 @@
         &-text {
             color: $text-primary;
             font-weight: 400;
-            font-size: 18px;
-            line-height: 1.833;
+            font-size: $text-small-font-size;
+            line-height: $text-line-height;
             margin: 10px 0 0;
             b {
                 font-weight: 700;
@@ -88,8 +88,8 @@
         margin: 123px 0 100px;
         &-text {
             color: $text-primary;
-            font-size: 18px;
-            line-height: 1.833;
+            font-size: $text-small-font-size;
+            line-height: $text-line-height;
             margin-bottom: 26px;   
         }
     }
@@ -98,8 +98,8 @@
 .title {
     color: $text-primary;
     font-weight: 900;
-    font-size: 72px;
-    line-height: 1.21875;
+    font-size: 4.5rem;
+    line-height: $heading-line-height;
     margin-bottom: 40px;
     span {
         color: $primary-color;
@@ -112,8 +112,8 @@
 .subtitle {
     color: $text-primary;
     font-weight: 700;
-    font-size: 26px;
-    line-height: 1.21875;
+    font-size: $text-font-size;
+    line-height: $heading-line-height;
     margin: 17px 0 44px;
     span {
         color: $primary-color;

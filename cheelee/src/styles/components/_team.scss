@@ -11,8 +11,8 @@
     &__title {
         color: $text-primary;
         font-weight: 700;
-        font-size: 26px;
-        line-height: 1.4615;
+        font-size: $text-font-size;
+        line-height: $text-med-line-height;
         margin-bottom: 20px;
         max-width: 300px;
         span {
@@ -21,8 +21,8 @@
     }
     &__text {
         color: $text-primary;
-        font-size: 18px;
-        line-height: 1.833;
+        font-size: $text-small-font-size;
+        line-height: $text-line-height;
         margin-bottom: 0;
         max-width: 365px;
     }

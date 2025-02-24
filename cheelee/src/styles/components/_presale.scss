@@ -97,8 +97,8 @@
     &__heading {
         color: $text-primary;
         font-weight: 700;
-        font-size: 26px;
-        line-height: 1.4615;
+        font-size: $text-font-size;
+        line-height: $text-med-line-height;
         margin-bottom: 0;
         span {
             color: $primary-color;
@@ -108,7 +108,7 @@
         background-color: $border-color;
         color: $text-primary;
         font-weight: 700;
-        font-size: 20px;
+        font-size: 1.25rem;
         line-height: 1.219;
         letter-spacing: 0.03em;
         border: 0;

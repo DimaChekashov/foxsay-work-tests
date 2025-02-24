@@ -26,7 +26,7 @@
             a {
                 color: $text-secondary;
                 font-size: 1rem;
-                line-height: 1.21875;
+                line-height: $heading-line-height;
                 text-decoration: none;
                 transition: color 0.2s ease-in-out;
                 &:hover {
@@ -58,14 +58,14 @@
             color: #E5F7FF;
             font-weight: 400;
             font-size: 0.5rem;
-            line-height: 1.21875;
+            line-height: $heading-line-height;
             margin-bottom: 1px;
         }
         &-cost {
             color: $white-color;
             font-weight: 700;
             font-size: 1rem;
-            line-height: 1.21875;
+            line-height: $heading-line-height;
             position: relative;
             padding-right: 9px;
             &_up {
