@@ -1,3 +1,119 @@
 .presale {
-    
+    padding: 16px 0 0;
+    &__block {
+        background: rgb(255,13,255);
+        background: linear-gradient(0deg, rgba(255,13,255,0.2) 0%, rgba(113,86,251,0.2) 100%);
+        border-radius: 40px;
+        position: relative;
+        &-frame {
+            padding: 52px 117px 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &::before, &::after {
+                content: "";
+                display: block;
+                height: 1px;
+                width: calc(100% - 180px - 300px);
+                background-color: #7156FB;
+                position: absolute;
+            }
+            &::before {
+                top: 0;
+                right: 90px;
+            }
+            &::after {
+                bottom: 0;
+                left: 90px;
+            }
+        }
+        &::after, &::before {
+            content: "";
+            display: inline-block;
+            width: 90px;
+            height: calc(100% - 2px);
+            position: absolute;
+            top: 0;
+            border: 1px solid #7156FB;
+        }
+        &::after {
+            border-right: 0;
+            border-bottom-left-radius: 40px;
+            border-top-left-radius: 40px;
+            left: 0;
+        }
+        &::before {
+            border-left: 0;
+            border-bottom-right-radius: 40px;
+            border-top-right-radius: 40px;
+            right: 0;
+        }
+        &-arr {
+            height: 18px;
+            width: 300px;
+            gap: 6px;
+            position: relative;
+            position: absolute;
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 36px;
+                height: 18px;
+                background: url("../images/icons/presale-icon.svg") no-repeat center center;
+                position: absolute;
+                right: 8px;
+                top: 1px;
+            }
+            &::after {
+                content: "";
+                display: block;
+                width: 250px;
+                height: 1px;
+                border-bottom: 1px dashed #7156FB;
+                position: absolute;
+                top: 50%;
+                left: 0;
+            }
+            &_top {
+                left: 90px;
+                top: -10px;
+            }
+            &_bot {
+                right: 90px;
+                bottom: -7px;
+                &::before {
+                    transform: rotate(180deg);
+                    right: auto;
+                    left: 8px;
+                }
+                &::after {
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+    }
+    &__heading {
+        color: #FCFCFD;
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 1.4615;
+        margin-bottom: 0;
+        span {
+            color: #01FFC2;
+        }
+    }
+    &__btn {
+        background-color: #7156FB;
+        color: #FCFCFD;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 1.219;
+        letter-spacing: 0.03em;
+        border: 0;
+        border-radius: 40px;
+        height: 80px;
+        padding: 20px 40px;
+        cursor: pointer;
+    }
 }
