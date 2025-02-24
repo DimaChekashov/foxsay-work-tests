@@ -5,3 +5,44 @@ body {
 	background-color: $background-color;
 	color: $text-primary;
 }
+
+.custom-select {
+	position: relative;
+	width: 200px;
+	font-family: "Montserrat", sans-serif;
+}
+
+.select-trigger {
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.select-options {
+	display: none;
+	position: absolute;
+	width: 100%;
+	background: #fff;
+	border: 1px solid #ccc;
+	margin-top: 5px;
+	list-style: none;
+	padding: 0;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.select-options .option {
+	padding: 10px;
+	cursor: pointer;
+	transition: background 0.3s;
+}
+
+.select-options .option:hover {
+	background: #f0f0f0;
+}
+
+.custom-select.active .select-options {
+	display: block;
+}

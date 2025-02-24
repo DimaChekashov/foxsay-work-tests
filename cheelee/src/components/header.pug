@@ -2,4 +2,36 @@ header.header
     div.container
         a(href="/" class="logo")
             img(src="./images/logo.svg", alt="Logo")
-        
+        nav
+            ul.header__nav-list
+                li.header__nav-item
+                    a(href="#") About us
+                li.header__nav-item
+                    a(href="#") Roadmap
+                li.header__nav-item
+                    a(href="#") Documents
+                li.header__nav-item
+                    a(href="#") F.A.Q.
+                li.header__nav-item
+                    a(href="#") Buy NFT glasses
+        div.header__coins
+            div.header__coin
+                div.header__coin-icon
+                    img(src="./images/icons/cheel.png", alt="cheel icon")
+                div.header__coin-content
+                    div.header__coin-heading CHEEL
+                    div.header__coin-text $8,00
+            div.header__coin
+                div.header__coin-icon
+                    img(src="./images/icons/lee.png", alt="cheel icon")
+                div.header__coin-content
+                    div.header__coin-heading LEE
+                    div.header__coin-text $8,00
+        a(href="#" class="header__certik")
+            img(src="./images/icons/audited.svg", alt="certik")
+        div.custom-select.header__lang-select
+            div.select-trigger EN
+            ul.select-options
+                li.option(data-value="EN") EN
+                li.option(data-value="RU") RU
+            input(type="hidden" name="selected-value" id="selected-value")
