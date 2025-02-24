@@ -1,5 +1,6 @@
 const PugPlugin = require('pug-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -69,6 +70,33 @@ module.exports = {
                     to: "favicon.ico" 
                 },
             ],
+        }),
+        new ImageMinimizerPlugin({
+            minimizer: {
+                implementation: ImageMinimizerPlugin.imageminMinify,
+                options: {
+                    plugins: [
+                        ['gifsicle', { interlaced: true }],
+                        ['mozjpeg', { quality: 80 }],
+                        ['pngquant', { quality: [0.6, 0.8] }],
+                        [
+                            'svgo',
+                            {
+                                plugins: [
+                                    {
+                                        name: 'preset-default',
+                                        params: {
+                                            overrides: {
+                                                removeViewBox: false,
+                                            },
+                                        },
+                                    },
+                                ],
+                            },
+                        ],
+                    ],
+                },
+            },
         }),
     ],
 };
