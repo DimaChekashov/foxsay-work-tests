@@ -1,8 +1,129 @@
 .mission {
+    &__col {
+        &s {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 24px;
+        }
+    }
+    &__text {
+        color: #FCFCFD;
+        font-size: 26px;
+        line-height: 1.4615;
+        margin-bottom: 26px;
+        strong {
+            font-weight: 700;
+        }
+        &_small {
+            font-size: 18px;
+            line-height: 1.833;
+        }
+    }
     &__actions {
-        background: url("../images/desk-block.jpg") no-repeat center center / contain;
+        margin: 62px 0 0;
+        background: url("../images/desk-block.png") no-repeat left calc(100% - 36px) / 723px;
+        display: grid;
+        grid-template-columns: 5fr 4fr 5fr;
+        gap: 51px 101px;
+        grid-template-areas: 
+            "action1 action2 action3"
+            "action1 action2 action4"
+            "action1 action2 action5";
+    }
+    &__action {
+        &-num {
+            color: rgba(113, 86, 253, 0.2);
+            font-weight: 900;
+            line-height: 1;
+            font-size: 100px;
+            margin: 0;
+        }
+        &-heading {
+            color: #FCFCFD;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 1.4615;
+            margin: 0;
+            span {
+                color: #01FFC2;
+            }
+        }
+        &-text {
+            color: #FCFCFD;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.833;
+            margin: 10px 0 0;
+            b {
+                font-weight: 700;
+            }
+        }
+        &:nth-child(1) {
+            grid-area: action1;
+        }
+        &:nth-child(2) {
+            grid-area: action2;
+        }
+        &:nth-child(3) {
+            grid-area: action3;
+        }
+        &:nth-child(4) {
+            grid-area: action4;
+        }
+        &:nth-child(5) {
+            grid-area: action5;
+        }
+        &_nft-icon {
+            position: relative;
+            &::after {
+                content: "";
+                display: inline-block;
+                width: 102px;
+                height: 97px;
+                background: url("../images/icons/ntn-icon.png") no-repeat 0 0 / 102%;
+                position: absolute;
+                top: 252px;
+                right: 8px;
+            }
+            .mission__action-text {
+                max-width: 230px;
+            }
+        }
     }
     &__boxes {
-        background: url("../images/new-box.png") no-repeat center center / contain;
+        background: url("../images/new-box.png") no-repeat center right / contain;
+        padding: 10px 0;
+        margin: 123px 0 100px;
+        &-text {
+            color: #FCFCFD;
+            font-size: 18px;
+            line-height: 1.833;
+            margin-bottom: 26px;   
+        }
+    }
+}
+
+.title {
+    color: #FCFCFD;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1.21875;
+    margin-bottom: 40px;
+    span {
+        color: #01FFC2;
+    }
+    &_boxes-heading {
+        margin-bottom: 20px;
+    }
+}
+
+.subtitle {
+    color: #FCFCFD;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.21875;
+    margin: 17px 0 44px;
+    span {
+        color: #01FFC2;
     }
 }

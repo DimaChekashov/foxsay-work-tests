@@ -56,4 +56,7 @@ body {
 	max-width: 1382px;
 	padding: 0 15px;
 	margin: 0 auto;
+	&_medium {
+		max-width: 1152px;
+	}
 }
