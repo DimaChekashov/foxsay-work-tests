@@ -115,5 +115,9 @@
         height: 80px;
         padding: 20px 40px;
         cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        &:hover {
+            background-color: rgba(114, 86, 251, 0.6);
+        }
     }
 }
