@@ -1,4 +1,5 @@
 const PugPlugin = require('pug-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 module.exports = {
@@ -38,6 +39,13 @@ module.exports = {
               test: /\.(woff|woff2|eot|ttf|otf)$/i,
               type: 'asset/resource',
             },
+            {
+                test: /\.ico$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name][ext]',
+                },
+            },
         ],
     },
     plugins: [
@@ -53,6 +61,14 @@ module.exports = {
                 filename: 'styles/main.css',
                 inline: false,
             },
+        }),
+        new CopyPlugin({
+            patterns: [
+                { 
+                    from: "src/favicon.ico", 
+                    to: "favicon.ico" 
+                },
+            ],
         }),
     ],
 };
