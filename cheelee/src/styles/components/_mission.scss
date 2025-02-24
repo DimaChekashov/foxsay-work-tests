@@ -1,3 +1,5 @@
+@use "../variables" as *;
+
 .mission {
     &__col {
         &s {
@@ -7,7 +9,7 @@
         }
     }
     &__text {
-        color: #FCFCFD;
+        color: $text-primary;
         font-size: 26px;
         line-height: 1.4615;
         margin-bottom: 26px;
@@ -39,17 +41,17 @@
             margin: 0;
         }
         &-heading {
-            color: #FCFCFD;
+            color: $text-primary;
             font-weight: 700;
             font-size: 26px;
             line-height: 1.4615;
             margin: 0;
             span {
-                color: #01FFC2;
+                color: $primary-color;
             }
         }
         &-text {
-            color: #FCFCFD;
+            color: $text-primary;
             font-weight: 400;
             font-size: 18px;
             line-height: 1.833;
@@ -58,20 +60,10 @@
                 font-weight: 700;
             }
         }
-        &:nth-child(1) {
-            grid-area: action1;
-        }
-        &:nth-child(2) {
-            grid-area: action2;
-        }
-        &:nth-child(3) {
-            grid-area: action3;
-        }
-        &:nth-child(4) {
-            grid-area: action4;
-        }
-        &:nth-child(5) {
-            grid-area: action5;
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                grid-area: action#{$i};
+            }
         }
         &_nft-icon {
             position: relative;
@@ -95,7 +87,7 @@
         padding: 10px 0;
         margin: 123px 0 100px;
         &-text {
-            color: #FCFCFD;
+            color: $text-primary;
             font-size: 18px;
             line-height: 1.833;
             margin-bottom: 26px;   
@@ -104,13 +96,13 @@
 }
 
 .title {
-    color: #FCFCFD;
+    color: $text-primary;
     font-weight: 900;
     font-size: 72px;
     line-height: 1.21875;
     margin-bottom: 40px;
     span {
-        color: #01FFC2;
+        color: $primary-color;
     }
     &_boxes-heading {
         margin-bottom: 20px;
@@ -118,12 +110,12 @@
 }
 
 .subtitle {
-    color: #FCFCFD;
+    color: $text-primary;
     font-weight: 700;
     font-size: 26px;
     line-height: 1.21875;
     margin: 17px 0 44px;
     span {
-        color: #01FFC2;
+        color: $primary-color;
     }
 }
