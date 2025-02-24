@@ -2,6 +2,7 @@
     background: url("../images/greeting-section.png") no-repeat center calc(50% + 49px) / contain;
     &__frame {
         height: 100vh;
+        min-height: 850px;
         padding: 220px 0 122px;
         position: relative;
         display: flex;
