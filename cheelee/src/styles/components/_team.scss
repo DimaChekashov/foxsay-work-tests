@@ -1,3 +1,27 @@
 .team {
-    background: url("../images/team-block.jpg") no-repeat center center / contain;
+    background: url("../images/team-block.png") no-repeat calc(50% + 213px) calc(50% - 38px) / contain;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 822px;
+    padding: 65px 0 140px;
+    &__title {
+        color: #FCFCFD;
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 1.4615;
+        margin-bottom: 20px;
+        max-width: 300px;
+        span {
+            color: #01FFC2;
+        }
+    }
+    &__text {
+        color: #FCFCFD;
+        font-size: 18px;
+        line-height: 1.833;
+        margin-bottom: 0;
+        max-width: 365px;
+    }
 }
