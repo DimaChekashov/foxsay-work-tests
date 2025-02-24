@@ -6,7 +6,9 @@ body {
 	color: $text-primary;
 }
 
+// Custom Select
 .custom-select {
+	color: #000;
 	position: relative;
 	width: 200px;
 	font-family: "Montserrat", sans-serif;
@@ -45,4 +47,13 @@ body {
 
 .custom-select.active .select-options {
 	display: block;
+}
+
+// End Custom Select
+
+.container {
+	width: 100%;
+	max-width: 1384px;
+	padding: 0 15px;
+	margin: 0 auto;
 }

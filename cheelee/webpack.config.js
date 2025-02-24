@@ -12,7 +12,7 @@ module.exports = {
         open: true,
         hot: true,
         liveReload: true,
-        watchFiles: ['src/**/*', 'index.pug'],
+        watchFiles: ['src/**/*', 'index.pug', 'main.js'],
     },
     module: {
         rules: [
