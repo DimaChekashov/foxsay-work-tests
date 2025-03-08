@@ -15,6 +15,7 @@ import cleanCSS from 'gulp-clean-css';
 import terser from 'gulp-terser';
 import sourcemaps from 'gulp-sourcemaps';
 import browserSyncPackage from "browser-sync";
+import eslint from "gulp-eslint";
 
 const { src, dest, watch, series } = gulp;
 const sass = gulpSass(dartSass);
@@ -103,6 +104,13 @@ const scripts = {
             .pipe(babel({ presets: ['@babel/preset-env'] }))
             .pipe(terser())
             .pipe(dest(paths.build.libs));
+    },
+    lint: () => {
+        return gulp
+            .src(['src/**/*.js','!node_modules/**'])
+            .pipe(eslint({ configFile: ".eslintrc" }))
+            .pipe(eslint.format())
+            .pipe(eslint.failAfterError());
     }
 }
 
@@ -132,6 +140,7 @@ const assets = {
 }
 
 export const build = series(
+    scripts.lint,
     assets.clean,
     assets.images,
     assets.fonts,
@@ -154,7 +163,7 @@ export const watchTask = () => {
 
     watch("./src/**/*.pug", () => html.pug({isReload: true}));
     watch("./src/scss/**/*.scss", () => styles.scss({isReload: true}));
-    watch("./src/js/**/*.js", () => scripts.js({isReload: true}));
+    watch("./src/js/**/*.js", series(() => scripts.js({isReload: true}), scripts.lint));
     watch("./src/images/**/*", () => assets.images({isReload: true}));
     watch("./src/fonts/**/*", () => assets.fonts({isReload: true}));
 }
