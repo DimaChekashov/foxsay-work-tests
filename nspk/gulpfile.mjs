@@ -1,19 +1,24 @@
-const { src, dest, watch, series } = require("gulp");
-const sass = require('gulp-sass')(require('sass'));
-const concat = require("gulp-concat");
-const rename = require("gulp-rename");
-const del = require("del");
-const imagemin = require("gulp-imagemin");
-const pngquant = require("imagemin-pngquant");
-const cache = require("gulp-cache");
-const autoprefixer = require("gulp-autoprefixer");
-const gulpPug = require("gulp-pug");
-const browserSync = require("browser-sync").create();
-const babel = require('gulp-babel');
-const gulpIf = require('gulp-if');
-const cleanCSS = require('gulp-clean-css');
-const terser = require('gulp-terser');
-const sourcemaps = require('gulp-sourcemaps');
+import gulp from "gulp";
+import gulpSass from 'gulp-sass';
+import dartSass from 'sass';
+import concat from "gulp-concat";
+import rename from "gulp-rename";
+import del from "del";
+import imagemin from "gulp-imagemin";
+import pngquant from "imagemin-pngquant";
+import cache from "gulp-cache";
+import autoprefixer from "gulp-autoprefixer";
+import gulpPug from "gulp-pug";
+import babel from 'gulp-babel';
+import gulpIf from 'gulp-if';
+import cleanCSS from 'gulp-clean-css';
+import terser from 'gulp-terser';
+import sourcemaps from 'gulp-sourcemaps';
+import browserSyncPackage from "browser-sync";
+
+const { src, dest, watch, series } = gulp;
+const sass = gulpSass(dartSass);
+const browserSync = browserSyncPackage.create(); 
 
 const paths = {
     src: {
@@ -30,6 +35,7 @@ const paths = {
         images: 'dist/images',
         fonts: 'dist/fonts',
         libs: 'dist/libs',
+        html: 'dist',
     },
 };
 
@@ -37,7 +43,7 @@ const html = {
     pug: ({ isReload = false }) => {
         return src(paths.src.pug)
             .pipe(gulpPug({pretty: true}))
-            .pipe(dest("dist"))
+            .pipe(dest(paths.build.html))
             .pipe(gulpIf(isReload, browserSync.stream()));
     },
 };
@@ -45,19 +51,20 @@ const html = {
 const styles = {
     scss: ({ isReload = false }) => {
         return src(paths.src.scss)
+            .pipe(sourcemaps.init())
             .pipe(sass().on("error", sass.logError))
             .pipe(gulpIf(!isReload, autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], { cascade: true })))
+            .pipe(sourcemaps.write('.'))
             .pipe(dest(paths.build.css))
             .pipe(gulpIf(isReload, browserSync.stream()));
     },
-    min: ({ isReload = false }) => {
+    min: () => {
         return src("dist/css/main.css")
-            .pipe(sourcemaps.init())
+            .pipe(sourcemaps.init({ loadMaps: true }))
             .pipe(cleanCSS())
             .pipe(sourcemaps.write('.'))
             .pipe(rename({ suffix: ".min" }))
-            .pipe(dest(paths.build.css))
-            .pipe(gulpIf(isReload, browserSync.stream()));
+            .pipe(dest(paths.build.css));
     },
     libsMin: () => {
         return src([
@@ -66,6 +73,7 @@ const styles = {
             "./node_modules/animate.css/animate.css",
         ])
             .pipe(concat("css-libs.min.css"))
+            .pipe(autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], { cascade: true }))
             .pipe(cleanCSS())
             .pipe(dest(paths.build.libs));
     }
@@ -99,8 +107,8 @@ const scripts = {
 }
 
 const assets = {
-    clean: () => del("dist"),
-    favicon: () => src(paths.src.favicon).pipe(dest("dist")),
+    clean: () => del(paths.build.html),
+    favicon: () => src(paths.src.favicon).pipe(dest(paths.build.html)),
     images: ({ isReload = false }) => {
         return src(paths.src.images)
             .pipe(
@@ -123,9 +131,11 @@ const assets = {
     }
 }
 
-exports.build = series(
+export const build = series(
     assets.clean,
     assets.images,
+    assets.fonts,
+    assets.favicon,
     styles.libsMin,
     styles.scss,
     styles.min,
@@ -133,11 +143,9 @@ exports.build = series(
     scripts.js,
     scripts.min,
     html.pug,
-    assets.fonts,
-    assets.favicon
 );
 
-exports.watch = () => {
+export const watchTask = () => {
     browserSync.init({
         server: { baseDir: `dist` },
         notify: false,
@@ -151,4 +159,4 @@ exports.watch = () => {
     watch("./src/fonts/**/*", () => assets.fonts({isReload: true}));
 }
 
-exports.clearCache = () => cache.clearAll();
+export const clearCache = () => cache.clearAll();

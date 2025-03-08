@@ -4,8 +4,9 @@
   "description": "nspk test site",
   "main": "app.js",
   "scripts": {
-    "start": "gulp watch",
-    "build": "gulp build"
+    "start": "gulp watchTask",
+    "build": "gulp build",
+    "clear-cache": "gulp clearCache"
   },
   "author": {
     "name": "Dmitry Chekashov",
