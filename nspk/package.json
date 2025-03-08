@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "gulp watchTask",
-    "build": "gulp build",
-    "clear-cache": "gulp clearCache"
+    "build": "gulp build"
   },
   "author": {
     "name": "Dmitry Chekashov",

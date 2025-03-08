@@ -115,6 +115,7 @@ const scripts = {
 }
 
 const assets = {
+    clearCache: () => cache.clearAll(),
     clean: () => del(paths.build.html),
     favicon: () => src(paths.src.favicon).pipe(dest(paths.build.html)),
     images: ({ isReload = false }) => {
@@ -141,6 +142,7 @@ const assets = {
 
 export const build = series(
     scripts.lint,
+    assets.clearCache,
     assets.clean,
     assets.images,
     assets.fonts,
@@ -167,5 +169,3 @@ export const watchTask = () => {
     watch("./src/images/**/*", () => assets.images({isReload: true}));
     watch("./src/fonts/**/*", () => assets.fonts({isReload: true}));
 }
-
-export const clearCache = () => cache.clearAll();
