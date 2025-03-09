@@ -1,0 +1,116 @@
+@use 'variables' as *;
+
+.mechanism {
+	padding: 65px 0 64px;
+	&-items {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+	&__item {
+		background-color: $background-gray;
+		border-radius: 20px;
+		padding: 24px 20px 24px 84px;
+		position: relative;
+		transition: background-color 0.2s ease-in-out;
+		cursor: pointer;
+		&-icon {
+			position: absolute;
+			top: 24px;
+			left: 20px;
+			border-radius: 8px;
+			width: 48px;
+			height: 48px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			transition: fill 0.2s ease-in-out, background-color 0.2s ease-in-out;
+			svg {
+				transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+			}
+		}
+		&-heading {
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 26px;
+			margin-bottom: 12px;
+		}
+		&-text {
+			font-size: 16px;
+			line-height: 22px;
+			margin-top: 12px;
+		}
+		&_red {
+			.mechanism__item-icon {
+				svg {
+					fill: $color-red;
+				}
+			}
+			&:hover {
+				background-color: $bgcolor-red;
+				.mechanism__item-icon {
+					background-color: $color-red;
+					svg {
+						fill: #ffffff;
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
+		&_violet {
+			.mechanism__item-icon {
+				svg {
+					fill: $color-violet;
+				}
+			}
+			&:hover {
+				background-color: $bgcolor-violet;
+				.mechanism__item-icon {
+					background-color: $color-violet;
+					svg {
+						fill: #ffffff;
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
+		&_orange {
+			.mechanism__item-icon {
+				svg {
+					fill: $color-orange;
+				}
+			}
+			&:hover {
+				background-color: $bgcolor-orange;
+				.mechanism__item-icon {
+					background-color: $color-orange;
+					svg {
+						fill: #ffffff;
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
+		&_blue {
+			.mechanism__item-icon {
+				svg {
+					fill: $color-blue;
+				}
+			}
+			&:hover {
+				background-color: $bgcolor-blue;
+				.mechanism__item-icon {
+					background-color: $color-blue;
+					svg {
+						fill: #ffffff;
+						width: 30px;
+						height: 30px;
+					}
+				}
+			}
+		}
+	}
+}
