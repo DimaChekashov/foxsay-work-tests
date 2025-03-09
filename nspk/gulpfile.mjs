@@ -29,6 +29,7 @@ const paths = {
         scss: 'src/scss/main.scss',
         js: 'src/js/main.js',
         images: 'src/assets/images/**/*.{jpg,png,svg,gif}',
+        imagesConvert: 'src/assets/images/**/*.{jpg,png}',
         pug: 'src/**/*.pug',
         fonts: 'src/assets/fonts/**/*',
         favicon: 'src/*.ico',
@@ -128,7 +129,12 @@ const assets = {
                     imagemin([
                         imagemin.mozjpeg({ quality: 80 }),
                         imagemin.optipng({ optimizationLevel: 3 }),
-                        imagemin.svgo({ plugins: [{ removeViewBox: false }] }),
+                        imagemin.svgo(
+                            { plugins: [
+                                { removeViewBox: false },
+                                { cleanupIDs: false },
+                            ] }
+                        ),
                         pngquant({ quality: [0.6, 0.8] }),
                     ])
                 )
@@ -137,7 +143,7 @@ const assets = {
             .pipe(gulpIf(isReload, browserSync.stream()));
     },
     imagesConvert: ({ isReload = false }) => {
-        return src(paths.src.images)
+        return src(paths.src.imagesConvert)
             .pipe(
                 cache(
                     imagemin([
@@ -147,7 +153,7 @@ const assets = {
             )
             .pipe(extReplace('.webp'))
             .pipe(dest(paths.build.images))
-            .pipe(src(paths.src.images))
+            .pipe(src(paths.src.imagesConvert))
             .pipe(
                 cache(
                     imagemin([

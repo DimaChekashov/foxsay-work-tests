@@ -23,6 +23,10 @@ body {
   font-size: 40px;
   line-height: 1.2;
   margin-bottom: 20px;
+  &_medium {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
 }
 
 .btn {
