@@ -1,0 +1,26 @@
+.payments {
+	padding: 62px 0 64px;
+	&-block {
+		background-color: #F4F0FF;
+		border-radius: 20px;
+		padding: 33px 350px 32px 32px;
+		position: relative;
+	}
+	&-title {
+		margin-bottom: 19px;
+	}
+	&-list {
+		margin-left: 18px;
+		font-size: 18px;
+		line-height: 24px;
+		margin-bottom: 32px;
+		li {
+			margin-bottom: 16px;
+		}
+	}
+	&-img {
+		position: absolute;
+		top: 6px;
+		right: 0;
+	}
+}
