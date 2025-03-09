@@ -1,0 +1,46 @@
+.cases {
+	padding: 65px 0 64px;
+	overflow: hidden;
+	&__item {
+		background-color: #fff;
+		box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.08);
+		border-radius: 20px;
+		padding: 24px 20px 23px;
+		height: 100%;
+		flex: 1;
+		&-icon {
+			margin-bottom: 12px;
+		}	
+		&-heading {
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 26px;
+			margin-bottom: 17px;
+		}
+		&-list {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			font-size: 16px;
+			line-height: 22px;
+			li {
+				margin-bottom: 10px;
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	.owl-carousel {
+		.owl-stage-outer {
+			overflow: visible !important;
+		}
+		.owl-stage {
+			display: flex;
+		  align-items: stretch;
+		}
+		.owl-item {
+			display: flex;
+		}
+	}
+}
