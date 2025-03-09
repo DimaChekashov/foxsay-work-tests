@@ -1,10 +1,12 @@
 import gulp from "gulp";
 import gulpSass from 'gulp-sass';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 import concat from "gulp-concat";
 import rename from "gulp-rename";
 import del from "del";
 import imagemin from "gulp-imagemin";
+import imageminWebp from "imagemin-webp";
+import imageminAvif from "imagemin-avif";
 import pngquant from "imagemin-pngquant";
 import cache from "gulp-cache";
 import autoprefixer from "gulp-autoprefixer";
@@ -16,6 +18,7 @@ import terser from 'gulp-terser';
 import sourcemaps from 'gulp-sourcemaps';
 import browserSyncPackage from "browser-sync";
 import eslint from "gulp-eslint";
+import extReplace from "gulp-ext-replace";
 
 const { src, dest, watch, series } = gulp;
 const sass = gulpSass(dartSass);
@@ -25,7 +28,7 @@ const paths = {
     src: {
         scss: 'src/scss/main.scss',
         js: 'src/js/main.js',
-        images: 'src/assets/images/**/*',
+        images: 'src/assets/images/**/*.{jpg,png,svg,gif}',
         pug: 'src/**/*.pug',
         fonts: 'src/assets/fonts/**/*',
         favicon: 'src/*.ico',
@@ -122,16 +125,39 @@ const assets = {
         return src(paths.src.images)
             .pipe(
                 cache(
-                    imagemin({
-                        interlaced: true,
-                        progressive: true,
-                        svgoPlugins: [{ removeViewBox: false }],
-                        use: [pngquant()],
-                    })
+                    imagemin([
+                        imagemin.mozjpeg({ quality: 80 }),
+                        imagemin.optipng({ optimizationLevel: 3 }),
+                        imagemin.svgo({ plugins: [{ removeViewBox: false }] }),
+                        pngquant({ quality: [0.6, 0.8] }),
+                    ])
                 )
             )
             .pipe(dest(paths.build.images))
             .pipe(gulpIf(isReload, browserSync.stream()));
+    },
+    imagesConvert: ({ isReload = false }) => {
+        return src(paths.src.images)
+            .pipe(
+                cache(
+                    imagemin([
+                        imageminWebp({ quality: 75 }),
+                    ])
+                )
+            )
+            .pipe(extReplace('.webp'))
+            .pipe(dest(paths.build.images))
+            .pipe(src(paths.src.images))
+            .pipe(
+                cache(
+                    imagemin([
+                        imageminAvif({ quality: 50 }),
+                    ])
+                )
+            )
+            .pipe(extReplace('.avif'))
+            .pipe(dest(paths.build.images))
+            .pipe(gulpIf(isReload, browserSync.stream()))
     },
     fonts: ({isReload = false}) => {
         return src(paths.src.fonts)
@@ -145,6 +171,7 @@ export const build = series(
     assets.clearCache,
     assets.clean,
     assets.images,
+    assets.imagesConvert,
     assets.fonts,
     assets.favicon,
     styles.libsMin,
@@ -166,6 +193,6 @@ export const watchTask = () => {
     watch("./src/**/*.pug", () => html.pug({isReload: true}));
     watch("./src/scss/**/*.scss", () => styles.scss({isReload: true}));
     watch("./src/js/**/*.js", series(() => scripts.js({isReload: true}), scripts.lint));
-    watch("./src/images/**/*", () => assets.images({isReload: true}));
-    watch("./src/fonts/**/*", () => assets.fonts({isReload: true}));
+    watch("./src/assets/images/**/*", series(() => assets.images({isReload: true}), () => assets.imagesConvert({isReload: true})));
+    watch("./src/assets/fonts/**/*", () => assets.fonts({isReload: true}));
 }

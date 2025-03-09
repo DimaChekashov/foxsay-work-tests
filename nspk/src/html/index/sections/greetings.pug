@@ -8,4 +8,7 @@ section.greetings
 					a(href="#" class="btn btn_primary") Стать партнёром
 					a(href="#" class="btn btn_outline") Вход в личный кабинет
 			div.greetings__rows-col
-				img(src="./images/greetings-banner.png" alt="Баннер" class="greetings-img" width="455" height="400")
+				picture
+					source(srcset="./images/greetings-banner.avif" type="image/avif")
+					source(srcset="./images/greetings-banner.webp" type="image/webp")
+					img(src="./images/greetings-banner.png" alt="Баннер" class="greetings-img" width="455" height="400")
