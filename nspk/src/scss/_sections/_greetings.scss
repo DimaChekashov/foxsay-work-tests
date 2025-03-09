@@ -1,0 +1,22 @@
+.greetings {
+	padding: 64px 0 40px;
+	background: rgb(255,255,255);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(234,233,255,1) 100%);
+	&__rows {
+		display: grid;
+		align-items: center;
+		grid-template-columns: 9fr 6fr;
+	}
+	&-text {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 24px;
+		margin-bottom: 32px;
+	}
+	&-btns {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		margin-bottom: 4px;
+	}
+}

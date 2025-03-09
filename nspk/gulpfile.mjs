@@ -25,9 +25,9 @@ const paths = {
     src: {
         scss: 'src/scss/main.scss',
         js: 'src/js/main.js',
-        images: 'src/images/**/*',
+        images: 'src/assets/images/**/*',
         pug: 'src/**/*.pug',
-        fonts: 'src/fonts/**/*',
+        fonts: 'src/assets/fonts/**/*',
         favicon: 'src/*.ico',
     },
     build: {

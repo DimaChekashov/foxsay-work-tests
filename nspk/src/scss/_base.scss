@@ -1,0 +1,67 @@
+@use 'variables' as *;
+@use 'sass:color';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gotham", sans-serif;
+  color: $text-primary;
+}
+
+.container {
+  max-width: 1150px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.btn {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  border-radius: 10px;
+  padding: 7px 24.5px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &_primary {
+    background-color: $primary-color;
+    font-weight: 500;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+    &:active {
+      background-color: color.adjust($primary-color, $lightness: -20%);
+    }
+  }
+  &_outline {
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+      background-color: $primary-color;
+      color: #FFFFFF;
+    }
+    &:active {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+  }
+}
