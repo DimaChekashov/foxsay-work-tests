@@ -1,3 +1,40 @@
+@use 'variables' as *;
+
 .advantages {
-	padding: 64px 0;
+	padding: 61px 0 64px;
+	&-items {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+	}
+	&__item {
+		background-color: $background-gray;
+		border-radius: 20px;
+		padding: 23px 19px 22px;
+		border: 1px solid transparent;
+		transition: border-color 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+		&-heading {
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 26px;
+			margin: 11px 0 17px;
+		}
+		&-text {
+			font-size: 16px;
+			line-height: 22px;
+			a {
+				color: $link-color;
+				text-decoration: none;
+				text-underline-offset: 0.2em;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		&:hover {
+			cursor: pointer;
+			border-radius: 4px;
+			border-color: #EFEFEF;
+		}
+	}
 }
