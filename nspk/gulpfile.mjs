@@ -19,6 +19,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import browserSyncPackage from "browser-sync";
 import eslint from "gulp-eslint";
 import extReplace from "gulp-ext-replace";
+import purgecss from 'gulp-purgecss';
 
 const { src, dest, watch, series } = gulp;
 const sass = gulpSass(dartSass);
@@ -80,6 +81,9 @@ const styles = {
         ])
             .pipe(concat("css-libs.min.css"))
             .pipe(autoprefixer(["last 15 versions", "> 1%", "ie 8", "ie 7"], { cascade: true }))
+            .pipe(purgecss({
+                content: ["dist/**/*.html", "dist/**/*.js"]
+            }))
             .pipe(cleanCSS())
             .pipe(dest(paths.build.libs));
     }
@@ -107,7 +111,11 @@ const scripts = {
         ])
             .pipe(concat("js-libs.min.js"))
             .pipe(babel({ presets: ['@babel/preset-env'] }))
-            .pipe(terser())
+            .pipe(terser({
+                compress: true,
+                mangle: true,
+                keep_fnames: false,
+            }))
             .pipe(dest(paths.build.libs));
     },
     lint: () => {

@@ -42,5 +42,8 @@
 		.owl-item {
 			display: flex;
 		}
+		.owl-nav, .owl-dots {
+			display: none;
+		}
 	}
 }
