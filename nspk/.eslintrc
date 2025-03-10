@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-		"es6": true
+		"es6": true,
+    "jquery" : true
   },
   "extends": ["eslint:recommended"],
   "parserOptions": {
@@ -10,7 +11,6 @@
   },
   "rules": {
     "quotes": ["error", "double"],
-    "indent": ["error", 1],
     "semi": ["error", "always"]
   },
   "ignorePatterns": ["dist/**", "node_modules/**"]

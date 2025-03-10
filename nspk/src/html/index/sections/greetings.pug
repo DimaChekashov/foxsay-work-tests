@@ -10,27 +10,55 @@ section.greetings
 			div.greetings__rows-col
 				picture
 					source(
+						media="(max-width: 729px)",
 						srcset="\
-							./images/greetings-banner.avif 1x, \
-							./images/greetings-banner@2x.avif 2x, \
-							./images/greetings-banner@3x.avif 3x\
+							./images/greetings-banner/greetings-banner-mobile.avif 1x, \
+							./images/greetings-banner/greetings-banner-mobile@2x.avif 2x, \
+							./images/greetings-banner/greetings-banner-mobile@3x.avif 3x\
+						",
+						type="image/avif"
+					)
+					source(
+						media="(max-width: 729px)",
+						srcset="\
+							./images/greetings-banner/greetings-banner-mobile.webp 1x, \
+							./images/greetings-banner/greetings-banner-mobile@2x.webp 2x, \
+							./images/greetings-banner/greetings-banner-mobile@3x.webp 3x\
+						",
+						type="image/webp"
+					)
+					source(
+						media="(max-width: 729px)",
+						srcset="\
+							./images/greetings-banner/greetings-banner-mobile.png 1x, \
+							./images/greetings-banner/greetings-banner-mobile@2x.png 2x, \
+							./images/greetings-banner/greetings-banner-mobile@3x.png 3x\
+						",
+						type="image/png"
+					)
+
+					source(
+						srcset="\
+							./images/greetings-banner/greetings-banner.avif 1x, \
+							./images/greetings-banner/greetings-banner@2x.avif 2x, \
+							./images/greetings-banner/greetings-banner@3x.avif 3x\
 						", 
 						type="image/avif"
 					)
 					source(
 						srcset="\
-							./images/greetings-banner.webp 1x, \
-							./images/greetings-banner@2x.webp 2x, \
-							./images/greetings-banner@3x.webp 3x\
+							./images/greetings-banner/greetings-banner.webp 1x, \
+							./images/greetings-banner/greetings-banner@2x.webp 2x, \
+							./images/greetings-banner/greetings-banner@3x.webp 3x\
 						", 
 						type="image/webp"
 					)
 					img.greetings-img(
-						src="./images/greetings-banner.png",
+						src="./images/greetings-banner/greetings-banner.png",
 						srcset="\
-							./images/greetings-banner.png 1x, \
-							./images/greetings-banner@2x.png 2x, \
-							./images/greetings-banner@3x.png 3x\
+							./images/greetings-banner/greetings-banner.png 1x, \
+							./images/greetings-banner/greetings-banner@2x.png 2x, \
+							./images/greetings-banner/greetings-banner@3x.png 3x\
 						",
 						alt="Баннер",
 						width="455",
