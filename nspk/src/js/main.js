@@ -19,17 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 	});
 
-	if (window.innerWidth < 729) {
-		const advantageSlider = $(".advantages-items");
-		advantageSlider.addClass("owl-carousel owl-theme");
-
-		advantageSlider.owlCarousel({
-			loop: false,
-			margin: 20,
-			nav: false,
-			dots: false,
-			items: 1,
-			autoWidth: true
-		});
-	}
+	$(".advantages-items_mobile").owlCarousel({
+		loop: false,
+		margin: 20,
+		nav: false,
+		dots: false,
+		items: 1,
+		autoWidth: true
+	});
 });

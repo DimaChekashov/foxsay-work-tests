@@ -6,6 +6,11 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 20px;
+		&_mobile {
+			@media screen and (min-width: 730px) {
+				display: none !important;
+			}
+		}
 	}
 	&__item {
 		background-color: $background-gray;

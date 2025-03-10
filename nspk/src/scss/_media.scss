@@ -45,6 +45,9 @@
 	.advantages {
 		overflow: hidden;
 		padding: 57px 0 64px;
+		&-items {
+			display: none;
+		}
 		&__item {
 			flex: 1;
 			width: 268px;
