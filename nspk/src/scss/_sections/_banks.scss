@@ -8,12 +8,14 @@
 	&__search {
 		display: flex;
 		align-items: center;
+		gap: 1px;
 		max-width: 550px;
 		margin: 0 auto;
 		border-bottom: 1px solid #E5E5E5;
 		margin-bottom: 32px;
 		padding: 0 7px;
-		&-submit {
+		&-submit, 
+		&-clear {
 			border: 0;
 			background: transparent;
 			padding: 0;
@@ -25,8 +27,8 @@
 			cursor: pointer;
 		}
 		&-field {
-			font-size: 16px;
-			line-height: 22.4px;
+			font-size: 1rem;
+			line-height: 1.4;
 			border: 0;
 			flex: 1;
 			height: 56px;
@@ -35,19 +37,9 @@
 				color: #8C8C8C;
 			}
 			&:focus {
-				outline: none;
+				outline: 2px solid $primary-color;
+        outline-offset: 1px;
 			}
-		}
-		&-clear {
-			border: 0;
-			background: transparent;
-			padding: 0;
-			width: 40px;
-			height: 40px;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
 		}
 	}
 	&-items {
