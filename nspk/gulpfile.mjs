@@ -32,7 +32,7 @@ const paths = {
         imagesConvert: 'src/assets/images/**/*.{jpg,png}',
         pug: 'src/**/*.pug',
         fonts: 'src/assets/fonts/**/*',
-        favicon: 'src/*.ico',
+        favicon: 'src/favicon/**/*',
     },
     build: {
         css: 'dist/css',
@@ -40,6 +40,7 @@ const paths = {
         images: 'dist/images',
         fonts: 'dist/fonts',
         libs: 'dist/libs',
+        favicon: 'dist/favicon',
         html: 'dist',
     },
 };
@@ -121,7 +122,7 @@ const scripts = {
 const assets = {
     clearCache: () => cache.clearAll(),
     clean: () => del(paths.build.html),
-    favicon: () => src(paths.src.favicon).pipe(dest(paths.build.html)),
+    favicon: () => src(paths.src.favicon).pipe(dest(paths.build.favicon)),
     images: ({ isReload = false }) => {
         return src(paths.src.images)
             .pipe(
