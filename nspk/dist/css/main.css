@@ -499,6 +499,7 @@ body {
 .banks-items {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 80px);
   gap: 20px;
 }
 .banks__item {
@@ -564,6 +565,9 @@ body {
   .advantages-items {
     display: none;
   }
+  .advantages-items_mobile {
+    display: block;
+  }
   .advantages__item {
     -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -597,6 +601,9 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  .advantages .owl-carousel .owl-nav, .advantages .owl-carousel .owl-dots {
+    display: none;
   }
   .about {
     padding: 33px 0 50px;
@@ -695,6 +702,7 @@ body {
   }
   .banks-items {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 80px);
     gap: 16px;
   }
   .banks__item {
@@ -769,6 +777,7 @@ body {
   }
   .banks-items {
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 80px);
     gap: 16px;
   }
 }

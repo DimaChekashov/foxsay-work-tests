@@ -47,6 +47,9 @@
 		padding: 57px 0 64px;
 		&-items {
 			display: none;
+			&_mobile {
+				display: block;
+			}
 		}
 		&__item {
 			flex: 1;
@@ -74,6 +77,9 @@
 			}
 			.owl-item {
 				display: flex;
+			}
+			.owl-nav, .owl-dots {
+				display: none;
 			}
 		}
 	}
@@ -179,6 +185,7 @@
 		}
 		&-items {
 			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(6, 80px);
 			gap: 16px;
 		}
 		&__item {
@@ -281,6 +288,7 @@
 		}
 		&-items {
 			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: repeat(3, 80px);
 			gap: 16px;
 		}
 	}
