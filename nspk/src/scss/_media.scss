@@ -1,0 +1,97 @@
+@media screen and (min-width: 730px) and (max-width: 1150px) {
+	.container {
+		max-width: 758px;
+	}
+
+	.greetings {
+		&__rows {
+			grid-template-columns: 1fr;
+			gap: 16px;
+		}
+		&-text {
+			br {
+				display: none;
+			}
+		}
+		&-img {
+			margin: 0 auto;
+			display: block;
+		}
+	}
+
+	.advantages {
+		padding: 65px 0 64px;
+		&-items {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&__item {
+			padding: 24px 19px 21.5px;
+			&-text {
+				br {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.about {
+		&-items {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		&__item {
+			&-text {
+				br {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.payments {
+		&-block {
+			padding: 33px 32px 344px 32px;
+		}
+		&-title {
+			max-width: 550px;
+		}
+		&-img {
+			top: auto;
+			bottom: 20px;
+			right: calc(50% - 161px);
+		}
+	}
+
+	.cases {
+		&__item {
+			width: 292px;
+		}
+	}
+
+	.stock {
+		&-items {
+			grid-template-columns: 1fr;
+		}
+		&__item {
+			display: flex;
+			gap: 16px;
+			&-num {
+				margin: 0;
+			}
+			&-text {
+				text-align: left;
+			}
+		}
+	}
+
+	.banks {
+		&-title {
+			br {
+				display: none;
+			}
+		}
+		&-items {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 16px;
+		}
+	}
+}

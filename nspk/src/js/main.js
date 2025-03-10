@@ -6,13 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		dots: false,
     responsive:{
 			0:{
-				items:1
+				items: 1
 			},
-			600:{
-				items:2
+			729:{
+				items: 2,
+				autoWidth: true
 			},
-			1200:{
-				items:3
+			1150:{
+				items: 3
 			}
     }
 	})
