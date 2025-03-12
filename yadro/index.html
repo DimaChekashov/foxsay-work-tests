@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.modal {
+			background: #000;
+			color: #fff;
+			padding: 15px;
+			max-width: 500px;
+			width: 100%;
+			margin: 0 auto;
+			position: fixed;
+			top: 150px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: none;
+		}
+
+		.modal.show {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<button type="button" class="toggle-btn-modal">Open Modal</button>
+	<div class="modal">
+		<h2>Modal</h2>
+		<button type="button" class="toggle-btn-modal">OK</button>
+	</div>
+	
+	<script>
+		const modal = document.querySelector(".modal");
+		const btns = document.querySelectorAll(".toggle-btn-modal");
+
+		btns.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				modal.classList.toggle("show");
+			})
+		});
+
+	</script>
+</body>
+</html>
